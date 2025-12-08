@@ -1,0 +1,17 @@
+{
+  "description": "Glean plugin hooks for session initialization",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/session-start.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

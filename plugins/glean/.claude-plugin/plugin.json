@@ -1,0 +1,22 @@
+{
+  "name": "glean",
+  "version": "1.0.0",
+  "description": "Enterprise knowledge integration with Glean - search documents, people, meetings, and code across your company",
+  "author": {
+    "name": "Glean",
+    "email": "support@glean.com",
+    "url": "https://glean.com"
+  },
+  "homepage": "https://docs.glean.com/mcp",
+  "repository": "https://github.com/gleanwork/glean-claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "enterprise-search",
+    "knowledge-management",
+    "glean",
+    "mcp",
+    "meetings",
+    "code-search",
+    "employee-search"
+  ]
+}

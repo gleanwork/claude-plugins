@@ -1,0 +1,42 @@
+{
+  "name": "@gleanwork/claude-plugins",
+  "version": "1.0.0",
+  "description": "Official Glean plugins for Claude Code - enterprise knowledge integration",
+  "keywords": [
+    "glean",
+    "claude",
+    "claude-code",
+    "plugin",
+    "mcp",
+    "enterprise-search",
+    "knowledge-management"
+  ],
+  "homepage": "https://docs.glean.com/mcp",
+  "bugs": {
+    "url": "https://github.com/gleanwork/glean-claude-plugins/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gleanwork/glean-claude-plugins.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Glean",
+    "email": "support@glean.com",
+    "url": "https://glean.com"
+  },
+  "type": "module",
+  "files": [
+    "manifest.json",
+    "plugins/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
