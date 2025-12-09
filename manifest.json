@@ -7,7 +7,7 @@
     "url": "https://glean.com"
   },
   "homepage": "https://docs.glean.com/mcp",
-  "repository": "https://github.com/gleanwork/glean-claude-plugins",
+  "repository": "https://github.com/gleanwork/claude-plugins",
   "plugins": [
     {
       "name": "glean",

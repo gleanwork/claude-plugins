@@ -9,7 +9,7 @@ Official Glean plugins for [Claude Code](https://claude.com/claude-code), enabli
 ### Step 1: Add the Glean Marketplace
 
 ```bash
-claude plugin marketplace add https://github.com/gleanwork/glean-claude-plugins
+claude plugin marketplace add https://github.com/gleanwork/claude-plugins
 ```
 
 ### Step 2: Install the Plugin
@@ -231,7 +231,7 @@ Claude Code handles Glean authentication automatically via OAuth. On first use, 
 
 - [Glean MCP Documentation](https://docs.glean.com/mcp)
 - [Glean Support](https://help.glean.com)
-- [GitHub Issues](https://github.com/gleanwork/glean-claude-plugins/issues)
+- [GitHub Issues](https://github.com/gleanwork/claude-plugins/issues)
 
 ## License
 
