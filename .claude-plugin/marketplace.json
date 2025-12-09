@@ -1,0 +1,15 @@
+{
+  "name": "glean",
+  "description": "Official Glean plugins for Claude Code - enterprise knowledge integration",
+  "owner": {
+    "name": "Glean",
+    "email": "steve.calvert@glean.com"
+  },
+  "plugins": [
+    {
+      "name": "glean",
+      "source": "./plugins/glean",
+      "description": "Enterprise knowledge integration with Glean - search documents, people, meetings, and code across your company"
+    }
+  ]
+}
