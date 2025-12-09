@@ -9,26 +9,26 @@ Official Glean plugins for [Claude Code](https://claude.com/claude-code), enabli
 ### Step 1: Add the Glean Marketplace
 
 ```bash
-/plugin add-marketplace glean https://github.com/gleanwork/glean-claude-plugins
+claude plugin marketplace add https://github.com/gleanwork/glean-claude-plugins
 ```
 
 ### Step 2: Install the Plugin
 
 ```bash
-/plugin install glean
+claude plugin install glean
 ```
 
 ### Step 3: Configure Your Glean MCP Server
 
 ```bash
-/glean-setup
+/glean:mcp-setup
 ```
 
 This will guide you through connecting to your Glean instance. You'll need:
 - Your **Glean instance name** (e.g., `acme` if your URL is `https://acme.glean.com`)
 - Your **server name** (provided by your Glean administrator)
 
-Run `/glean-setup` multiple times to add multiple servers.
+Run `/glean:mcp-setup` multiple times to add multiple servers.
 
 ---
 
@@ -191,30 +191,13 @@ The agent will:
 
 ---
 
-### 🔎 Decision Trail
-
-Understand why something was built a certain way.
-
-```
-"Why do we use Redis instead of Memcached?"
-"What's the history behind the auth architecture?"
-```
-
-The skill will:
-1. Search for design documents and RFCs
-2. Find relevant meeting discussions
-3. Identify the decision makers
-4. Explain the rationale and alternatives considered
-
----
-
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| `/glean-setup` | Configure Glean MCP server connection |
-| `/glean-status` | Check connection status |
-| `/glean-search <query>` | Quick enterprise search |
+| `/glean:mcp-setup` | Configure Glean MCP server connection |
+| `/glean:status` | Check connection status |
+| `/glean:search <query>` | Quick enterprise search |
 
 ---
 

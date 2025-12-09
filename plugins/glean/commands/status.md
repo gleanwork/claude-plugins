@@ -29,7 +29,7 @@ Look for any servers with URLs matching `glean.com/mcp` in the output.
 
 **If no Glean servers are found:**
 - Inform the user that no Glean MCP servers are configured
-- Suggest running `/glean-setup` to configure one
+- Suggest running `/glean:mcp-setup` to configure one
 - Provide a brief explanation of what Glean MCP enables
 
 ### 4. Test Connectivity (Optional)
@@ -55,5 +55,5 @@ Glean MCP Status:
 
 No Glean MCP servers configured.
 
-Run /glean-setup to configure a Glean MCP server.
+Run /glean:mcp-setup to configure a Glean MCP server.
 ```
