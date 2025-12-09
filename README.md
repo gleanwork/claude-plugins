@@ -2,6 +2,8 @@
 
 Official Glean plugins for [Claude Code](https://claude.com/claude-code), enabling enterprise knowledge integration directly in your development workflow.
 
+**Think of Glean tools as ingredients. This plugin provides the recipes.**
+
 ## Installation
 
 ### Step 1: Add the Glean Marketplace
@@ -18,88 +20,123 @@ Official Glean plugins for [Claude Code](https://claude.com/claude-code), enabli
 
 ### Step 3: Configure Your Glean MCP Server
 
-After installing, run the setup command to connect to your Glean instance:
-
 ```bash
 /glean-setup
 ```
 
-This will guide you through configuring your Glean MCP server connection. You'll need:
-- Your **Glean instance name** (e.g., if your Glean URL is `https://acme.glean.com`, your instance is `acme`)
+This will guide you through connecting to your Glean instance. You'll need:
+- Your **Glean instance name** (e.g., `acme` if your URL is `https://acme.glean.com`)
 - Your **server name** (provided by your Glean administrator)
 
-You can run `/glean-setup` multiple times to add multiple Glean servers.
+Run `/glean-setup` multiple times to add multiple servers.
 
-## What's Included
+## Workflows (Recipes)
 
-### Commands
+The plugin provides autonomous agents that combine Glean tools with local development context to accomplish complex workflows.
+
+### RFC Verification
+
+Compare a design document to its implementation and identify gaps.
+
+```
+"Verify this RFC against the implementation"
+"Check if the design doc matches the code"
+[paste RFC URL]
+```
+
+The agent will:
+1. Fetch the RFC from Glean
+2. Extract requirements and specifications
+3. Search the local codebase for implementations
+4. Generate a completeness report with gaps
+
+### Meeting Prep
+
+Prepare for an upcoming meeting with full context.
+
+```
+"Prepare me for my meeting with Sarah"
+"Get ready for the quarterly planning meeting"
+```
+
+The agent will:
+1. Find past instances of the meeting
+2. Extract decisions and open action items
+3. Gather related recent documents
+4. Generate a prep doc with talking points
+
+### Team Onboarding
+
+Get up to speed on a new team or project.
+
+```
+"I'm new to the payments team"
+"Onboard me to the authentication service"
+```
+
+The agent will:
+1. Find key people and leadership
+2. Gather essential documentation
+3. Identify current priorities
+4. Generate a personalized onboarding guide
+
+### Stakeholder Discovery
+
+Find the right people to involve in a change.
+
+```
+"Who should I talk to about changing the auth flow?"
+"Find stakeholders for the database migration"
+```
+
+The agent will:
+1. Identify code owners and contributors
+2. Find documentation authors
+3. Map downstream dependencies
+4. Generate a stakeholder engagement plan
+
+### Decision Trail
+
+Understand why something was built a certain way.
+
+```
+"Why do we use Redis instead of Memcached?"
+"What's the history behind the auth architecture?"
+```
+
+The skill will:
+1. Search for design documents and RFCs
+2. Find relevant meeting discussions
+3. Identify the decision makers
+4. Explain the rationale and alternatives considered
+
+## Commands
 
 | Command | Description |
 |---------|-------------|
-| `/glean-setup` | Interactive MCP server configuration |
-| `/glean-status` | Check your Glean connection status |
-| `/glean-search <query>` | Quick enterprise knowledge search |
+| `/glean-setup` | Configure Glean MCP server connection |
+| `/glean-status` | Check connection status |
+| `/glean-search <query>` | Quick enterprise search |
 
-### Skills
+## How It Works
 
-The plugin includes skills that automatically activate when relevant:
+Glean provides access to your company's knowledge:
+- **Documents**: Confluence, Notion, Google Docs, etc.
+- **People**: Org structure, teams, expertise
+- **Meetings**: Calendar, transcripts, recordings
+- **Code**: Internal repositories and commits
+- **Communication**: Slack, email (if configured)
 
-| Skill | Activates When You... |
-|-------|----------------------|
-| **Search Optimization** | Search for documents, use filters like `owner:`, `updated:` |
-| **Enterprise Onboarding** | Ask about people, teams, processes, or company knowledge |
-| **Meeting Intelligence** | Ask about meetings, transcripts, or meeting preparation |
-| **Code Context** | Search internal code, find implementations, or identify authors |
-
-### Session Integration
-
-On each Claude Code session start, the plugin:
-- Checks if Glean is configured
-- Reminds you of available Glean capabilities
-- Suggests `/glean-setup` if not yet configured
-
-## Available Glean Tools
-
-Once configured, you'll have access to these Glean tools:
-
-| Tool | Purpose |
-|------|---------|
-| `search` | Search documents, files, and knowledge base |
-| `chat` | Get AI-synthesized answers across sources |
-| `employee_search` | Find people, teams, and org structure |
-| `meeting_lookup` | Search meetings and extract transcripts |
-| `code_search` | Search internal code repositories |
-| `gmail_search` | Search Gmail (if configured) |
-| `read_document` | Get full content of specific documents |
-
-## Search Examples
-
-```bash
-# Quick search
-/glean-search quarterly planning 2024
-
-# Search with filters
-/glean-search owner:"Jane Doe" project roadmap
-/glean-search updated:past_week API documentation
-
-# Find people
-"Who works on authentication?"  # Triggers enterprise-onboarding skill
-
-# Find meetings
-"What was discussed in yesterday's standup?"  # Triggers meeting-intelligence skill
-
-# Find code
-"Where is the payment service implemented?"  # Triggers code-context skill
-```
+This plugin combines those capabilities with Claude Code's local development tools to create powerful workflows that bridge enterprise knowledge and your codebase.
 
 ## Authentication
 
-Claude Code handles Glean authentication automatically via OAuth. On first use of any Glean tool, you'll be prompted to authenticate through your browser.
+Claude Code handles Glean authentication automatically via OAuth. On first use, you'll be prompted to authenticate through your browser.
 
 ## Requirements
 
 - [Claude Code](https://claude.com/claude-code) (latest version)
-- A Glean account with MCP access (contact your Glean administrator)
+- A Glean account with MCP access
 - Your Glean MCP server URL (format: `https://[instance]-be.glean.com/mcp/[server-name]`)
 
 ## Support
