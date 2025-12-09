@@ -36,8 +36,10 @@ Input: $ARGUMENTS
 **Goal**: Identify who to meet and learn from
 
 **Actions**:
-1. Launch a people-finder agent:
-   - Prompt: "Find people on [team/project]. Identify: team lead/manager, senior engineers, and any recent hires (potential onboarding buddies). Include their roles and contact info."
+1. Find team members:
+   ```
+   employee_search "[team/project]"
+   ```
 
 2. Build a people map:
    - Leadership: Who runs this team?
@@ -46,39 +48,29 @@ Input: $ARGUMENTS
 
 ---
 
-## Phase 3: Find Foundational Documents
+## Phase 3: Find Key Documents
 
-**Goal**: Identify must-read docs
+**Goal**: Identify must-read docs and current priorities
 
 **Actions**:
-1. Launch 2 parallel agents:
+1. Search for foundational docs:
+   ```
+   search "[team/project] onboarding OR getting started OR architecture"
+   ```
 
-   **enterprise-searcher agent #1: Onboarding Docs**
-   - Prompt: "Search for onboarding, getting started, or new hire documentation for [team/project]."
+2. Search for recent activity:
+   ```
+   search "[team/project] updated:past_month"
+   ```
 
-   **enterprise-searcher agent #2: Architecture Docs**
-   - Prompt: "Search for architecture docs, design docs, runbooks, or playbooks for [team/project]."
-
-2. For the most relevant docs, use doc-reader agent to summarize key points
+3. Find recent team meetings for current priorities:
+   ```
+   meeting_lookup "[team/project] past 2 weeks"
+   ```
 
 ---
 
-## Phase 4: Understand Current State
-
-**Goal**: What's happening now?
-
-**Actions**:
-1. Launch 2 parallel agents:
-
-   **enterprise-searcher agent: Recent Activity**
-   - Prompt: "Search for [team/project] documents updated in the past month. Focus on project updates, status reports, and recent decisions."
-
-   **meeting-analyzer agent: Recent Meetings**
-   - Prompt: "Find [team/project] team meetings in the past 2 weeks. What are the current priorities and active discussions?"
-
----
-
-## Phase 5: Generate Onboarding Guide
+## Phase 4: Generate Onboarding Guide
 
 **Goal**: Create a personalized onboarding doc
 

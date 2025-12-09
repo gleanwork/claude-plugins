@@ -34,22 +34,19 @@ Input: $ARGUMENTS
 **Goal**: Find people with multiple evidence of expertise
 
 **Actions**:
-1. Launch 3 parallel agents:
+1. Start with Glean chat for a synthesized answer:
+   ```
+   chat "Who are the experts on [topic] at our company? Consider code contributions, documentation authorship, and meeting participation."
+   ```
 
-   **people-finder agent #1: Code Contributors**
-   - Prompt: "Find people who have contributed code related to [topic] in the past 6 months. Look for frequent contributors and original authors."
-
-   **people-finder agent #2: Documentation Authors**
-   - Prompt: "Find people who have authored documentation, RFCs, or design docs about [topic]. These often indicate deep understanding."
-
-   **meeting-analyzer agent #3: Discussion Participants**
-   - Prompt: "Find meetings about [topic] in the past 3 months. Identify people who frequently participate in technical discussions on this topic."
-
-2. Also run a direct employee search for official ownership:
+2. Gather additional signals with direct searches:
    ```
    employee_search "[topic]"
-   employee_search "[topic] architect OR lead"
+   code_search "[topic] contributors"
+   search "[topic] RFC OR design doc"
    ```
+
+3. Cross-reference to find people appearing in multiple sources
 
 ---
 

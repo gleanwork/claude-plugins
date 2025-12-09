@@ -23,16 +23,18 @@ Input: $ARGUMENTS
 
 **Actions**:
 1. Create todo list with all phases
-2. If given a URL, use doc-reader agent:
-   - Prompt: "Read [URL] and extract all requirements: functional requirements, technical specifications, integration points, and non-functional requirements."
 
-3. If given a topic, search first:
-   ```
-   search "[topic] RFC OR design doc OR spec"
-   ```
-   Then read the most relevant result
+2. Get the document:
+   - If given a URL: `read_document "[URL]"`
+   - If given a topic: `search "[topic] RFC OR design doc"` then `read_document` on the best match
 
-4. Create a checklist of verifiable requirements
+3. Extract verifiable requirements:
+   - Functional requirements
+   - Technical specifications
+   - Integration points
+   - Non-functional requirements (performance, security)
+
+4. Create a checklist of requirements to verify
 
 ---
 

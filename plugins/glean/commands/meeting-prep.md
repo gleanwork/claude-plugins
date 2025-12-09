@@ -23,9 +23,10 @@ Input: $ARGUMENTS
 
 **Actions**:
 1. Create todo list with all phases
-2. Launch a meeting-analyzer agent to find the meeting:
-   - If given topic: "Find upcoming meeting about [topic] in the next week"
-   - If given person: "Find upcoming meeting with [person] in the next week"
+2. Use meeting_lookup to find the meeting:
+   ```
+   meeting_lookup "[topic or person name] upcoming"
+   ```
 3. If multiple matches, ask user to clarify
 4. Extract meeting details: title, time, attendees
 
@@ -36,8 +37,10 @@ Input: $ARGUMENTS
 **Goal**: Understand history and open items
 
 **Actions**:
-1. Launch a meeting-analyzer agent:
-   - Prompt: "Find previous instances of [meeting name] in the past 2 months. Extract: decisions made, open action items, recurring topics, and unresolved questions."
+1. Use Glean chat for synthesized meeting history:
+   ```
+   chat "What happened in previous [meeting name] meetings over the past 2 months? What decisions were made and what action items are still open?"
+   ```
 
 2. Compile:
    - What was decided recently?
@@ -51,15 +54,17 @@ Input: $ARGUMENTS
 **Goal**: Find relevant documents and attendee info
 
 **Actions**:
-1. Launch 2 parallel agents:
+1. Search for related documents:
+   ```
+   search "[meeting topic] updated:past_month"
+   ```
 
-   **enterprise-searcher agent: Related Documents**
-   - Prompt: "Search for documents related to [meeting topic] updated in the past month. Focus on status updates, proposals, and relevant project docs."
+2. For 1:1s or meetings with unfamiliar attendees, look up people:
+   ```
+   employee_search "[attendee name]"
+   ```
 
-   **people-finder agent: Attendee Context** (for 1:1s or new meetings)
-   - Prompt: "Find information about [attendee names]. Include their role, team, and recent activity relevant to [meeting topic]."
-
-2. For key documents found, use doc-reader agent if deeper analysis needed
+3. If key documents are found, use read_document to get details
 
 ---
 

@@ -30,47 +30,31 @@ Input: $ARGUMENTS
 
 ---
 
-## Phase 2: Find Technical Owners
+## Phase 2: Find Stakeholders
 
-**Goal**: Identify who owns the affected code/systems
+**Goal**: Identify technical owners, decision makers, and affected parties
 
 **Actions**:
-1. Launch 2 parallel agents:
+1. Start with Glean chat for a synthesized stakeholder view:
+   ```
+   chat "Who are the stakeholders for [change/system]? Include code owners, decision makers, and teams that depend on this."
+   ```
 
-   **people-finder agent #1: Code Owners**
-   - Prompt: "Find people who own or frequently contribute to code related to [affected systems]. Look for recent contributors and maintainers."
+2. Gather specific details with direct searches:
+   ```
+   code_search "[affected system] contributors"
+   search "[affected system] RFC OR architecture doc"
+   employee_search "[affected system] team lead OR manager"
+   ```
 
-   **people-finder agent #2: Documentation Owners**
-   - Prompt: "Find authors of architecture docs, design docs, or RFCs for [affected area]. These people often have decision authority."
+3. Search for downstream dependencies:
+   ```
+   search "[affected system] integration OR dependency OR consumer"
+   ```
 
 ---
 
-## Phase 3: Find Organizational Stakeholders
-
-**Goal**: Identify team leads and decision makers
-
-**Actions**:
-1. Launch 2 parallel agents:
-
-   **people-finder agent: Team Leadership**
-   - Prompt: "Find managers and tech leads for teams that own [affected systems]."
-
-   **enterprise-searcher agent: Related Discussions**
-   - Prompt: "Search for past discussions, RFCs, or decisions about [topic]. Note who was involved in those decisions."
-
----
-
-## Phase 4: Find Downstream Dependencies
-
-**Goal**: Identify who consumes or depends on the affected systems
-
-**Actions**:
-1. Launch an enterprise-searcher agent:
-   - Prompt: "Search for integrations, dependencies, or consumers of [affected system]. Find teams or systems that would be impacted by changes."
-
----
-
-## Phase 5: Generate Stakeholder Map
+## Phase 3: Generate Stakeholder Map
 
 **Goal**: Present organized stakeholder list with engagement plan
 

@@ -23,12 +23,12 @@ Use these Glean tools based on what you're looking for:
 
 ## Search Strategy
 
-1. **Start broad, then narrow**: Begin with keyword search, refine with filters
-2. **Use filters effectively**:
-   - `updated:past_week` / `updated:past_month` for recency
+1. **Use natural language**: Glean understands queries like "authentication docs from last week" or "John's design docs"
+2. **Cross-reference sources**: The same topic may appear in docs, Slack, and email
+3. **Optional filters** (when needed for precision):
+   - `updated:past_week` for recency
    - `owner:"name"` for author filtering
    - `app:slack` for Slack-specific results
-3. **Cross-reference sources**: The same topic may appear in docs, Slack, and email
 
 ## Output Format
 

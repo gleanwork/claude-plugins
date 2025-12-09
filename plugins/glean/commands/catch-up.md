@@ -24,10 +24,7 @@ Input: $ARGUMENTS
 **Actions**:
 1. Create todo list with all phases
 2. If time period unclear, ask: "How long were you away?"
-3. Convert to date range:
-   - "last week" → `after:now-1w before:now`
-   - "since Monday" → `after:[last Monday] before:now`
-   - "2 weeks" → `after:now-2w before:now`
+3. Use the time period directly in Glean queries - Glean understands natural language dates like "last week", "past 2 weeks", "since Monday", etc.
 
 ---
 
@@ -36,24 +33,20 @@ Input: $ARGUMENTS
 **Goal**: Collect relevant updates from all sources
 
 **Actions**:
-1. Launch 3 parallel agents:
+1. Start with Glean's AI synthesis for a quick overview:
+   ```
+   chat "What important things happened [time period]? Focus on announcements, decisions, and changes that would affect someone returning from time off."
+   ```
 
-   **enterprise-searcher agent #1: Documents & Announcements**
-   - Search for docs updated during the period
-   - Focus on announcements, policy changes, project updates
-   - Prompt: "Search for important documents and announcements updated [time period]. Focus on company announcements, policy changes, and project status updates."
+2. Launch 2 parallel agents for specific details:
 
-   **meeting-analyzer agent #2: Meetings**
-   - Find meetings during the time away
-   - Extract decisions and action items
-   - Prompt: "Find meetings from [time period] and extract decisions made, action items assigned, and key discussion topics. Flag anything that might need immediate attention."
+   **meeting-analyzer agent: Meetings & Action Items**
+   - Prompt: "Find meetings from [time period]. Extract decisions and action items, especially any assigned to [user] or waiting for their input."
 
-   **enterprise-searcher agent #3: Direct Mentions**
-   - Search for mentions of the user
-   - Find questions or requests directed at them
-   - Prompt: "Search for mentions of [user] during [time period] in Slack and documents. Find any questions waiting for them or action items assigned to them."
+   **enterprise-searcher agent: Direct Mentions**
+   - Prompt: "Search for mentions of [user] [time period]. Find questions waiting for them or tasks assigned to them."
 
-2. Compile results from all agents
+3. Compile results
 
 ---
 

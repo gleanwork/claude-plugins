@@ -15,16 +15,17 @@ Search for meetings by topic, participants, or time range, then extract key info
 
 ## Capabilities
 
-Use the **meeting_lookup** tool:
+Use the **meeting_lookup** tool with natural language queries:
 
 ```
-meeting_lookup "after:[start] before:[end] topic:\"[topic]\" participants:\"[name]\" extract_transcript:\"true\""
+meeting_lookup "[topic] [time period]"
 ```
 
-### Date Formats
-- Relative: `after:now-1w`, `before:tomorrow`
-- Absolute: `after:2024-01-15`
-- Keywords: `after:today`, `before:now`
+Glean understands natural language dates and filters. You can combine:
+- **Time**: "last week", "past 2 weeks", "yesterday", "today"
+- **Topic**: Just include keywords naturally
+- **People**: Include names naturally, or use `participants:"name"`
+- **Transcripts**: Add `extract_transcript:"true"` when you need meeting content
 
 ## Extraction Focus
 

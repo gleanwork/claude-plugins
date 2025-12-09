@@ -23,23 +23,25 @@ Use these Glean tools:
 
 ## Search Strategies
 
+Use natural language queries - Glean understands context:
+
 ### By Role/Team
 ```
-employee_search "[team name]"
-employee_search "[role] manager OR lead"
-employee_search "reportsto:\"[manager name]\""
+employee_search "payments team"
+employee_search "engineering managers"
+employee_search "who reports to Sarah Chen"
 ```
 
 ### By Expertise (Activity Signals)
 ```
-code_search "[topic] owner:* updated:past_3M"
-search "[topic] RFC OR design doc owner:*"
+code_search "authentication contributors"
+search "who wrote the billing design doc"
 ```
 
 ### By Recent Activity
 ```
-code_search "owner:\"[name]\" updated:past_month"
-search "owner:\"[name]\" updated:past_week"
+code_search "John's recent commits"
+search "docs updated by the platform team this month"
 ```
 
 ## Output Format
