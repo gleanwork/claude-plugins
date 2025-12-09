@@ -1,5 +1,5 @@
 {
-  "name": "glean",
+  "name": "glean-plugins",
   "description": "Official Glean plugins for Claude Code - enterprise knowledge integration",
   "owner": {
     "name": "Glean",
