@@ -2,8 +2,6 @@
 
 Official Glean plugins for [Claude Code](https://claude.com/claude-code), enabling enterprise knowledge integration directly in your development workflow.
 
-**Think of Glean tools as ingredients. This plugin provides the recipes.**
-
 ## Installation
 
 ### Step 1: Add the Glean Marketplace
@@ -25,49 +23,30 @@ claude plugin install glean
 ```
 
 This will guide you through connecting to your Glean instance. You'll need:
-- Your **Glean instance name** (e.g., `acme` if your URL is `https://acme.glean.com`)
+
+- Your **Glean instance name** (e.g., `acme` if your URL is `https://acme-be.glean.com`)
 - Your **server name** (provided by your Glean administrator)
 
 Run `/glean:mcp-setup` multiple times to add multiple servers.
 
 ---
 
-## Workflows (Recipes)
+## Commands
 
-The plugin provides autonomous agents that combine Glean's cross-source enterprise intelligence with local development context.
+All workflows are accessible via slash commands for easy discoverability. Type `/glean:` to see all available commands.
 
-### 🔍 PR Review Prep
-
-Get full enterprise context before reviewing a pull request.
-
-```
-"Prepare me to review this PR"
-"What context do I need for PR #123?"
-```
-
-The agent will:
-1. Fetch the PR details and diff
-2. Find related RFCs and design docs
-3. Search Slack discussions about this work
-4. Identify stakeholders and downstream impact
-5. Surface historical issues in this code area
-6. Generate a prep doc with review focus areas
-
-**Uniquely Glean:** Connects code changes to enterprise decisions, discussions, and stakeholders.
-
----
-
-### 📬 What Did I Miss? (Catch-Up)
+### `/glean:catch-up` - What Did I Miss?
 
 Quickly catch up after being away.
 
 ```
-"What did I miss last week?"
-"Catch me up - I was on PTO for 2 weeks"
-"What happened while I was out?"
+/glean:catch-up last week
+/glean:catch-up since Monday
+/glean:catch-up 2 weeks
 ```
 
-The agent will:
+The command will:
+
 1. Synthesize across Slack, meetings, docs, and email
 2. Find action items assigned to you
 3. Surface decisions affecting your work
@@ -78,58 +57,36 @@ The agent will:
 
 ---
 
-### ✍️ Help Me Write This RFC
+### `/glean:meeting-prep` - Meeting Preparation
 
-Get research assistance for writing technical proposals.
+Prepare for an upcoming meeting with full context.
 
 ```
-"Help me write an RFC for migrating to OAuth 2.0"
-"I need to draft a design doc for the new billing system"
+/glean:meeting-prep quarterly planning
+/glean:meeting-prep 1:1 with Sarah
 ```
 
-The agent will:
-1. Find your company's RFC template
-2. Analyze similar past RFCs for structure and style
-3. Research the current system state
-4. Find related discussions and prior decisions
-5. Identify stakeholders and reviewers
-6. Generate a well-researched draft
+The command will:
 
-**Uniquely Glean:** Grounds your RFC in company history, patterns, and stakeholder knowledge.
+1. Find past instances of this meeting
+2. Extract decisions and open action items
+3. Gather related recent documents
+4. Generate a prep doc with talking points
 
 ---
 
-### 🔬 RFC Verification
+### `/glean:find-expert` - Expertise Finder
 
-Compare a design document to its actual implementation.
-
-```
-"Verify this RFC against the implementation"
-"Check if we implemented everything in the spec"
-[paste RFC URL]
-```
-
-The agent will:
-1. Fetch and parse the RFC from Glean
-2. Extract requirements and specifications
-3. Search the local codebase for implementations
-4. Generate a completeness report with gaps
-
-**Uniquely Glean:** Bridges enterprise documentation with codebase reality.
-
----
-
-### 🧠 Expertise Finder
-
-Find who *actually* knows about a topic - not just by title.
+Find who _actually_ knows about a topic - not just by title.
 
 ```
-"Who really knows about Kubernetes at our company?"
-"Find an expert on the payment system"
-"Who's the go-to person for authentication?"
+/glean:find-expert Kubernetes
+/glean:find-expert payment system
+/glean:find-expert authentication
 ```
 
-The agent will:
+The command will:
+
 1. Search code contributions in this area
 2. Find documentation authors
 3. Identify meeting participants and discussion leaders
@@ -140,16 +97,17 @@ The agent will:
 
 ---
 
-### 👥 Stakeholder Discovery
+### `/glean:stakeholders` - Stakeholder Discovery
 
 Find who needs to be involved in a change.
 
 ```
-"Who should I talk to about changing the auth flow?"
-"Find stakeholders for the database migration"
+/glean:stakeholders changing the auth flow
+/glean:stakeholders database migration
 ```
 
-The agent will:
+The command will:
+
 1. Identify code owners and contributors
 2. Find documentation authors
 3. Map downstream dependencies
@@ -157,33 +115,17 @@ The agent will:
 
 ---
 
-### 📅 Meeting Prep
-
-Prepare for an upcoming meeting with full context.
-
-```
-"Prepare me for my meeting with Sarah"
-"Get ready for the quarterly planning meeting"
-```
-
-The agent will:
-1. Find past instances of this meeting
-2. Extract decisions and open action items
-3. Gather related recent documents
-4. Generate a prep doc with talking points
-
----
-
-### 🚀 Team Onboarding
+### `/glean:onboarding` - Team Onboarding
 
 Get up to speed on a new team or project.
 
 ```
-"I'm new to the payments team"
-"Onboard me to the authentication service"
+/glean:onboarding payments team
+/glean:onboarding authentication service
 ```
 
-The agent will:
+The command will:
+
 1. Find key people and leadership
 2. Gather essential documentation
 3. Identify current priorities
@@ -191,35 +133,35 @@ The agent will:
 
 ---
 
-## Commands
+### `/glean:verify-rfc` - RFC Verification
 
-| Command | Description |
-|---------|-------------|
-| `/glean:mcp-setup` | Configure Glean MCP server connection |
-| `/glean:status` | Check connection status |
-| `/glean:search <query>` | Quick enterprise search |
+Compare a design document to its actual implementation.
 
----
+```
+/glean:verify-rfc https://docs.company.com/rfc/123
+/glean:verify-rfc OAuth migration spec
+```
 
-## What Makes This Uniquely Glean?
+The command will:
 
-Glean provides **cross-source intelligence** that no single tool offers:
+1. Fetch and parse the RFC from Glean
+2. Extract requirements and specifications
+3. Search the local codebase for implementations
+4. Generate a completeness report with gaps
 
-| Source | What Glean Sees |
-|--------|-----------------|
-| **Documents** | Confluence, Notion, Google Docs, SharePoint |
-| **Code** | GitHub, GitLab, internal repos |
-| **Communication** | Slack, email threads |
-| **Meetings** | Calendar, transcripts, recordings |
-| **People** | Org structure, teams, activity |
-
-This plugin combines that enterprise context with Claude Code's local development tools to create workflows that bridge **company knowledge** and **your codebase**.
+**Uniquely Glean:** Bridges enterprise documentation with codebase reality.
 
 ---
 
-## Authentication
+### Utility Commands
 
-Claude Code handles Glean authentication automatically via OAuth. On first use, you'll be prompted to authenticate through your browser.
+| Command                 | Description                           |
+| ----------------------- | ------------------------------------- |
+| `/glean:mcp-setup`      | Configure Glean MCP server connection |
+| `/glean:status`         | Check connection status               |
+| `/glean:search <query>` | Quick enterprise search               |
+
+---
 
 ## Requirements
 
