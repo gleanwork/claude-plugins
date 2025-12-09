@@ -13,7 +13,9 @@ Guide the user through these steps interactively using AskUserQuestion:
 
 ### Step 1: Get Instance Name
 
-Ask the user for their Glean instance name. Explain that if their Glean URL is `https://acme.glean.com`, their instance name is `acme`.
+Ask the user for their Glean instance name. Explain that if their Glean URL is `https://acme-be.glean.com`, their instance name is `acme`.
+
+You can find your Glean URL here: <https://app.glean.com/admin/about-glean>
 
 ### Step 2: Get Server Name
 
@@ -22,6 +24,7 @@ Ask the user for the server name they want to connect to. Explain that their Gle
 ### Step 3: Get Friendly Name
 
 Ask what friendly name to use for this server in Claude Code. Suggest:
+
 - `glean` if this is their only server
 - `glean-[server-name]` if adding multiple (e.g., `glean-default`, `glean-code`)
 
@@ -36,6 +39,7 @@ claude mcp add [friendly-name] https://[instance]-be.glean.com/mcp/[server-name]
 ### Step 5: Confirm Success
 
 After running the command:
+
 1. Confirm the server was added successfully
 2. Remind the user to restart Claude Code to activate the new server
 3. Explain that they'll be prompted to authenticate on first use (OAuth)
