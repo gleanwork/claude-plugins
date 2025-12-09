@@ -2,11 +2,6 @@
 name: Stakeholder Discovery
 description: Use this agent when the user needs to identify stakeholders for a change, project, or decision. Triggers on phrases like "who should I talk to about", "who owns", "find stakeholders for", "who do I need approval from", "who would be affected by", or when planning a cross-team initiative.
 model: haiku
-tools:
-  - mcp__glean_default__search
-  - mcp__glean_default__employee_search
-  - mcp__glean_default__code_search
-  - mcp__glean_default__meeting_lookup
 color: orange
 ---
 

@@ -30,27 +30,134 @@ This will guide you through connecting to your Glean instance. You'll need:
 
 Run `/glean-setup` multiple times to add multiple servers.
 
+---
+
 ## Workflows (Recipes)
 
-The plugin provides autonomous agents that combine Glean tools with local development context to accomplish complex workflows.
+The plugin provides autonomous agents that combine Glean's cross-source enterprise intelligence with local development context.
 
-### RFC Verification
+### 🔍 PR Review Prep
 
-Compare a design document to its implementation and identify gaps.
+Get full enterprise context before reviewing a pull request.
+
+```
+"Prepare me to review this PR"
+"What context do I need for PR #123?"
+```
+
+The agent will:
+1. Fetch the PR details and diff
+2. Find related RFCs and design docs
+3. Search Slack discussions about this work
+4. Identify stakeholders and downstream impact
+5. Surface historical issues in this code area
+6. Generate a prep doc with review focus areas
+
+**Uniquely Glean:** Connects code changes to enterprise decisions, discussions, and stakeholders.
+
+---
+
+### 📬 What Did I Miss? (Catch-Up)
+
+Quickly catch up after being away.
+
+```
+"What did I miss last week?"
+"Catch me up - I was on PTO for 2 weeks"
+"What happened while I was out?"
+```
+
+The agent will:
+1. Synthesize across Slack, meetings, docs, and email
+2. Find action items assigned to you
+3. Surface decisions affecting your work
+4. Identify questions waiting for your input
+5. Generate a prioritized catch-up report
+
+**Uniquely Glean:** Cross-source synthesis that no single tool can provide.
+
+---
+
+### ✍️ Help Me Write This RFC
+
+Get research assistance for writing technical proposals.
+
+```
+"Help me write an RFC for migrating to OAuth 2.0"
+"I need to draft a design doc for the new billing system"
+```
+
+The agent will:
+1. Find your company's RFC template
+2. Analyze similar past RFCs for structure and style
+3. Research the current system state
+4. Find related discussions and prior decisions
+5. Identify stakeholders and reviewers
+6. Generate a well-researched draft
+
+**Uniquely Glean:** Grounds your RFC in company history, patterns, and stakeholder knowledge.
+
+---
+
+### 🔬 RFC Verification
+
+Compare a design document to its actual implementation.
 
 ```
 "Verify this RFC against the implementation"
-"Check if the design doc matches the code"
+"Check if we implemented everything in the spec"
 [paste RFC URL]
 ```
 
 The agent will:
-1. Fetch the RFC from Glean
+1. Fetch and parse the RFC from Glean
 2. Extract requirements and specifications
 3. Search the local codebase for implementations
 4. Generate a completeness report with gaps
 
-### Meeting Prep
+**Uniquely Glean:** Bridges enterprise documentation with codebase reality.
+
+---
+
+### 🧠 Expertise Finder
+
+Find who *actually* knows about a topic - not just by title.
+
+```
+"Who really knows about Kubernetes at our company?"
+"Find an expert on the payment system"
+"Who's the go-to person for authentication?"
+```
+
+The agent will:
+1. Search code contributions in this area
+2. Find documentation authors
+3. Identify meeting participants and discussion leaders
+4. Cross-reference to find true experts (not just titles)
+5. Rank by actual activity and engagement
+
+**Uniquely Glean:** Infers expertise from real activity across code, docs, and conversations.
+
+---
+
+### 👥 Stakeholder Discovery
+
+Find who needs to be involved in a change.
+
+```
+"Who should I talk to about changing the auth flow?"
+"Find stakeholders for the database migration"
+```
+
+The agent will:
+1. Identify code owners and contributors
+2. Find documentation authors
+3. Map downstream dependencies
+4. Generate a stakeholder engagement plan
+
+---
+
+### 📅 Meeting Prep
 
 Prepare for an upcoming meeting with full context.
 
@@ -60,12 +167,14 @@ Prepare for an upcoming meeting with full context.
 ```
 
 The agent will:
-1. Find past instances of the meeting
+1. Find past instances of this meeting
 2. Extract decisions and open action items
 3. Gather related recent documents
 4. Generate a prep doc with talking points
 
-### Team Onboarding
+---
+
+### 🚀 Team Onboarding
 
 Get up to speed on a new team or project.
 
@@ -80,22 +189,9 @@ The agent will:
 3. Identify current priorities
 4. Generate a personalized onboarding guide
 
-### Stakeholder Discovery
+---
 
-Find the right people to involve in a change.
-
-```
-"Who should I talk to about changing the auth flow?"
-"Find stakeholders for the database migration"
-```
-
-The agent will:
-1. Identify code owners and contributors
-2. Find documentation authors
-3. Map downstream dependencies
-4. Generate a stakeholder engagement plan
-
-### Decision Trail
+### 🔎 Decision Trail
 
 Understand why something was built a certain way.
 
@@ -110,6 +206,8 @@ The skill will:
 3. Identify the decision makers
 4. Explain the rationale and alternatives considered
 
+---
+
 ## Commands
 
 | Command | Description |
@@ -118,16 +216,23 @@ The skill will:
 | `/glean-status` | Check connection status |
 | `/glean-search <query>` | Quick enterprise search |
 
-## How It Works
+---
 
-Glean provides access to your company's knowledge:
-- **Documents**: Confluence, Notion, Google Docs, etc.
-- **People**: Org structure, teams, expertise
-- **Meetings**: Calendar, transcripts, recordings
-- **Code**: Internal repositories and commits
-- **Communication**: Slack, email (if configured)
+## What Makes This Uniquely Glean?
 
-This plugin combines those capabilities with Claude Code's local development tools to create powerful workflows that bridge enterprise knowledge and your codebase.
+Glean provides **cross-source intelligence** that no single tool offers:
+
+| Source | What Glean Sees |
+|--------|-----------------|
+| **Documents** | Confluence, Notion, Google Docs, SharePoint |
+| **Code** | GitHub, GitLab, internal repos |
+| **Communication** | Slack, email threads |
+| **Meetings** | Calendar, transcripts, recordings |
+| **People** | Org structure, teams, activity |
+
+This plugin combines that enterprise context with Claude Code's local development tools to create workflows that bridge **company knowledge** and **your codebase**.
+
+---
 
 ## Authentication
 

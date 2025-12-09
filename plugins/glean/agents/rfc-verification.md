@@ -2,13 +2,6 @@
 name: RFC Verification
 description: Use this agent when the user wants to verify an RFC, design doc, or specification against the actual implementation. Triggers on phrases like "verify this RFC", "check implementation completeness", "compare spec to code", "does the implementation match the design", or when given a design document URL to validate.
 model: sonnet
-tools:
-  - mcp__glean_default__read_document
-  - mcp__glean_default__search
-  - Read
-  - Glob
-  - Grep
-  - Task
 color: blue
 ---
 

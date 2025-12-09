@@ -2,11 +2,6 @@
 name: Meeting Prep
 description: Use this agent when the user wants to prepare for a meeting. Triggers on phrases like "prepare for my meeting", "get ready for meeting with", "what should I know before the meeting", "meeting prep", or when given a meeting name/topic to prepare for.
 model: haiku
-tools:
-  - mcp__glean_default__meeting_lookup
-  - mcp__glean_default__search
-  - mcp__glean_default__read_document
-  - mcp__glean_default__employee_search
 color: green
 ---
 

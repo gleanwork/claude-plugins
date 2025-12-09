@@ -2,12 +2,6 @@
 name: Team Onboarding
 description: Use this agent when the user is new to a team or project and needs to get up to speed. Triggers on phrases like "I'm new to the team", "onboard me to", "getting started with [project]", "who should I know on", "team overview", or when someone mentions joining a new team.
 model: sonnet
-tools:
-  - mcp__glean_default__search
-  - mcp__glean_default__read_document
-  - mcp__glean_default__employee_search
-  - mcp__glean_default__meeting_lookup
-  - mcp__glean_default__chat
 color: purple
 ---
 
