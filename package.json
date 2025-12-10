@@ -26,6 +26,9 @@
     "url": "https://glean.com"
   },
   "type": "module",
+  "scripts": {
+    "release": "release-it"
+  },
   "files": [
     "manifest.json",
     "plugins/**/*",
@@ -38,5 +41,9 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "@release-it/bumper": "^7.0.5",
+    "release-it": "^19.0.6"
   }
 }

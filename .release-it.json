@@ -1,0 +1,27 @@
+{
+  "$schema": "https://unpkg.com/release-it/schema/release-it.json",
+  "git": {
+    "commitMessage": "chore: release v${version}",
+    "tagName": "v${version}"
+  },
+  "github": {
+    "release": false
+  },
+  "npm": {
+    "publish": false
+  },
+  "plugins": {
+    "@release-it/bumper": {
+      "out": [
+        {
+          "file": ".claude-plugin/marketplace.json",
+          "path": "version"
+        },
+        {
+          "file": "plugins/glean/.claude-plugin/plugin.json",
+          "path": "version"
+        }
+      ]
+    }
+  }
+}
