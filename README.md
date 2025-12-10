@@ -171,6 +171,26 @@ The command will:
 - A Glean account with MCP access
 - Your Glean MCP server URL (format: `https://[instance]-be.glean.com/mcp/[server-name]`)
 
+## Releasing
+
+To release a new version:
+
+```bash
+npm run release -- patch   # 0.6.0 → 0.6.1
+npm run release -- minor   # 0.6.0 → 0.7.0
+npm run release -- major   # 0.6.0 → 1.0.0
+```
+
+This will:
+1. Bump version in `package.json`, `.claude-plugin/marketplace.json`, and `plugins/glean/.claude-plugin/plugin.json`
+2. Create a commit and git tag
+3. Push to the remote repository
+
+Preview changes without executing:
+```bash
+npm run release -- --dry-run
+```
+
 ## Support
 
 - [Glean MCP Documentation](https://docs.glean.com/mcp)
