@@ -11,6 +11,12 @@
     "publish": false
   },
   "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": {
+        "name": "conventionalcommits"
+      },
+      "infile": "CHANGELOG.md"
+    },
     "@release-it/bumper": {
       "out": [
         {
