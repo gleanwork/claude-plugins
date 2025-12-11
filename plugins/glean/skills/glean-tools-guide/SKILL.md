@@ -7,6 +7,15 @@ description: Use when Glean MCP tools are available and you need guidance on whi
 
 This skill provides guidance on selecting and using Glean MCP tools effectively.
 
+## Skills vs Agents vs Commands
+
+This plugin uses three component types:
+- **Skills** (like this one): Auto-triggered guidance that helps Claude select the right tools
+- **Agents** (e.g., `enterprise-searcher`): Autonomous workers spawned for complex multi-step tasks
+- **Commands** (e.g., `/glean:search`): User-triggered structured workflows
+
+Skills provide knowledge; agents do work; commands orchestrate workflows.
+
 ## Tool Naming Convention
 
 Glean MCP tools follow the pattern:
@@ -71,6 +80,10 @@ chat "What are our authentication best practices based on recent RFCs and securi
 - `updated:past_week` - Recent updates
 - `after:YYYY-MM-DD` - After date
 - `before:YYYY-MM-DD` - Before date
+
+### Search-Specific Filters
+- `app:confluence` - Filter by source app (confluence, slack, jira, etc.)
+- `channel:"channel-name"` - Slack channel filter
 
 ### Employee-Specific Filters
 - `reportsto:"manager"` - Direct reports
