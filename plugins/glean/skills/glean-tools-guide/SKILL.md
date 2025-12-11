@@ -34,6 +34,7 @@ Where `[server-name]` is dynamic and configured per user (e.g., `default`, `prod
 | `meeting_lookup` | Meeting search | Finding meetings, transcripts, decisions |
 | `gmail_search` | Email search | Finding emails, attachments |
 | `code_search` | Code discovery | Finding internal code, commits |
+| `user_activity` | Activity feed | Finding your recent actions and interactions |
 | `read_document` | Full content | Reading complete document by URL |
 | `chat` | AI synthesis | Complex analysis across sources |
 
@@ -45,6 +46,7 @@ User question about...
 ├── Meetings, decisions, action items → meeting_lookup
 ├── Emails, attachments → gmail_search
 ├── Internal code, commits → code_search
+├── "My activity", "what have I done", recent actions → user_activity
 ├── Documents, policies, specs → search
 ├── Need full document content → read_document (with URL)
 └── Complex multi-source analysis → chat
