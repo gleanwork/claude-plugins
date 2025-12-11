@@ -76,32 +76,100 @@ chat "What are our authentication best practices based on recent RFCs and securi
 
 ## Query Filter Reference
 
-### Common Filters (most tools)
-- `owner:"name"` - Created by person
-- `from:"name"` - Updated/commented by person
-- `updated:past_week` - Recent updates
-- `after:YYYY-MM-DD` - After date
-- `before:YYYY-MM-DD` - Before date
+### Document Search Filters (search)
 
-### Search-Specific Filters
-- `app:confluence` - Filter by source app (confluence, slack, jira, etc.)
-- `channel:"channel-name"` - Slack channel filter
+**Person Filters:**
+- `owner:"person name"` or `owner:me` - Filter by document creator/modifier
+- `from:"person name"` or `from:me` - Filter by user who created/modified/commented
 
-### Employee-Specific Filters
-- `reportsto:"manager"` - Direct reports
-- `startafter:YYYY-MM-DD` - Hired after date
-- `roletype:"manager"` - By role type
+**Date Filters:**
+- `updated:today|yesterday|past_week|past_month|past_year` - Filter by update date
+- `updated:"March"|"January"` - Filter by month name
+- `after:"YYYY-MM-DD"` - Documents created after date (no future dates)
+- `before:"YYYY-MM-DD"` - Documents created before date
 
-### Meeting-Specific Filters
-- `participants:"name"` - Attendees
-- `topic:"subject"` - Meeting subject
-- `extract_transcript:"true"` - Include content
+**Source Filters:**
+- `app:confluence|github|drive|slack|jira` - Filter by application/datasource
+- `channel:"channel-name"` - Slack channel (only when explicitly requested)
+- `type:pdf|document|presentation` - Filter by document type
 
-### Gmail-Specific Filters
-- `to:"recipient"` - Sent to
-- `has:attachment` - Has attachments
-- `label:INBOX` - By folder
-- `is:unread` - By status
+**Result Control:**
+- `num_results:N` - Specify number (use exact number or `max` for exhaustive lists)
+
+### Code Search Filters (code_search)
+
+**Person Filters:**
+- `owner:"person name"` or `owner:me` - Filter by commit creator
+- `from:"person name"` or `from:me` - Filter by code file/commit updater
+
+**Date Filters:**
+- `updated:today|yesterday|past_week|past_month|past_year` - Filter by update date
+- `after:"YYYY-MM-DD"` - Commits/files changed after date
+- `before:"YYYY-MM-DD"` - Commits/files changed before date
+
+**Repository Filters:**
+- `repo:platform|frontend|backend` - Filter by repository name
+- `path:services/auth|components/ui` - Filter by file path
+- `lang:go|python|javascript|typescript` - Filter by programming language
+
+### Employee Search Filters (employee_search)
+
+- `reportsto:"manager name"` - Find direct reports (NOT for finding who someone reports to)
+- `startafter:YYYY-MM-DD` - People who started after date
+- `startbefore:YYYY-MM-DD` - People who started before date
+- `roletype:"individual contributor"|"manager"` - Filter by role type
+- `sortby:hire_date_ascending|hire_date_descending|most_reports` - Sort results
+
+### Meeting Lookup Filters (meeting_lookup)
+
+- `participants:"name"` - Filter by attendees
+- `topic:"subject"` - Filter by meeting subject/title
+- `after:today|now-1w|YYYY-MM-DD` - Meetings after date
+- `before:now|tomorrow+1d|YYYY-MM-DD` - Meetings before date
+- `extract_transcript:"true"` - Include meeting content/transcript
+
+**Date math:** `now-1w`, `today-1d`, `yesterday+1M` (no spaces, use d/w/M/y)
+
+### Gmail Search Filters (gmail_search)
+
+- `from:"person"|"email@domain.com"|"me"` - Filter by sender
+- `to:"person"|"email@domain.com"|"me"` - Filter by recipient
+- `subject:"text"` - Filter by subject line
+- `has:attachment|document|spreadsheet|presentation` - Filter by attachment type
+- `is:important|starred|read|unread|snoozed` - Filter by email status
+- `label:INBOX|SENT|TRASH|DRAFT|SPAM` - Filter by folder/label
+- `after:YYYY-MM-DD` / `before:YYYY-MM-DD` - Date range
+
+### User Activity Parameters (user_activity)
+
+The `user_activity` tool uses date range parameters (not query filters):
+- `start_date` - Start date in YYYY-MM-DD format (inclusive, required)
+- `end_date` - End date in YYYY-MM-DD format (exclusive, required)
+
+Use for: standup notes, weekly summaries, 1:1 prep, finding documents you touched but forgot.
+
+## Filter Best Practices
+
+**When to Use Date Filters:**
+- Use `updated:` for relative timeframes ("last week", "past month")
+- Use `after:`/`before:` for date ranges ("between Jan and March", "since 2024")
+- Avoid date filters for "latest" or "recent" without specific timeframe
+
+**Person Filter Guidelines:**
+- Use quotes for multi-word names: `from:"John Smith"`
+- Use `owner:` for document creators, `from:` for broader involvement
+- Use `me` when user refers to themselves
+
+**Search Strategy:**
+- Start broad, then narrow with filters if too many results
+- Combine filters strategically: person + timeframe + source
+- Use `num_results:` for exhaustive searches ("all", "each", "every")
+
+**Common Pitfalls:**
+- Don't use `after:` with future dates
+- Channel filters only work for Slack (`channel:` + `app:slack`)
+- Code search `repo:` and `path:` filters need exact matches
+- Quote multi-word filter values: `channel:"platform-alerts"`
 
 ## Best Practices
 
