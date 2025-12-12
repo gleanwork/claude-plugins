@@ -9,13 +9,13 @@ Official Glean plugins for [Claude Code](https://claude.com/claude-code), enabli
 ### Step 1: Add the Glean Marketplace
 
 ```bash
-claude plugin marketplace add https://github.com/gleanwork/claude-plugins
+/plugin marketplace add gleanwork/claude-plugins
 ```
 
 ### Step 2: Install the Plugin
 
 ```bash
-claude plugin install glean
+/plugin install glean
 ```
 
 ### Step 3: Configure Your Glean MCP Server
@@ -182,11 +182,13 @@ npm run release -- major   # 0.6.0 → 1.0.0
 ```
 
 This will:
+
 1. Bump version in `package.json`, `.claude-plugin/marketplace.json`, and `plugins/glean/.claude-plugin/plugin.json`
 2. Create a commit and git tag
 3. Push to the remote repository
 
 Preview changes without executing:
+
 ```bash
 npm run release -- --dry-run
 ```
