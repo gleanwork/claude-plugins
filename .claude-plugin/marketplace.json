@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "glean-plugins",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Official Glean plugins for Claude Code - enterprise knowledge integration",
   "owner": {
     "name": "Glean",
