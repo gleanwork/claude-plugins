@@ -1,0 +1,12 @@
+Glean plugin is installed but no Glean MCP server is configured.
+
+Run /glean:mcp-setup to configure your Glean connection.
+
+Once configured, you'll have access to:
+
+- /glean:catch-up - Catch up on what you missed
+- /glean:meeting-prep - Prepare for meetings
+- /glean:find-expert - Find who knows about a topic
+- /glean:stakeholders - Find stakeholders for a change
+- /glean:onboarding - Onboard to a new team
+- /glean:verify-rfc - Verify RFC against implementation
