@@ -7,9 +7,7 @@
   "github": {
     "release": false
   },
-  "npm": {
-    "publish": false
-  },
+  "npm": false,
   "plugins": {
     "@release-it/conventional-changelog": {
       "preset": {
@@ -19,6 +17,10 @@
     },
     "@release-it/bumper": {
       "out": [
+        {
+          "file": "package.json",
+          "path": "version"
+        },
         {
           "file": ".claude-plugin/marketplace.json",
           "path": "version"

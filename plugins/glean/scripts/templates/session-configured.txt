@@ -1,4 +1,4 @@
-Glean enterprise search is available.
+Glean (v{{VERSION}}) enterprise search is available.
 
 Commands:
 
