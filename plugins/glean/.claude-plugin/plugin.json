@@ -1,6 +1,6 @@
 {
   "name": "glean",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "Enterprise knowledge integration with Glean - search documents, people, meetings, and code across your company",
   "author": {
     "name": "Glean",
