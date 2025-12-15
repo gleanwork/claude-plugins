@@ -1,4 +1,4 @@
-Glean plugin is installed but no Glean MCP server is configured.
+Glean plugin (v{{VERSION}}) is installed but no Glean MCP server is configured.
 
 Run /glean:mcp-setup to configure your Glean connection.
 
