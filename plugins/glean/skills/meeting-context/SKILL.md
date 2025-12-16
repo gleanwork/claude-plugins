@@ -27,33 +27,41 @@ Use the Glean `meeting_lookup` tool with natural language queries.
 
 ## Query Syntax
 
-Glean meeting lookup understands natural language dates and filters:
+**Important**: meeting_lookup works best with natural language queries. Date filter syntax does NOT work reliably.
 
 ```
-# By topic and time
-meeting_lookup "quarterly planning after:yesterday before:tomorrow"
+# By topic and time (natural language)
+meeting_lookup "quarterly planning last week"
 
 # With specific participants
+meeting_lookup "standup with John Smith"
 meeting_lookup "participants:\"John Smith\" topic:\"standup\""
 
 # Get transcript content
-meeting_lookup "after:now-1w extract_transcript:\"true\""
+meeting_lookup "team sync last week extract_transcript:\"true\""
 
 # Today's meetings
-meeting_lookup "after:yesterday before:tomorrow"
+meeting_lookup "my meetings today"
 
 # Past week
-meeting_lookup "after:now-1w before:now"
+meeting_lookup "meetings past week"
 ```
 
-## Date Format Tips
+## Date Filtering
 
-- **Relative**: `today`, `yesterday`, `tomorrow`, `now`
-- **Date math**: `now-1w`, `today-1d`, `yesterday+1M` (no spaces!)
-- **Absolute**: `2024-01-15`, `2024-01-15T10:30:00Z`
+**Use natural language for dates:**
+- "last week", "past 2 weeks", "yesterday", "today", "tomorrow"
+- "meetings since Monday", "standups this month"
 
-**Important**: Time ranges are non-inclusive. To include all meetings on a specific date, add buffer:
-- For Oct 8, 2025: use `after:2025-10-07 before:2025-10-09`
+**Inline date filters do NOT work reliably:**
+- `after:now-1w` - Date math is ignored
+- `after:YYYY-MM-DD` - ISO dates return no results
+- `after:yesterday` - Simple keywords don't work as filter values
+
+**Filters that do work:**
+- `participants:"name"` - Filter by attendees
+- `topic:"subject"` - Filter by meeting topic
+- `extract_transcript:"true"` - Include transcript content
 
 ## When to Extract Transcripts
 

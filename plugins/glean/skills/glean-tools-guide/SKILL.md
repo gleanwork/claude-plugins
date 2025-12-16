@@ -76,43 +76,38 @@ chat "What are our authentication best practices based on recent RFCs and securi
 
 ## Query Filter Reference
 
-### Document Search Filters (search)
+### Document Search (search) - Structured Parameters
 
-**Person Filters:**
-- `owner:"person name"` or `owner:me` - Filter by document creator/modifier
-- `from:"person name"` or `from:me` - Filter by user who created/modified/commented
+The `search` tool uses **separate parameters** (not inline query filters):
 
-**Date Filters:**
-- `updated:today|yesterday|past_week|past_month|past_year` - Filter by update date
-- `updated:"March"|"January"` - Filter by month name
-- `after:"YYYY-MM-DD"` - Documents created after date (no future dates)
-- `before:"YYYY-MM-DD"` - Documents created before date
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `query` | string | Keywords to find documents (required) |
+| `owner` | string | Filter by document creator (`"person name"`, `"me"`, `"myteam"`) |
+| `from` | string | Filter by who updated/commented/created (`"person name"`, `"me"`, `"myteam"`) |
+| `updated` | string | Filter by update date (`today`, `yesterday`, `past_week`, `past_2_weeks`, `past_month`, or month name) |
+| `after` | string | Documents created after date (`YYYY-MM-DD` format, no future dates) |
+| `before` | string | Documents created before date (`YYYY-MM-DD` format) |
+| `app` | enum | Filter by datasource (e.g., `confluence`, `github`, `gdrive`, `slack`, `jira`, `notion`) |
+| `type` | enum | Filter by type: `pull`, `spreadsheet`, `slides`, `email`, `direct message`, `folder` |
+| `channel` | string | Filter by Slack channel name |
+| `exhaustive` | boolean | Return all matching results (use for "all", "each", "every" requests) |
+| `sort_by_recency` | boolean | Sort by newest first (only when user wants "latest" or "most recent") |
 
-**Source Filters:**
-- `app:confluence|github|drive|slack|jira` - Filter by application/datasource
-- `channel:"channel-name"` - Slack channel (only when explicitly requested)
-- `type:pdf|document|presentation` - Filter by document type
+### Code Search Filters (code_search) - Inline Query Syntax
 
-**Result Control:**
-- `num_results:N` - Specify number (use exact number or `max` for exhaustive lists)
-
-### Code Search Filters (code_search)
+Code search uses **inline filters in the query string**:
 
 **Person Filters:**
 - `owner:"person name"` or `owner:me` - Filter by commit creator
 - `from:"person name"` or `from:me` - Filter by code file/commit updater
 
 **Date Filters:**
-- `updated:today|yesterday|past_week|past_month|past_year` - Filter by update date
-- `after:"YYYY-MM-DD"` - Commits/files changed after date
-- `before:"YYYY-MM-DD"` - Commits/files changed before date
+- `updated:today|yesterday|past_week|past_month` - Filter by update date
+- `after:YYYY-MM-DD` - Commits/files changed after date
+- `before:YYYY-MM-DD` - Commits/files changed before date
 
-**Repository Filters:**
-- `repo:platform|frontend|backend` - Filter by repository name
-- `path:services/auth|components/ui` - Filter by file path
-- `lang:go|python|javascript|typescript` - Filter by programming language
-
-### Employee Search Filters (employee_search)
+### Employee Search Filters (employee_search) - Inline Query Syntax
 
 - `reportsto:"manager name"` - Find direct reports (NOT for finding who someone reports to)
 - `startafter:YYYY-MM-DD` - People who started after date
@@ -120,17 +115,24 @@ chat "What are our authentication best practices based on recent RFCs and securi
 - `roletype:"individual contributor"|"manager"` - Filter by role type
 - `sortby:hire_date_ascending|hire_date_descending|most_reports` - Sort results
 
-### Meeting Lookup Filters (meeting_lookup)
+### Meeting Lookup Filters (meeting_lookup) - Inline Query Syntax
 
+**Important**: meeting_lookup works best with natural language queries. Date filter syntax does NOT work reliably.
+
+**Natural language dates (recommended):**
+- "standup last week" - Meetings from last week
+- "design review past 2 weeks" - Recent meetings
+- "1:1 with John tomorrow" - Future meetings
+- "team sync yesterday" - Yesterday's meetings
+
+**Other filters that work:**
 - `participants:"name"` - Filter by attendees
 - `topic:"subject"` - Filter by meeting subject/title
-- `after:today|now-1w|YYYY-MM-DD` - Meetings after date
-- `before:now|tomorrow+1d|YYYY-MM-DD` - Meetings before date
 - `extract_transcript:"true"` - Include meeting content/transcript
 
-**Date math:** `now-1w`, `today-1d`, `yesterday+1M` (no spaces, use d/w/M/y)
+**Note:** Inline date filters (`after:`, `before:`) do not work reliably with meeting_lookup. Use natural language dates instead.
 
-### Gmail Search Filters (gmail_search)
+### Gmail Search Filters (gmail_search) - Inline Query Syntax
 
 - `from:"person"|"email@domain.com"|"me"` - Filter by sender
 - `to:"person"|"email@domain.com"|"me"` - Filter by recipient
@@ -150,10 +152,15 @@ Use for: standup notes, weekly summaries, 1:1 prep, finding documents you touche
 
 ## Filter Best Practices
 
+**Structured vs Inline Filters:**
+- `search` uses **structured parameters** - pass filters as separate tool arguments
+- `code_search`, `employee_search`, `gmail_search`, `meeting_lookup` use **inline filters** in the query string
+
 **When to Use Date Filters:**
 - Use `updated:` for relative timeframes ("last week", "past month")
 - Use `after:`/`before:` for date ranges ("between Jan and March", "since 2024")
 - Avoid date filters for "latest" or "recent" without specific timeframe
+- For `meeting_lookup`, prefer natural language dates over inline filters
 
 **Person Filter Guidelines:**
 - Use quotes for multi-word names: `from:"John Smith"`
@@ -162,14 +169,14 @@ Use for: standup notes, weekly summaries, 1:1 prep, finding documents you touche
 
 **Search Strategy:**
 - Start broad, then narrow with filters if too many results
-- Combine filters strategically: person + timeframe + source
-- Use `num_results:` for exhaustive searches ("all", "each", "every")
+- For `search`: add filter parameters to narrow results
+- For other tools: add inline filters to the query string
+- Use the `exhaustive` parameter on `search` for exhaustive results ("all", "each", "every")
 
 **Common Pitfalls:**
 - Don't use `after:` with future dates
-- Channel filters only work for Slack (`channel:` + `app:slack`)
-- Code search `repo:` and `path:` filters need exact matches
-- Quote multi-word filter values: `channel:"platform-alerts"`
+- For `search`, pass `channel` and `app` as separate parameters
+- Quote multi-word filter values in inline syntax: `from:"John Smith"`
 
 ## Best Practices
 
