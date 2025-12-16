@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.7.4](///compare/v0.7.3...v0.7.4) (2025-12-16)
+
+### Bug Fixes
+
+* correct Glean tool query syntax documentation 21bc7d8
+
 ## [0.7.3](///compare/v0.7.2...v0.7.3) (2025-12-15)
 
 ### Features

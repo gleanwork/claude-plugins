@@ -1,6 +1,6 @@
 {
   "name": "@gleanwork/claude-plugins",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "Official Glean plugins for Claude Code - enterprise knowledge integration",
   "keywords": [
     "glean",
