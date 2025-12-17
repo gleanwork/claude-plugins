@@ -1,0 +1,20 @@
+{
+  "name": "glean-core",
+  "version": "0.7.4",
+  "description": "Core Glean MCP integration - provides shared skills, tool guidance, and MCP configuration. Required foundation for all other Glean plugins.",
+  "author": {
+    "name": "Glean",
+    "email": "steve.calvert@glean.com",
+    "url": "https://glean.com"
+  },
+  "homepage": "https://docs.glean.com/mcp",
+  "repository": "https://github.com/gleanwork/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "glean",
+    "mcp",
+    "enterprise-search",
+    "core",
+    "foundation"
+  ]
+}

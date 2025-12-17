@@ -1,0 +1,21 @@
+{
+  "name": "glean-docs",
+  "version": "0.7.4",
+  "description": "Document intelligence - analyze docs, verify specs against implementation, and onboard to new areas via Glean. Requires glean-core.",
+  "author": {
+    "name": "Glean",
+    "email": "steve.calvert@glean.com",
+    "url": "https://glean.com"
+  },
+  "homepage": "https://docs.glean.com/mcp",
+  "repository": "https://github.com/gleanwork/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "glean",
+    "mcp",
+    "documents",
+    "rfc",
+    "specs",
+    "onboarding"
+  ]
+}

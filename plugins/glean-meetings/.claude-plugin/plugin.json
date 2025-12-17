@@ -1,7 +1,7 @@
 {
-  "name": "glean",
+  "name": "glean-meetings",
   "version": "0.7.4",
-  "description": "Enterprise knowledge integration with Glean - search documents, people, meetings, and code across your company",
+  "description": "Meeting intelligence - analyze transcripts, prepare for meetings, and catch up after time off via Glean. Requires glean-core.",
   "author": {
     "name": "Glean",
     "email": "steve.calvert@glean.com",
@@ -11,12 +11,11 @@
   "repository": "https://github.com/gleanwork/claude-plugins",
   "license": "MIT",
   "keywords": [
-    "enterprise-search",
-    "knowledge-management",
     "glean",
     "mcp",
     "meetings",
-    "code-search",
-    "employee-search"
+    "transcripts",
+    "calendar",
+    "catch-up"
   ]
 }
