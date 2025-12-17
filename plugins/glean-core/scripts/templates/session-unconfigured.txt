@@ -1,12 +1,3 @@
-Glean plugin (v{{VERSION}}) is installed but no Glean MCP server is configured.
+Glean (v{{VERSION}}) is installed but no MCP server is configured.
 
-Run /glean-core:mcp-setup to configure your Glean connection.
-
-Once configured, you'll have access to:
-
-- /glean-meetings:catch-up - Catch up on what you missed
-- /glean-meetings:meeting-prep - Prepare for meetings
-- /glean-people:find-expert - Find who knows about a topic
-- /glean-people:stakeholders - Find stakeholders for a change
-- /glean-docs:onboarding - Onboard to a new team
-- /glean-docs:verify-rfc - Verify RFC against implementation
+Run /glean-core:mcp-setup to connect to your Glean instance.

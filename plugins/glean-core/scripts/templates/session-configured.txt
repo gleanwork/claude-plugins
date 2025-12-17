@@ -1,12 +1,3 @@
-Glean (v{{VERSION}}) enterprise search is available.
+Glean (v{{VERSION}}) - Work AI is connected.
 
-Commands:
-
-- /glean-meetings:catch-up - Catch up on what you missed
-- /glean-meetings:meeting-prep - Prepare for meetings
-- /glean-people:find-expert - Find who knows about a topic
-- /glean-people:stakeholders - Find stakeholders for a change
-- /glean-docs:onboarding - Onboard to a new team
-- /glean-docs:verify-rfc - Verify RFC against implementation
-- /glean-search:search <query> - Quick enterprise search
-- /glean-core:status - Check connection status
+Type /glean- to discover available commands.
