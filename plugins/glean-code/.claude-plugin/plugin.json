@@ -1,0 +1,21 @@
+{
+  "name": "glean-code",
+  "version": "0.7.4",
+  "description": "Cross-repository code exploration - search code across your org, find examples, identify code owners, and discover similar implementations via Glean. Requires glean-core.",
+  "author": {
+    "name": "Glean",
+    "email": "steve.calvert@glean.com",
+    "url": "https://glean.com"
+  },
+  "homepage": "https://docs.glean.com/mcp",
+  "repository": "https://github.com/gleanwork/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "glean",
+    "mcp",
+    "code-search",
+    "cross-repo",
+    "engineering",
+    "code-exploration"
+  ]
+}

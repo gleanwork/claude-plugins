@@ -26,7 +26,27 @@
           "path": "version"
         },
         {
-          "file": "plugins/glean/.claude-plugin/plugin.json",
+          "file": "plugins/glean-core/.claude-plugin/plugin.json",
+          "path": "version"
+        },
+        {
+          "file": "plugins/glean-search/.claude-plugin/plugin.json",
+          "path": "version"
+        },
+        {
+          "file": "plugins/glean-people/.claude-plugin/plugin.json",
+          "path": "version"
+        },
+        {
+          "file": "plugins/glean-meetings/.claude-plugin/plugin.json",
+          "path": "version"
+        },
+        {
+          "file": "plugins/glean-docs/.claude-plugin/plugin.json",
+          "path": "version"
+        },
+        {
+          "file": "plugins/glean-code/.claude-plugin/plugin.json",
           "path": "version"
         }
       ]

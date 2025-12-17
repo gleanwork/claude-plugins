@@ -1,0 +1,3 @@
+Glean (v{{VERSION}}) - Work AI is connected.
+
+Type /glean- to discover available commands.

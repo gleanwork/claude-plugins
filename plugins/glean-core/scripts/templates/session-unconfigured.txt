@@ -1,0 +1,3 @@
+Glean (v{{VERSION}}) is installed but no MCP server is configured.
+
+Run /glean-core:mcp-setup to connect to your Glean instance.

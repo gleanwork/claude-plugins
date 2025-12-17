@@ -1,0 +1,21 @@
+{
+  "name": "glean-people",
+  "version": "0.7.4",
+  "description": "Find experts, understand org structure, and identify stakeholders via Glean. Requires glean-core.",
+  "author": {
+    "name": "Glean",
+    "email": "steve.calvert@glean.com",
+    "url": "https://glean.com"
+  },
+  "homepage": "https://docs.glean.com/mcp",
+  "repository": "https://github.com/gleanwork/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "glean",
+    "mcp",
+    "people",
+    "experts",
+    "org-chart",
+    "stakeholders"
+  ]
+}

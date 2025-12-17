@@ -1,0 +1,21 @@
+{
+  "name": "glean-meetings",
+  "version": "0.7.4",
+  "description": "Meeting intelligence - analyze transcripts, prepare for meetings, and catch up after time off via Glean. Requires glean-core.",
+  "author": {
+    "name": "Glean",
+    "email": "steve.calvert@glean.com",
+    "url": "https://glean.com"
+  },
+  "homepage": "https://docs.glean.com/mcp",
+  "repository": "https://github.com/gleanwork/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "glean",
+    "mcp",
+    "meetings",
+    "transcripts",
+    "calendar",
+    "catch-up"
+  ]
+}
