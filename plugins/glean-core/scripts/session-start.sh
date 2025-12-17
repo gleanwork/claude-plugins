@@ -7,7 +7,7 @@ PLUGIN_ROOT="$(dirname "$SCRIPT_DIR")"
 TEMPLATES_DIR="$SCRIPT_DIR/templates"
 
 # Read version from plugin.json
-VERSION=$(jq -r '.version' "$PLUGIN_ROOT/.claude-plugin/plugin.json" 2>/dev/null || echo "unknown")
+VERSION=$(grep '"version"' "$PLUGIN_ROOT/.claude-plugin/plugin.json" 2>/dev/null | head -1 | cut -d'"' -f4 || echo "unknown")
 
 # Convert a template file to JSON systemMessage format
 # Reads the file, substitutes variables, and escapes it for JSON string output
