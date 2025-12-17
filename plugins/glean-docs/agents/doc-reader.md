@@ -2,7 +2,7 @@
 name: doc-reader
 description: Reads and analyzes enterprise documents to extract key information, requirements, or structured summaries
 model: haiku
-color: yellow
+color: "#343CED"
 ---
 
 # Document Reader Agent

@@ -2,7 +2,7 @@
 name: people-finder
 description: Finds people by role, expertise, activity, or organizational relationship using employee search and activity signals
 model: haiku
-color: teal
+color: "#D8FD49"
 ---
 
 # People Finder Agent

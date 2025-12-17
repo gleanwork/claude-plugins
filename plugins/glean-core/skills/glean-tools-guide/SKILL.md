@@ -12,7 +12,7 @@ This skill provides guidance on selecting and using Glean MCP tools effectively.
 This plugin uses three component types:
 - **Skills** (like this one): Auto-triggered guidance that helps Claude select the right tools
 - **Agents** (e.g., `enterprise-searcher`): Autonomous workers spawned for complex multi-step tasks
-- **Commands** (e.g., `/glean:search`): User-triggered structured workflows
+- **Commands** (e.g., `/glean-search:search`): User-triggered structured workflows
 
 Skills provide knowledge; agents do work; commands orchestrate workflows.
 
@@ -189,10 +189,10 @@ Use for: standup notes, weekly summaries, 1:1 prep, finding documents you touche
 ## Related Commands
 
 Point users to structured workflows when appropriate:
-- `/glean:search` - Quick search
-- `/glean:find-expert` - Expertise discovery
-- `/glean:catch-up` - Return from time off
-- `/glean:meeting-prep` - Meeting preparation
-- `/glean:stakeholders` - Stakeholder mapping
-- `/glean:onboarding` - Team onboarding
-- `/glean:verify-rfc` - Spec verification
+- `/glean-search:search` - Quick search
+- `/glean-people:find-expert` - Expertise discovery
+- `/glean-meetings:catch-up` - Return from time off
+- `/glean-meetings:meeting-prep` - Meeting preparation
+- `/glean-people:stakeholders` - Stakeholder mapping
+- `/glean-docs:onboarding` - Team onboarding
+- `/glean-docs:verify-rfc` - Spec verification

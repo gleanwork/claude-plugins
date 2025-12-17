@@ -65,6 +65,6 @@ This allows users to verify and explore further.
 ## Relationship to Commands
 
 For comprehensive, structured workflows, suggest the relevant slash command:
-- `/glean:search <query>` - Quick search with formatted results
-- `/glean:verify-rfc` - Compare spec to implementation
-- `/glean:catch-up` - Systematic catch-up after time away
+- `/glean-search:search <query>` - Quick search with formatted results
+- `/glean-docs:verify-rfc` - Compare spec to implementation
+- `/glean-meetings:catch-up` - Systematic catch-up after time away

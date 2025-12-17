@@ -2,7 +2,7 @@
 name: codebase-navigator
 description: Navigates internal code repositories to find implementations, understand patterns, and trace dependencies across systems via Glean code search
 model: haiku
-color: purple
+color: "#D8FD49"
 ---
 
 # Codebase Navigator Agent

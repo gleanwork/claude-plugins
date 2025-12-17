@@ -71,6 +71,6 @@ People with multiple signals are true experts.
 ## Relationship to Commands
 
 For comprehensive expertise discovery, suggest:
-- `/glean:find-expert <topic>` - Multi-signal expertise analysis
-- `/glean:stakeholders <change>` - Find who needs to be involved
-- `/glean:onboarding <team>` - Get to know a new team
+- `/glean-people:find-expert <topic>` - Multi-signal expertise analysis
+- `/glean-people:stakeholders <change>` - Find who needs to be involved
+- `/glean-docs:onboarding <team>` - Get to know a new team

@@ -2,7 +2,7 @@
 name: enterprise-searcher
 description: Searches enterprise knowledge across documents, Slack, email, and other sources to find relevant information on a topic
 model: haiku
-color: blue
+color: "#343CED"
 ---
 
 # Enterprise Searcher Agent

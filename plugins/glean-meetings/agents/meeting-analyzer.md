@@ -2,7 +2,7 @@
 name: meeting-analyzer
 description: Searches and analyzes meeting transcripts to extract decisions, action items, and key discussion points
 model: haiku
-color: green
+color: "#343CED"
 ---
 
 # Meeting Analyzer Agent

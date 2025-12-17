@@ -87,5 +87,5 @@ When analyzing meeting content, focus on:
 ## Relationship to Commands
 
 For comprehensive meeting workflows, suggest:
-- `/glean:meeting-prep <meeting>` - Prepare for an upcoming meeting
-- `/glean:catch-up <period>` - Catch up on missed meetings and more
+- `/glean-meetings:meeting-prep <meeting>` - Prepare for an upcoming meeting
+- `/glean-meetings:catch-up <period>` - Catch up on missed meetings and more

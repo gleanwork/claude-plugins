@@ -43,7 +43,7 @@ Remind users they can use filters directly in their query:
 ## Example Usage
 
 ```
-/glean:search quarterly planning 2024
-/glean:search owner:"Jane Doe" project roadmap
-/glean:search updated:past_week API documentation
+/glean-search:search quarterly planning 2024
+/glean-search:search owner:"Jane Doe" project roadmap
+/glean-search:search updated:past_week API documentation
 ```

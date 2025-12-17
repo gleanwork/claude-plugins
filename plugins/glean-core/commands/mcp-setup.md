@@ -43,7 +43,7 @@ After running the command:
 1. Confirm the server was added successfully
 2. Remind the user to restart Claude Code to activate the new server
 3. Explain that they'll be prompted to authenticate on first use (OAuth)
-4. Offer to run `/glean:mcp-setup` again if they want to add another server
+4. Offer to run `/glean-core:mcp-setup` again if they want to add another server
 
 ## Important Notes
 
