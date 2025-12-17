@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](///compare/v0.7.4...v0.8.0) (2025-12-17)
+
+### Bug Fixes
+
+* remove jq dependency from session-start script 0ebef51
+* update command namespaces and improve documentation 71722a6, closes #343CED #D8FD49
+
 ## [0.7.4](///compare/v0.7.3...v0.7.4) (2025-12-16)
 
 ### Bug Fixes

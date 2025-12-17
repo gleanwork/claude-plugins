@@ -1,6 +1,6 @@
 {
   "name": "glean-meetings",
-  "version": "0.7.4",
+  "version": "0.8.0",
   "description": "Meeting intelligence - analyze transcripts, prepare for meetings, and catch up after time off via Glean. Requires glean-core.",
   "author": {
     "name": "Glean",

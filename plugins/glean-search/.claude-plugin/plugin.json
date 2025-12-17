@@ -1,6 +1,6 @@
 {
   "name": "glean-search",
-  "version": "0.7.4",
+  "version": "0.8.0",
   "description": "Enterprise search across documents, Slack, email, and other sources via Glean. Requires glean-core.",
   "author": {
     "name": "Glean",
