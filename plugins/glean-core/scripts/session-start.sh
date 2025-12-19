@@ -26,9 +26,9 @@ output_json() {
   printf '{\n  "systemMessage": "%s"\n}\n' "$escaped"
 }
 
-# Check if any Glean MCP servers are configured
-# Look for glean in the mcp list output
-if claude mcp list 2>/dev/null | grep -qi "glean"; then
+# Check if any Glean MCP servers are configured by reading ~/.claude.json directly
+# This is faster than `claude mcp list` which does connectivity checks for all servers
+if node -e "const c=require('$HOME/.claude.json'); process.exit(Object.keys(c.mcpServers||{}).some(k=>k.toLowerCase().includes('glean'))?0:1)" 2>/dev/null; then
   output_json "$TEMPLATES_DIR/session-configured.txt"
 else
   output_json "$TEMPLATES_DIR/session-unconfigured.txt"
