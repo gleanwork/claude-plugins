@@ -1,6 +1,6 @@
 {
   "name": "glean-people",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Find experts, understand org structure, and identify stakeholders via Glean. Requires glean-core.",
   "author": {
     "name": "Glean",

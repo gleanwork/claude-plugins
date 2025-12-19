@@ -1,6 +1,6 @@
 {
   "name": "glean-code",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Cross-repository code exploration - search code across your org, find examples, identify code owners, and discover similar implementations via Glean. Requires glean-core.",
   "author": {
     "name": "Glean",

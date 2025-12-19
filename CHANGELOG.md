@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.1](///compare/v0.8.0...v0.8.1) (2025-12-19)
+
+### Bug Fixes
+
+* speed up session-start hook by reading config directly 8412611
+
 ## [0.8.0](///compare/v0.7.4...v0.8.0) (2025-12-17)
 
 ### Bug Fixes

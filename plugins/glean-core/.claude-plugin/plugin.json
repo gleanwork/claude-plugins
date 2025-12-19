@@ -1,6 +1,6 @@
 {
   "name": "glean-core",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Core Glean MCP integration - provides shared skills, tool guidance, and MCP configuration. Required foundation for all other Glean plugins.",
   "author": {
     "name": "Glean",
