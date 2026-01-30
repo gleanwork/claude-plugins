@@ -1,0 +1,14 @@
+{
+  "name": "glean-dev-docs",
+  "version": "1.0.0",
+  "description": "Access Glean's developer documentation - search API references, SDK guides, and integration tutorials via the Glean Developer Docs MCP Server.",
+  "author": {
+    "name": "Glean",
+    "email": "steve.calvert@glean.com",
+    "url": "https://glean.com"
+  },
+  "homepage": "https://developers.glean.com",
+  "repository": "https://github.com/gleanwork/claude-plugins",
+  "license": "MIT",
+  "keywords": ["glean", "mcp", "developer-docs", "api", "sdk", "documentation"]
+}
