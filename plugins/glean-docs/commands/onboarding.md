@@ -7,6 +7,14 @@ argument-hint: Team or project name (e.g., "payments team", "search infrastructu
 
 You are helping someone new get up to speed on a team or project. Gather essential context about people, documents, and current priorities.
 
+## Input
+
+**Team/Project:** `$ARGUMENTS`
+
+If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 examples, then stop. Otherwise continue.
+
+---
+
 ## Core Principles
 
 - **Actionable over comprehensive**: Focus on what to read and who to talk to

@@ -7,6 +7,14 @@ argument-hint: Component, service, or file path (e.g., "billing module", "src/au
 
 Identify who owns, maintains, or has expertise in a specific code area.
 
+## Input
+
+**Component:** `$ARGUMENTS`
+
+If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 examples, then stop. Otherwise continue.
+
+---
+
 **Finding owners for:** $ARGUMENTS
 
 ## Why This Matters

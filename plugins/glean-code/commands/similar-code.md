@@ -7,6 +7,14 @@ argument-hint: Pattern, feature, or problem (e.g., "rate limiting", "retry logic
 
 Search for similar implementations across the organization to find prior art, alternative approaches, or shared solutions.
 
+## Input
+
+**Pattern:** `$ARGUMENTS`
+
+If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 examples, then stop. Otherwise continue.
+
+---
+
 **Looking for similar implementations of:** $ARGUMENTS
 
 ## Why This Matters

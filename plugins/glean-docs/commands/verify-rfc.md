@@ -7,6 +7,14 @@ argument-hint: RFC URL or topic to search for
 
 You are verifying a design document (RFC, spec, design doc) against the actual implementation. Identify completeness, gaps, and discrepancies.
 
+## Input
+
+**RFC:** `$ARGUMENTS`
+
+If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 examples, then stop. Otherwise continue.
+
+---
+
 ## Core Principles
 
 - **Thorough but efficient**: Don't over-analyze trivial items

@@ -7,6 +7,14 @@ argument-hint: API, library, or pattern name (e.g., "AuthClient", "retry logic")
 
 Search across all repositories to find usage examples of an API, library, or pattern.
 
+## Input
+
+**API/Pattern:** `$ARGUMENTS`
+
+If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 examples, then stop. Otherwise continue.
+
+---
+
 **Looking for examples of:** $ARGUMENTS
 
 ## Why This Matters

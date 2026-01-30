@@ -7,6 +7,14 @@ argument-hint: System or component name (e.g., "payments", "auth service")
 
 Gather comprehensive architectural context about an internal system by searching code and documentation across the organization.
 
+## Input
+
+**System:** `$ARGUMENTS`
+
+If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 examples, then stop. Otherwise continue.
+
+---
+
 **Target system:** $ARGUMENTS
 
 ## Process
