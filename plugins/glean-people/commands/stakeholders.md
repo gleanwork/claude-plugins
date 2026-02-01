@@ -7,6 +7,14 @@ argument-hint: Change description (e.g., "migrating auth to OAuth")
 
 You are helping someone identify the right people to involve in a change, decision, or project.
 
+## Input
+
+**Change:** `$ARGUMENTS`
+
+If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 examples, then stop. Otherwise continue.
+
+---
+
 ## Core Principles
 
 - **Quality over quantity**: Don't list everyone tangentially related

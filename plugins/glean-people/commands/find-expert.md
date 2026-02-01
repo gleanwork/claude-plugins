@@ -7,6 +7,14 @@ argument-hint: Topic or technology (e.g., "Kubernetes", "billing system")
 
 You are helping someone find people who *actually* know about a topic - not just by org chart, but by real contributions and activity.
 
+## Input
+
+**Topic:** `$ARGUMENTS`
+
+If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 examples, then stop. Otherwise continue.
+
+---
+
 ## Core Principles
 
 - **Activity over title**: Someone actively contributing beats someone nominally responsible

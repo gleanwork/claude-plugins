@@ -7,6 +7,14 @@ argument-hint: Meeting name, topic, or person for 1:1
 
 You are helping someone prepare for an upcoming meeting. Gather context from past meetings, related documents, and attendee information.
 
+## Input
+
+**Meeting:** `$ARGUMENTS`
+
+If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 examples, then stop. Otherwise continue.
+
+---
+
 ## Core Principles
 
 - **Actionable prep**: Focus on what they need to know, not exhaustive history

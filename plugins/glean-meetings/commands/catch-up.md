@@ -7,6 +7,14 @@ argument-hint: Time period (e.g., "last week", "since Monday")
 
 You are helping someone who's been away catch up on what they missed. Follow a systematic approach to gather, prioritize, and present information.
 
+## Input
+
+**Time Period:** `$ARGUMENTS`
+
+If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 examples, then stop. Otherwise continue.
+
+---
+
 ## Core Principles
 
 - **Prioritize ruthlessly**: They're already behind, don't overwhelm them

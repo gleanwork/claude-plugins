@@ -7,9 +7,15 @@ argument-hint: <search query>
 
 Perform a quick search across Glean enterprise knowledge.
 
-**Search query:** $ARGUMENTS
+## Input
 
-## Process
+**Query:** `$ARGUMENTS`
+
+If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 examples, then stop. Otherwise continue.
+
+---
+
+## Search Process
 
 ### 1. Execute Search
 
@@ -31,19 +37,3 @@ After showing results, offer to:
 - Read the full content of a specific document
 - Refine the search with filters (owner, date, app)
 - Search for related topics
-
-## Tips for Better Searches
-
-Remind users they can use filters directly in their query:
-- `owner:"John Smith"` - Documents created by a person
-- `updated:past_week` - Recently updated documents
-- `app:confluence` - Documents from a specific app
-- `after:2024-01-01` - Documents after a date
-
-## Example Usage
-
-```
-/glean-search:search quarterly planning 2024
-/glean-search:search owner:"Jane Doe" project roadmap
-/glean-search:search updated:past_week API documentation
-```
