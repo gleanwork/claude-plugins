@@ -37,6 +37,11 @@
       "name": "glean-code",
       "source": "./plugins/glean-code",
       "description": "Cross-repository code exploration - search code across your org, find examples, and discover similar implementations."
+    },
+    {
+      "name": "glean-dev-docs",
+      "source": "./plugins/glean-dev-docs",
+      "description": "Access Glean's developer documentation - search API references, SDK guides, and integration tutorials."
     }
   ]
 }
