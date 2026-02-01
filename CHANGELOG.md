@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.1](///compare/v0.9.0...v0.9.1) (2026-02-01)
+
+### Bug Fixes
+
+* add glean-dev-docs plugin to marketplace manifest 1afc48b
+
 ## [0.9.0](///compare/v0.8.1...v0.9.0) (2026-02-01)
 
 ### Features
