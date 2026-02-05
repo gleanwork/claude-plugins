@@ -1,7 +1,7 @@
 {
-  "name": "glean-docs",
+  "name": "glean-skills",
   "version": "0.9.1",
-  "description": "Document intelligence - analyze docs, verify specs against implementation, and onboard to new areas via Glean. Requires glean-core.",
+  "description": "Discover and create Claude Code skills from Glean work patterns",
   "author": {
     "name": "Glean",
     "email": "steve.calvert@glean.com",
@@ -13,9 +13,7 @@
   "keywords": [
     "glean",
     "mcp",
-    "documents",
-    "rfc",
-    "specs",
-    "onboarding"
+    "skills",
+    "automation"
   ]
 }
