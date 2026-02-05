@@ -42,6 +42,11 @@
       "name": "glean-dev-docs",
       "source": "./plugins/glean-dev-docs",
       "description": "Access Glean's developer documentation - search API references, SDK guides, and integration tutorials."
+    },
+    {
+      "name": "glean-skills",
+      "source": "./plugins/glean-skills",
+      "description": "Discover and create Claude Code skills from work patterns."
     }
   ]
 }

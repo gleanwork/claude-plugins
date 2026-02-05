@@ -1,0 +1,19 @@
+{
+  "name": "glean-skills",
+  "version": "0.9.1",
+  "description": "Discover and create Claude Code skills from Glean work patterns",
+  "author": {
+    "name": "Glean",
+    "email": "steve.calvert@glean.com",
+    "url": "https://glean.com"
+  },
+  "homepage": "https://docs.glean.com/mcp",
+  "repository": "https://github.com/gleanwork/claude-plugins",
+  "license": "MIT",
+  "keywords": [
+    "glean",
+    "mcp",
+    "skills",
+    "automation"
+  ]
+}
