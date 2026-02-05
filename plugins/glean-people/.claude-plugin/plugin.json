@@ -7,7 +7,7 @@
     "email": "steve.calvert@glean.com",
     "url": "https://glean.com"
   },
-  "homepage": "https://docs.glean.com/mcp",
+  "homepage": "https://docs.glean.com/administration/platform/mcp/about",
   "repository": "https://github.com/gleanwork/claude-plugins",
   "license": "MIT",
   "keywords": [
