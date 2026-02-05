@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.10.0](///compare/v0.9.1...v0.10.0) (2026-02-05)
+
+### Features
+
+* add glean-skills plugin for skill discovery and creation 223970d
+
+### Bug Fixes
+
+* add allowed-tools declaration to create command 25dcd5d
+* correct homepage URL in plugin manifests 6a07b0c
+
 ## [0.9.1](///compare/v0.9.0...v0.9.1) (2026-02-01)
 
 ### Bug Fixes
