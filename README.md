@@ -19,6 +19,7 @@ Official Glean plugins for [Claude Code](https://claude.com/claude-code), enabli
 /plugin install glean-people
 /plugin install glean-docs
 /plugin install glean-code
+/plugin install glean-skills
 
 # Configure your Glean connection
 /glean-core:mcp-setup
@@ -34,6 +35,7 @@ Official Glean plugins for [Claude Code](https://claude.com/claude-code), enabli
 | **[glean-people](plugins/glean-people)** | Find experts and identify stakeholders | [README](plugins/glean-people/README.md) |
 | **[glean-docs](plugins/glean-docs)** | RFC verification and team onboarding | [README](plugins/glean-docs/README.md) |
 | **[glean-code](plugins/glean-code)** | Cross-repo code exploration and examples | [README](plugins/glean-code/README.md) |
+| **[glean-skills](plugins/glean-skills)** | Discover and create skills from Glean work patterns | [README](plugins/glean-skills/README.md) |
 
 ## Which Plugin Do I Need?
 
@@ -44,6 +46,7 @@ Official Glean plugins for [Claude Code](https://claude.com/claude-code), enabli
 | Find who knows about a topic | `glean-core` + `glean-people` |
 | Verify specs match implementation | `glean-core` + `glean-docs` |
 | Find code examples across repos | `glean-core` + `glean-code` |
+| Create skills from my work patterns | `glean-core` + `glean-skills` |
 | All of the above | Install all plugins |
 
 ## Requirements
