@@ -1,6 +1,7 @@
 ---
 description: Generate a SKILL.md file from a description
 argument-hint: Skill name or description (e.g., "stacked-pr-patterns")
+allowed-tools: [AskUserQuestion]
 ---
 
 # Create a Skill
