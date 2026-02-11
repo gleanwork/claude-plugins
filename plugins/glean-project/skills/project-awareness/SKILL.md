@@ -43,17 +43,17 @@ chat "Give me a 2-3 sentence status update on [project]."
 ### Find Owner
 ```
 employee_search "[project] lead OR owner"
-search "[project] owner OR lead app:confluence"
+search query="[project] owner OR lead" app="confluence"
 ```
 
 ### Recent Activity
 ```
-search "[project] updated:past_week sort_by_recency:true"
+search query="[project]" updated="past_week" sort_by_recency=true
 ```
 
 ### Current Work
 ```
-search "[project] in progress OR active app:jira"
+search query="[project] in progress OR active" app="jira"
 ```
 
 ## Output Format
@@ -96,6 +96,5 @@ For more detail, include:
 ## Relationship to Commands
 
 For comprehensive project context, suggest:
-- `/glean-project:project-context <name>` - Full project analysis with docs, people, decisions
 - `/glean-project:project-handoff <name>` - Generate complete handoff document
 - `/glean-docs:onboarding <topic>` - Get up to speed on a team or area

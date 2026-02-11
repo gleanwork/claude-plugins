@@ -51,12 +51,12 @@ If the input is empty or literal "$ARGUMENTS", default to "past week" (last 7 da
 
    **Meetings participated in:**
    ```
-   meeting_lookup "after:[week start] before:[week end] extract_transcript:\"true\""
+   meeting_lookup "my meetings [time period] extract_transcript:\"true\""
    ```
 
    **Documents you touched:**
    ```
-   search "from:me after:[week start] before:[week end]"
+   search query="*" from="me" after="[week start YYYY-MM-DD]" before="[week end YYYY-MM-DD]"
    ```
 
    **Code contributions (if applicable):**

@@ -66,7 +66,7 @@ Input: $ARGUMENTS
 
 2. Search for recent activity:
    ```
-   search "[team/project] updated:past_month"
+   search query="[team/project]" updated="past_month"
    ```
 
 3. Find recent team meetings for current priorities:

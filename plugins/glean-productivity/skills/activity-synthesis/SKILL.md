@@ -46,8 +46,8 @@ Returns roles, responsibilities, active projects, recent topics.
 
 ### Find User's Documents
 ```
-search "from:me updated:past_week"
-search "owner:me"
+search query="*" from="me" updated="past_week"
+search query="*" owner="me"
 ```
 
 ## Synthesis Approach

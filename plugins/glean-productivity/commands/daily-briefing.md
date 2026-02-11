@@ -52,12 +52,12 @@ If the input is empty or literal "$ARGUMENTS", generate a general briefing cover
 
 3. Search for direct mentions and assignments:
    ```
-   search "[user name] updated:today sort_by_recency:true"
+   search query="[user name]" updated="today" sort_by_recency=true
    ```
 
 4. Check meetings from yesterday/today for decisions:
    ```
-   meeting_lookup "after:yesterday before:tomorrow extract_transcript:\"true\""
+   meeting_lookup "my meetings yesterday extract_transcript:\"true\""
    ```
 
 ---

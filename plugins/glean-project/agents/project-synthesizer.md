@@ -34,7 +34,7 @@ chat "Give me a comprehensive overview of [project]. What is it, who's involved,
 ```
 search "[project] RFC OR design doc OR spec"
 search "[project] roadmap OR plan"
-search "[project] updated:past_month"
+search query="[project]" updated="past_month"
 ```
 
 ### 3. People
@@ -51,8 +51,8 @@ search "[project] decision OR decided OR approved"
 
 ### 5. Current Work
 ```
-search "[project] in progress OR active OR TODO app:jira"
-search "[project] in progress OR active OR TODO app:asana"
+search query="[project] in progress OR active OR TODO" app="jira"
+search query="[project] in progress OR active OR TODO" app="asana"
 ```
 
 ## Synthesis Tasks

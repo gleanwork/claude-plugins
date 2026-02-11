@@ -35,7 +35,7 @@ Use this approach when users ask:
 
 ### Find Urgent Mentions
 ```
-search "urgent OR ASAP OR blocking [user name] updated:past_week sort_by_recency:true"
+search query="urgent OR ASAP OR blocking [user name]" updated="past_week" sort_by_recency=true
 ```
 
 ### Find Assignments from Meetings
@@ -45,7 +45,7 @@ chat "What action items were assigned to [user] in meetings over the past week?"
 
 ### Find Waiting Questions
 ```
-search "[user name] question OR asking updated:past_week"
+search query="[user name] question OR asking" updated="past_week"
 ```
 
 ## Priority Tiers

@@ -62,7 +62,7 @@ Input: $ARGUMENTS
 **Actions**:
 1. Search for related documents:
    ```
-   search "[meeting topic] updated:past_month"
+   search query="[meeting topic]" updated="past_month"
    ```
 
 2. For 1:1s or meetings with unfamiliar attendees, look up people:
