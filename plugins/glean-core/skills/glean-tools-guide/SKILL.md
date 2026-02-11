@@ -184,15 +184,17 @@ employee_search("backend engineer startafter:2024-01-01")
 employee_search("data scientist roletype:\"individual contributor\"")
 ```
 
-### Meeting Lookup (Natural Language + Inline Filters)
+### Meeting Lookup (Inline Filters)
 
-Use natural language for dates, inline filters for other criteria:
+Include filters directly in the query string:
 
 ```
-meeting_lookup("standup last week extract_transcript:\"true\"")
-meeting_lookup("design review past 2 weeks participants:\"John Smith\"")
-meeting_lookup("1:1 yesterday topic:\"quarterly goals\"")
+meeting_lookup("after:yesterday before:tomorrow extract_transcript:\"true\"")
+meeting_lookup("after:now-1w before:now topic:\"standup\" participants:\"John Smith\"")
+meeting_lookup("after:2024-01-07 before:2024-01-09 topic:\"1:1\"")
 ```
+
+Note: Time ranges are non-inclusive. To include all meetings on a specific date, add a day buffer (e.g., for Jan 8: `after:2024-01-07 before:2024-01-09`).
 
 ### User Activity (Structured Parameters)
 
