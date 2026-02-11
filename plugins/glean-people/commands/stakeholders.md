@@ -20,7 +20,6 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Quality over quantity**: Don't list everyone tangentially related
 - **Distinguish roles**: Approvers vs consultants vs FYI recipients
-- **Use task lists**: Track progress throughout
 
 ---
 
@@ -31,8 +30,7 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 Input: $ARGUMENTS
 
 **Actions**:
-1. Create task list with all phases
-2. If change is vague, use `AskUserQuestion` to clarify:
+1. If change is vague, use `AskUserQuestion` to clarify:
    - "What type of change is this?" (Options: Technical change, Process change, Both)
    - "What's the scope?" (Options: Single team, Cross-team, Company-wide)
    - If still unclear, ask: "What systems or components will this affect?"
@@ -68,8 +66,7 @@ Input: $ARGUMENTS
 **Goal**: Present organized stakeholder list with engagement plan
 
 **Actions**:
-1. Mark all tasks complete
-2. Present the stakeholder map:
+Present the stakeholder map:
 
 ```markdown
 # Stakeholder Map: [Change/Project]

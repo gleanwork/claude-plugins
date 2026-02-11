@@ -21,7 +21,6 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 - **Complete context**: Include everything needed to take over
 - **Actionable items**: Clear next steps and open items
 - **Tribal knowledge**: Capture what's not in docs
-- **Use task lists**: Track progress throughout
 
 ---
 
@@ -30,12 +29,11 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 **Goal**: Understand the project's current state
 
 **Actions**:
-1. Create task list with all phases
-2. Use `AskUserQuestion` to get handoff context:
+1. Use `AskUserQuestion` to get handoff context:
    - "What is your role on this project?" (Options: Owner/Lead, Contributor, Advisor/Stakeholder)
    - "What's driving this handoff?" (Options: New role/team, PTO coverage, Team reorganization, Leaving company)
 
-3. Spawn `project-synthesizer` agent to gather:
+2. Spawn `project-synthesizer` agent to gather:
    - All project documentation
    - People involved and their roles
    - Recent meetings and decisions
@@ -96,8 +94,7 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 **Goal**: Create comprehensive handoff document
 
 **Actions**:
-1. Mark all tasks complete
-2. Present the handoff document:
+Present the handoff document:
 
 ```markdown
 # Project Handoff: [Project Name]

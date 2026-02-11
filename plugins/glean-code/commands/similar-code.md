@@ -31,7 +31,6 @@ Before building something, check if it already exists:
 
 - **Find the blessed path**: Look for official/platform solutions first
 - **Compare approaches**: Different solutions have different tradeoffs
-- **Use task lists**: Track progress through each phase
 
 ---
 
@@ -40,8 +39,6 @@ Before building something, check if it already exists:
 ### Phase 1: Search for Direct Implementations
 
 **Actions**:
-1. Create task list with all phases
-
 Look for the pattern/feature across all repos:
 
 ```
@@ -82,8 +79,7 @@ search "$ARGUMENTS best practices OR guidelines"
 ### Phase 5: Present Comparison
 
 **Actions**:
-1. Mark all tasks complete
-2. Present comparison:
+Present comparison:
 
 ```markdown
 # Similar Implementations: [Pattern]

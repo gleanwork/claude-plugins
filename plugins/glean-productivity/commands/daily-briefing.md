@@ -19,7 +19,6 @@ If the input is empty or literal "$ARGUMENTS", generate a general briefing cover
 
 - **Actionable first**: Lead with things requiring response
 - **Scannable format**: Busy people need to skim quickly
-- **Use task lists**: Track progress throughout
 
 ---
 
@@ -28,12 +27,11 @@ If the input is empty or literal "$ARGUMENTS", generate a general briefing cover
 **Goal**: Understand who you are and what matters to you
 
 **Actions**:
-1. Create task list with all phases
-2. Get your profile and recent context:
+1. Get your profile and recent context:
    ```
    memory - read all categories for roles, responsibilities, active projects
    ```
-3. Note active projects and focus areas for filtering
+2. Note active projects and focus areas for filtering
 
 ---
 
@@ -98,8 +96,7 @@ If the input is empty or literal "$ARGUMENTS", generate a general briefing cover
 **Goal**: Present a scannable morning briefing
 
 **Actions**:
-1. Mark all tasks complete
-2. Present the briefing:
+Present the briefing:
 
 ```markdown
 # Daily Briefing: [Date]

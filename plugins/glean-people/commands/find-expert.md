@@ -20,7 +20,6 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Activity over title**: Someone actively contributing beats someone nominally responsible
 - **Multiple signals**: Code + docs + discussions = true expertise
-- **Use task lists**: Track progress throughout
 
 ---
 
@@ -31,8 +30,7 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 Input: $ARGUMENTS
 
 **Actions**:
-1. Create task list with all phases
-2. If topic is vague, use `AskUserQuestion` to clarify:
+1. If topic is vague, use `AskUserQuestion` to clarify:
    - "What type of expertise do you need?" (Options: Answer questions, Review code, Make decisions, General knowledge)
    - "Is this about a specific system or a general technology?" (Options: Specific internal system, General technology/skill)
 
@@ -80,8 +78,7 @@ Input: $ARGUMENTS
 **Goal**: Present ranked experts with contact info
 
 **Actions**:
-1. Mark all tasks complete
-2. Present the report:
+Present the report:
 
 ```markdown
 # Expert Finder: [Topic]

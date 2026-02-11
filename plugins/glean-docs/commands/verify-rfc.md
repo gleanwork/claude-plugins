@@ -19,7 +19,6 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Thorough but efficient**: Don't over-analyze trivial items
 - **Quote evidence**: Show specific code when claiming implementation exists
-- **Use task lists**: Track progress throughout
 
 ---
 
@@ -30,19 +29,17 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 Input: $ARGUMENTS
 
 **Actions**:
-1. Create task list with all phases
-
-2. Get the document:
+1. Get the document:
    - If given a URL: `read_document "[URL]"`
    - If given a topic: `search "[topic] RFC OR design doc"` then `read_document` on the best match
 
-3. Extract verifiable requirements:
+2. Extract verifiable requirements:
    - Functional requirements
    - Technical specifications
    - Integration points
    - Non-functional requirements (performance, security)
 
-4. Create a checklist of requirements to verify
+3. Create a checklist of requirements to verify
 
 ---
 
@@ -85,8 +82,7 @@ Input: $ARGUMENTS
 **Goal**: Present structured verification results
 
 **Actions**:
-1. Mark all tasks complete
-2. Present the verification report:
+Present the verification report:
 
 ```markdown
 # RFC Verification Report

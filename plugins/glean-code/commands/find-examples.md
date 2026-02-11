@@ -31,7 +31,6 @@ Before implementing something, it's valuable to see how other teams have done it
 
 - **Prioritize recency**: Recent examples are more likely to follow current best practices
 - **Show context**: Code snippets without context aren't helpful
-- **Use task lists**: Track progress through each phase
 
 ---
 
@@ -40,8 +39,6 @@ Before implementing something, it's valuable to see how other teams have done it
 ### Phase 1: Search for Usage
 
 **Actions**:
-1. Create task list with all phases
-
 Search for the API/pattern across the organization:
 
 ```
@@ -71,8 +68,7 @@ search "$ARGUMENTS best practices OR guidelines"
 ### Phase 4: Present Examples
 
 **Actions**:
-1. Mark all tasks complete
-2. Format findings as actionable examples:
+Format findings as actionable examples:
 
 ```markdown
 # Usage Examples: [API/Pattern]

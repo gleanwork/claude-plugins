@@ -23,7 +23,6 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Breadth before depth**: Find all relevant pieces before diving deep
 - **Docs + code**: Both tell important parts of the story
-- **Use task lists**: Track progress through each phase
 
 ---
 
@@ -32,8 +31,6 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 ### Phase 1: Find the Code
 
 **Actions**:
-1. Create task list with all phases
-
 Search for the system's codebase across all repositories:
 
 ```
@@ -69,8 +66,7 @@ Cross-reference with `employee_search` for contact info.
 ### Phase 4: Generate Context Report
 
 **Actions**:
-1. Mark all tasks complete
-2. Present findings in this format:
+Present findings in this format:
 
 ```markdown
 # Codebase Context: [System Name]
