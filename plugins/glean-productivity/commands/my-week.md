@@ -19,7 +19,7 @@ If the input is empty or literal "$ARGUMENTS", default to "past week" (last 7 da
 
 - **Patterns over lists**: Highlight trends and themes
 - **Accomplishment-focused**: Emphasize what was completed
-- **Use TodoWrite**: Track progress throughout
+- **Use task lists**: Track progress throughout
 
 ---
 
@@ -28,7 +28,7 @@ If the input is empty or literal "$ARGUMENTS", default to "past week" (last 7 da
 **Goal**: Define the week to summarize
 
 **Actions**:
-1. Create todo list with all phases
+1. Create task list with all phases
 2. Parse time period from input (default: past 7 days)
 3. Calculate start_date and end_date for queries
 
@@ -89,7 +89,7 @@ If the input is empty or literal "$ARGUMENTS", default to "past week" (last 7 da
 **Goal**: Present a reflective weekly summary
 
 **Actions**:
-1. Mark all todos complete
+1. Mark all tasks complete
 2. Present the summary:
 
 ```markdown

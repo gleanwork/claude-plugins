@@ -19,7 +19,7 @@ If the input is empty or literal "$ARGUMENTS", generate a general briefing cover
 
 - **Actionable first**: Lead with things requiring response
 - **Scannable format**: Busy people need to skim quickly
-- **Use TodoWrite**: Track progress throughout
+- **Use task lists**: Track progress throughout
 
 ---
 
@@ -28,7 +28,7 @@ If the input is empty or literal "$ARGUMENTS", generate a general briefing cover
 **Goal**: Understand who you are and what matters to you
 
 **Actions**:
-1. Create todo list with all phases
+1. Create task list with all phases
 2. Get your profile and recent context:
    ```
    memory - read all categories for roles, responsibilities, active projects
@@ -98,7 +98,7 @@ If the input is empty or literal "$ARGUMENTS", generate a general briefing cover
 **Goal**: Present a scannable morning briefing
 
 **Actions**:
-1. Mark all todos complete
+1. Mark all tasks complete
 2. Present the briefing:
 
 ```markdown

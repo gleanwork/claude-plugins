@@ -21,7 +21,7 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 - **Complete context**: Include everything needed to take over
 - **Actionable items**: Clear next steps and open items
 - **Tribal knowledge**: Capture what's not in docs
-- **Use TodoWrite**: Track progress throughout
+- **Use task lists**: Track progress throughout
 
 ---
 
@@ -30,7 +30,7 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 **Goal**: Understand the project's current state
 
 **Actions**:
-1. Create todo list with all phases
+1. Create task list with all phases
 2. Use `AskUserQuestion` to get handoff context:
    - "What is your role on this project?" (Options: Owner/Lead, Contributor, Advisor/Stakeholder)
    - "What's driving this handoff?" (Options: New role/team, PTO coverage, Team reorganization, Leaving company)
@@ -96,7 +96,7 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 **Goal**: Create comprehensive handoff document
 
 **Actions**:
-1. Mark all todos complete
+1. Mark all tasks complete
 2. Present the handoff document:
 
 ```markdown

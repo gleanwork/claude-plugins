@@ -31,7 +31,7 @@ Before implementing something, it's valuable to see how other teams have done it
 
 - **Prioritize recency**: Recent examples are more likely to follow current best practices
 - **Show context**: Code snippets without context aren't helpful
-- **Use TodoWrite**: Track progress through each phase
+- **Use task lists**: Track progress through each phase
 
 ---
 
@@ -40,7 +40,7 @@ Before implementing something, it's valuable to see how other teams have done it
 ### Phase 1: Search for Usage
 
 **Actions**:
-1. Create todo list with all phases
+1. Create task list with all phases
 
 Search for the API/pattern across the organization:
 
@@ -71,7 +71,7 @@ search "$ARGUMENTS best practices OR guidelines"
 ### Phase 4: Present Examples
 
 **Actions**:
-1. Mark all todos complete
+1. Mark all tasks complete
 2. Format findings as actionable examples:
 
 ```markdown

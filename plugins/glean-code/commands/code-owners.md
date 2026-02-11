@@ -31,7 +31,7 @@ Knowing who to talk to is often the first step to understanding a system:
 
 - **Multi-signal identification**: Code + docs + org structure = complete picture
 - **Recency matters**: Active maintainers are more useful than historical authors
-- **Use TodoWrite**: Track progress through each phase
+- **Use task lists**: Track progress through each phase
 
 ---
 
@@ -40,7 +40,7 @@ Knowing who to talk to is often the first step to understanding a system:
 ### Phase 1: Find Recent Contributors
 
 **Actions**:
-1. Create todo list with all phases
+1. Create task list with all phases
 
 Search for who's been actively working on this code:
 
@@ -77,7 +77,7 @@ employee_search "[contributor names]"
 ### Phase 5: Present Ownership Map
 
 **Actions**:
-1. Mark all todos complete
+1. Mark all tasks complete
 2. Present the ownership map:
 
 ```markdown

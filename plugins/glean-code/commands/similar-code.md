@@ -31,7 +31,7 @@ Before building something, check if it already exists:
 
 - **Find the blessed path**: Look for official/platform solutions first
 - **Compare approaches**: Different solutions have different tradeoffs
-- **Use TodoWrite**: Track progress through each phase
+- **Use task lists**: Track progress through each phase
 
 ---
 
@@ -40,7 +40,7 @@ Before building something, check if it already exists:
 ### Phase 1: Search for Direct Implementations
 
 **Actions**:
-1. Create todo list with all phases
+1. Create task list with all phases
 
 Look for the pattern/feature across all repos:
 
@@ -82,7 +82,7 @@ search "$ARGUMENTS best practices OR guidelines"
 ### Phase 5: Present Comparison
 
 **Actions**:
-1. Mark all todos complete
+1. Mark all tasks complete
 2. Present comparison:
 
 ```markdown

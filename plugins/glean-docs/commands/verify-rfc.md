@@ -19,7 +19,7 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Thorough but efficient**: Don't over-analyze trivial items
 - **Quote evidence**: Show specific code when claiming implementation exists
-- **Use TodoWrite**: Track progress throughout
+- **Use task lists**: Track progress throughout
 
 ---
 
@@ -30,7 +30,7 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 Input: $ARGUMENTS
 
 **Actions**:
-1. Create todo list with all phases
+1. Create task list with all phases
 
 2. Get the document:
    - If given a URL: `read_document "[URL]"`
@@ -85,7 +85,7 @@ Input: $ARGUMENTS
 **Goal**: Present structured verification results
 
 **Actions**:
-1. Mark all todos complete
+1. Mark all tasks complete
 2. Present the verification report:
 
 ```markdown

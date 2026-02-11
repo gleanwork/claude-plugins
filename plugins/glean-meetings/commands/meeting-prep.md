@@ -19,7 +19,7 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Actionable prep**: Focus on what they need to know, not exhaustive history
 - **Scannable output**: Busy people need quick context
-- **Use TodoWrite**: Track progress throughout
+- **Use task lists**: Track progress throughout
 
 ---
 
@@ -30,7 +30,7 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 Input: $ARGUMENTS
 
 **Actions**:
-1. Create todo list with all phases
+1. Create task list with all phases
 2. Use meeting_lookup to find the meeting:
    ```
    meeting_lookup "[topic or person name] upcoming"
@@ -81,7 +81,7 @@ Input: $ARGUMENTS
 **Goal**: Create actionable meeting prep
 
 **Actions**:
-1. Mark all todos complete
+1. Mark all tasks complete
 2. Present the prep doc:
 
 ```markdown

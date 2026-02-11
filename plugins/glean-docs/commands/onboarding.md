@@ -19,7 +19,7 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Actionable over comprehensive**: Focus on what to read and who to talk to
 - **Technical and social**: Include both code context and people context
-- **Use TodoWrite**: Track progress throughout
+- **Use task lists**: Track progress throughout
 
 ---
 
@@ -30,7 +30,7 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 Input: $ARGUMENTS
 
 **Actions**:
-1. Create todo list with all phases
+1. Create task list with all phases
 2. Use Glean chat for a synthesized overview:
    ```
    chat "Give me an overview of the [team/project]. What do they own? What are their main responsibilities? What are they working on?"
@@ -83,7 +83,7 @@ Input: $ARGUMENTS
 **Goal**: Create a personalized onboarding doc
 
 **Actions**:
-1. Mark all todos complete
+1. Mark all tasks complete
 2. Present the onboarding guide:
 
 ```markdown
