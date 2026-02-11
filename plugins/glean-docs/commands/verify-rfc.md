@@ -138,3 +138,28 @@ Input: $ARGUMENTS
 ```
 
 ---
+
+## Troubleshooting
+
+### Glean MCP Not Connected
+If you see errors about missing `mcp__glean` tools:
+- Run `/glean-core:status` to check connection
+- Run `/glean-core:mcp-setup` to configure
+
+### RFC Not Found
+If the document can't be found:
+- Ask for the exact URL or document title
+- Search for alternative names (design doc, spec, proposal)
+- Check if user has access to the document
+
+### Implementation Not Found
+If code implementing the RFC can't be found:
+- The feature may not be implemented yet - note this clearly
+- Check if the RFC was superseded or abandoned
+- Search for related terms or alternative implementations
+
+### Ambiguous Requirements
+If the RFC has unclear requirements:
+- Note which requirements are ambiguous
+- Document assumptions made during verification
+- Suggest RFC author clarify the spec

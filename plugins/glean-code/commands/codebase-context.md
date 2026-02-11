@@ -17,9 +17,22 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 **Target system:** $ARGUMENTS
 
+---
+
+## Core Principles
+
+- **Breadth before depth**: Find all relevant pieces before diving deep
+- **Docs + code**: Both tell important parts of the story
+- **Use TodoWrite**: Track progress through each phase
+
+---
+
 ## Process
 
 ### Phase 1: Find the Code
+
+**Actions**:
+1. Create todo list with all phases
 
 Search for the system's codebase across all repositories:
 
@@ -55,7 +68,9 @@ Cross-reference with `employee_search` for contact info.
 
 ### Phase 4: Generate Context Report
 
-Present findings in this format:
+**Actions**:
+1. Mark all todos complete
+2. Present findings in this format:
 
 ```markdown
 # Codebase Context: [System Name]
@@ -98,3 +113,24 @@ Present findings in this format:
 - Note any discrepancies between docs and implementation
 - Highlight if the codebase appears unmaintained (no recent commits)
 - Suggest the user read specific files for deeper understanding
+
+---
+
+## Troubleshooting
+
+### Glean MCP Not Connected
+If you see errors about missing `mcp__glean` tools:
+- Run `/glean-core:status` to check connection
+- Run `/glean-core:mcp-setup` to configure
+
+### No Results Found
+If searches return no results:
+- Try alternative system names or acronyms
+- Search for related technologies or frameworks
+- Check if the system might be in a private repo with restricted access
+
+### Conflicting Information
+If docs and code don't match:
+- Note the discrepancy clearly in the report
+- Prefer code as source of truth for current state
+- Reference doc dates to identify which might be outdated

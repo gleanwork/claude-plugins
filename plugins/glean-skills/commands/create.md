@@ -98,3 +98,19 @@ To test it, try saying: "[example phrase that triggers it]"
 /glean-skills:create stacked-pr-workflow
 ```
 → Creates a skill based on a pattern from `/glean-skills:discover`
+
+---
+
+## Troubleshooting
+
+### Skill Location Not Writable
+If the chosen location can't be written to:
+- Check directory permissions
+- Try a different location (user-level vs project-level)
+- Display the skill content for manual saving
+
+### Unclear Skill Purpose
+If the skill purpose is still unclear after asking:
+- Suggest concrete examples of when the skill would trigger
+- Offer to review existing skills for inspiration
+- Start with a minimal skill and iterate

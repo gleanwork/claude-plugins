@@ -116,3 +116,22 @@ Input: $ARGUMENTS
 ```
 
 ---
+
+## Troubleshooting
+
+### Glean MCP Not Connected
+If you see errors about missing `mcp__glean` tools:
+- Run `/glean-core:status` to check connection
+- Run `/glean-core:mcp-setup` to configure
+
+### Meeting Not Found
+If the meeting can't be found:
+- Ask user to provide more specific details (exact title, attendee names)
+- Check if this is a new/first-time meeting with no history
+- Offer to prepare based on the topic alone
+
+### No Past Meetings
+If this is a new recurring meeting or first instance:
+- Focus on attendee context and relevant documents
+- Note that there's no meeting history to reference
+- Suggest the user share their agenda for better prep

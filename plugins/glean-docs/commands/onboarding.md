@@ -142,3 +142,22 @@ Input: $ARGUMENTS
 ```
 
 ---
+
+## Troubleshooting
+
+### Glean MCP Not Connected
+If you see errors about missing `mcp__glean` tools:
+- Run `/glean-core:status` to check connection
+- Run `/glean-core:mcp-setup` to configure
+
+### Team/Project Not Found
+If the team or project isn't found:
+- Ask for alternative names or acronyms
+- Search for key people known to be on the team
+- Check if this is a new team without much documentation yet
+
+### Limited Information Available
+If little documentation exists:
+- Focus on people discovery - they can fill gaps
+- Note which areas lack documentation
+- Suggest the user contribute to docs as they learn

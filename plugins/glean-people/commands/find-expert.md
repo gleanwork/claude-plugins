@@ -1,6 +1,7 @@
 ---
 description: Find someone who truly knows about a topic based on actual activity and contributions
 argument-hint: Topic or technology (e.g., "Kubernetes", "billing system")
+allowed-tools: [AskUserQuestion]
 ---
 
 # Find Expert
@@ -31,9 +32,9 @@ Input: $ARGUMENTS
 
 **Actions**:
 1. Create todo list with all phases
-2. If topic is vague, ask:
-   - "Are you looking for someone to answer questions, review code, or make decisions?"
-   - "Is this about a specific system/component or a general technology?"
+2. If topic is vague, use `AskUserQuestion` to clarify:
+   - "What type of expertise do you need?" (Options: Answer questions, Review code, Make decisions, General knowledge)
+   - "Is this about a specific system or a general technology?" (Options: Specific internal system, General technology/skill)
 
 ---
 
@@ -133,3 +134,22 @@ Loop in [Person] - has sign-off authority
 ```
 
 ---
+
+## Troubleshooting
+
+### Glean MCP Not Connected
+If you see errors about missing `mcp__glean` tools:
+- Run `/glean-core:status` to check connection
+- Run `/glean-core:mcp-setup` to configure
+
+### No Experts Found
+If searches return no results:
+- Try broader topic terms
+- Search for related technologies
+- Check if this is a new area without established experts
+- Suggest reaching out to team leads in adjacent areas
+
+### Topic Still Unclear After Asking
+If clarification doesn't help:
+- Ask for a specific example of what they need help with
+- Suggest breaking down into smaller, more specific topics
