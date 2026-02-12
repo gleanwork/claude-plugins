@@ -20,6 +20,8 @@ Official Glean plugins for [Claude Code](https://claude.com/claude-code), enabli
 /plugin install glean-docs
 /plugin install glean-code
 /plugin install glean-skills
+/plugin install glean-productivity
+/plugin install glean-project
 
 # Configure your Glean connection
 /glean-core:mcp-setup
@@ -36,6 +38,8 @@ Official Glean plugins for [Claude Code](https://claude.com/claude-code), enabli
 | **[glean-docs](plugins/glean-docs)** | RFC verification and team onboarding | [README](plugins/glean-docs/README.md) |
 | **[glean-code](plugins/glean-code)** | Cross-repo code exploration and examples | [README](plugins/glean-code/README.md) |
 | **[glean-skills](plugins/glean-skills)** | Discover and create skills from Glean work patterns | [README](plugins/glean-skills/README.md) |
+| **[glean-productivity](plugins/glean-productivity)** | Daily briefings, weekly summaries, and activity synthesis | [README](plugins/glean-productivity/README.md) |
+| **[glean-project](plugins/glean-project)** | Project context and handoff documentation | [README](plugins/glean-project/README.md) |
 
 ## Which Plugin Do I Need?
 
@@ -47,6 +51,8 @@ Official Glean plugins for [Claude Code](https://claude.com/claude-code), enabli
 | Verify specs match implementation | `glean-core` + `glean-docs` |
 | Find code examples across repos | `glean-core` + `glean-code` |
 | Create skills from my work patterns | `glean-core` + `glean-skills` |
+| Get daily briefings or weekly summaries | `glean-core` + `glean-productivity` |
+| Get project context or create handoffs | `glean-core` + `glean-project` |
 | All of the above | Install all plugins |
 
 ## Requirements
