@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.11.0](///compare/v0.10.0...v0.11.0) (2026-02-12)
+
+### Features
+
+* add glean-productivity, glean-project plugins and core synthesis skills 2010bed
+
+### Bug Fixes
+
+* address PR review comments db01e6c
+* correct meeting_lookup examples to match MCP tool schema b18f387
+* revert meeting_lookup to natural language dates 3f356ca, closes #9
+
 ## [0.10.0](///compare/v0.9.1...v0.10.0) (2026-02-05)
 
 ### Features
