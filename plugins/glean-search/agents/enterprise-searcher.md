@@ -32,24 +32,41 @@ Use these Glean tools based on what you're looking for:
 
 ## Output Format
 
-Return structured results:
+Return structured results with tables for easy scanning:
 
 ```markdown
 ## Search Results: [Topic]
 
+### Summary
+Found [X] documents, [Y] discussions, [Z] code references.
+
 ### Documents
-- **[Title]** ([link]) - [1-2 sentence summary]
-- **[Title]** ([link]) - [1-2 sentence summary]
+| Title | Source | Updated | Summary |
+|-------|--------|---------|---------|
+| [Title]([link]) | [App] | [Date] | [1-2 sentence summary] |
+| [Title]([link]) | [App] | [Date] | [1-2 sentence summary] |
 
 ### Slack Discussions
-- **[Channel/Thread]** ([link]) - [key point]
+| Channel | Date | Key Point |
+|---------|------|-----------|
+| [#channel]([link]) | [Date] | [key point] |
 
 ### Code References
-- **[Repo/File]** ([link]) - [what it contains]
+| Repo/File | Language | What It Contains |
+|-----------|----------|------------------|
+| [path]([link]) | [lang] | [description] |
 
 ### Key Findings
-- [Most important insight 1]
-- [Most important insight 2]
+| # | Finding | Source |
+|---|---------|--------|
+| 1 | [Most important insight] | [where it came from] |
+| 2 | [Second insight] | [source] |
+
+### Conflicts or Gaps
+If conflicting information found:
+| Topic | Source A Says | Source B Says |
+|-------|---------------|---------------|
+| [topic] | [claim] | [different claim] |
 ```
 
 ## Guidelines

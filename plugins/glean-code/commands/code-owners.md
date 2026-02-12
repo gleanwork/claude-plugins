@@ -25,10 +25,20 @@ Knowing who to talk to is often the first step to understanding a system:
 - Understand the history of decisions
 - Identify stakeholders for migrations
 
+---
+
+## Core Principles
+
+- **Multi-signal identification**: Code + docs + org structure = complete picture
+- **Recency matters**: Active maintainers are more useful than historical authors
+
+---
+
 ## Process
 
 ### Phase 1: Find Recent Contributors
 
+**Actions**:
 Search for who's been actively working on this code:
 
 ```
@@ -62,6 +72,9 @@ employee_search "[contributor names]"
 ```
 
 ### Phase 5: Present Ownership Map
+
+**Actions**:
+Present the ownership map:
 
 ```markdown
 # Code Ownership: [Component]
@@ -112,3 +125,24 @@ If there's a clear team that owns this:
 - Note if someone has moved teams but retains context
 - Include Slack channels or team contacts when available
 - Flag if ownership is unclear or contested
+
+---
+
+## Troubleshooting
+
+### Glean MCP Not Connected
+If you see errors about missing `mcp__glean` tools:
+- Run `/glean-core:status` to check connection
+- Run `/glean-core:mcp-setup` to configure
+
+### No Results Found
+If searches return no results:
+- Try broader search terms (e.g., parent directory name)
+- Check if the component name matches repository naming
+- Try alternative names or acronyms
+
+### Ownership Unclear
+If no clear owners are found:
+- Check for CODEOWNERS or MAINTAINERS files in the repo
+- Look for recent PR reviewers as proxy for ownership
+- Note the gap in the output for the user to investigate

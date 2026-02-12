@@ -25,10 +25,20 @@ Before building something, check if it already exists:
 - Avoid duplicating effort
 - Identify patterns to follow (or avoid)
 
+---
+
+## Core Principles
+
+- **Find the blessed path**: Look for official/platform solutions first
+- **Compare approaches**: Different solutions have different tradeoffs
+
+---
+
 ## Process
 
 ### Phase 1: Search for Direct Implementations
 
+**Actions**:
 Look for the pattern/feature across all repos:
 
 ```
@@ -67,6 +77,9 @@ search "$ARGUMENTS best practices OR guidelines"
 ```
 
 ### Phase 5: Present Comparison
+
+**Actions**:
+Present comparison:
 
 ```markdown
 # Similar Implementations: [Pattern]
@@ -133,3 +146,24 @@ Based on this analysis:
 - Identify if there's a "blessed" approach from platform teams
 - Flag deprecated or legacy implementations to avoid
 - Suggest consolidation opportunities if there's too much duplication
+
+---
+
+## Troubleshooting
+
+### Glean MCP Not Connected
+If you see errors about missing `mcp__glean` tools:
+- Run `/glean-core:status` to check connection
+- Run `/glean-core:mcp-setup` to configure
+
+### No Implementations Found
+If searches return no results:
+- Try synonyms (e.g., "rate limiting" → "throttling", "quota")
+- Search for the problem being solved, not just the solution name
+- Check if this might be handled by an external library
+
+### Too Many Implementations
+If many duplicated solutions exist:
+- Focus on the most recently updated ones
+- Look for platform team ownership as a signal of quality
+- Note the duplication as a potential consolidation opportunity

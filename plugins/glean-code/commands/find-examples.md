@@ -25,10 +25,20 @@ Before implementing something, it's valuable to see how other teams have done it
 - Learn from others' patterns
 - Identify shared libraries you might use
 
+---
+
+## Core Principles
+
+- **Prioritize recency**: Recent examples are more likely to follow current best practices
+- **Show context**: Code snippets without context aren't helpful
+
+---
+
 ## Process
 
 ### Phase 1: Search for Usage
 
+**Actions**:
 Search for the API/pattern across the organization:
 
 ```
@@ -57,6 +67,7 @@ search "$ARGUMENTS best practices OR guidelines"
 
 ### Phase 4: Present Examples
 
+**Actions**:
 Format findings as actionable examples:
 
 ```markdown
@@ -107,3 +118,25 @@ If there's a shared library, mention it:
 - Note if there are conflicting patterns across teams
 - Highlight official/recommended approaches if they exist
 - Flag deprecated patterns users should avoid
+
+---
+
+## Troubleshooting
+
+### Glean MCP Not Connected
+If you see errors about missing `mcp__glean` tools:
+- Run `/glean-core:status` to check connection
+- Run `/glean-core:mcp-setup` to configure
+
+### No Examples Found
+If searches return no results:
+- Try alternative names for the API/pattern
+- Search for the underlying technology instead
+- Check if this is a new API with limited adoption
+- Note the gap so user knows it's not widely used
+
+### Too Many Examples
+If too many results appear:
+- Filter by recency (`updated:past_month`)
+- Focus on repos from teams known for good practices
+- Prioritize examples with tests

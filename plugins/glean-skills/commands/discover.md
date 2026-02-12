@@ -84,3 +84,24 @@ Or describe what you want:
 - Prioritize by frequency × time saved
 - Consider both personal skills and team-sharable skills
 - Look for "I always do X before Y" patterns
+
+---
+
+## Troubleshooting
+
+### Glean MCP Not Connected
+If you see errors about missing `mcp__glean` tools:
+- Run `/glean-core:status` to check connection
+- Run `/glean-core:mcp-setup` to configure
+
+### Limited Activity Data
+If user activity data is sparse:
+- Note that more data would improve recommendations
+- Focus on memory and role-based suggestions
+- Ask user about their common workflows directly
+
+### No Patterns Found
+If no clear patterns emerge:
+- This might indicate varied work without repetition
+- Ask user about tasks they find tedious or repetitive
+- Suggest common starter skills (meeting prep, status updates)

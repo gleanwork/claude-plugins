@@ -19,7 +19,6 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Thorough but efficient**: Don't over-analyze trivial items
 - **Quote evidence**: Show specific code when claiming implementation exists
-- **Use TodoWrite**: Track progress throughout
 
 ---
 
@@ -30,19 +29,17 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 Input: $ARGUMENTS
 
 **Actions**:
-1. Create todo list with all phases
-
-2. Get the document:
+1. Get the document:
    - If given a URL: `read_document "[URL]"`
    - If given a topic: `search "[topic] RFC OR design doc"` then `read_document` on the best match
 
-3. Extract verifiable requirements:
+2. Extract verifiable requirements:
    - Functional requirements
    - Technical specifications
    - Integration points
    - Non-functional requirements (performance, security)
 
-4. Create a checklist of requirements to verify
+3. Create a checklist of requirements to verify
 
 ---
 
@@ -85,8 +82,7 @@ Input: $ARGUMENTS
 **Goal**: Present structured verification results
 
 **Actions**:
-1. Mark all todos complete
-2. Present the verification report:
+Present the verification report:
 
 ```markdown
 # RFC Verification Report
@@ -138,3 +134,28 @@ Input: $ARGUMENTS
 ```
 
 ---
+
+## Troubleshooting
+
+### Glean MCP Not Connected
+If you see errors about missing `mcp__glean` tools:
+- Run `/glean-core:status` to check connection
+- Run `/glean-core:mcp-setup` to configure
+
+### RFC Not Found
+If the document can't be found:
+- Ask for the exact URL or document title
+- Search for alternative names (design doc, spec, proposal)
+- Check if user has access to the document
+
+### Implementation Not Found
+If code implementing the RFC can't be found:
+- The feature may not be implemented yet - note this clearly
+- Check if the RFC was superseded or abandoned
+- Search for related terms or alternative implementations
+
+### Ambiguous Requirements
+If the RFC has unclear requirements:
+- Note which requirements are ambiguous
+- Document assumptions made during verification
+- Suggest RFC author clarify the spec

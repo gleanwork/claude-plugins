@@ -49,35 +49,49 @@ Group findings by skill type:
 
 ## Output Format
 
-Return structured analysis:
+Return structured analysis with tables for easy scanning:
 
 ```markdown
 ## Work Pattern Analysis
 
 ### Your Context
-- **Role**: [from memory]
-- **Active Projects**: [from memory]
-- **Recent Focus Areas**: [from user_activity]
+| Attribute | Value |
+|-----------|-------|
+| **Role** | [from memory] |
+| **Active Projects** | [from memory] |
+| **Recent Focus Areas** | [from user_activity] |
 
 ### Skill Opportunities Found
 
-#### 1. [Pattern Name]
-- **Type**: [Search shortcut | Preparation | Status | Onboarding | Verification]
-- **Evidence**: [What in the data suggests this]
-- **Frequency**: [How often this pattern appears]
-- **Skill Description**: [What the skill would do]
-- **Suggested Name**: [snake-case-name]
+| # | Pattern | Type | Frequency | Suggested Skill |
+|---|---------|------|-----------|-----------------|
+| 1 | [Pattern name] | [Type] | [Frequency] | `[snake-case-name]` |
+| 2 | [Pattern name] | [Type] | [Frequency] | `[snake-case-name]` |
+| 3 | [Pattern name] | [Type] | [Frequency] | `[snake-case-name]` |
 
-#### 2. [Pattern Name]
+### Opportunity Details
+
+#### 1. [Pattern Name] → `[skill-name]`
+| Attribute | Details |
+|-----------|---------|
+| **Type** | Search shortcut / Preparation / Status / Onboarding / Verification |
+| **Evidence** | [What in the data suggests this] |
+| **What it does** | [What the skill would do] |
+
+#### 2. [Pattern Name] → `[skill-name]`
 ...
 
 ### Recommendations
 
-**High Value** (frequent + automatable):
-1. [name] - [why]
+#### High Value (frequent + automatable)
+| Skill | Why |
+|-------|-----|
+| `[name]` | [evidence of frequency and time savings] |
 
-**Medium Value** (occasional but saves time):
-1. [name] - [why]
+#### Medium Value (occasional but saves time)
+| Skill | Why |
+|-------|-----|
+| `[name]` | [evidence] |
 
 ### Next Steps
 To create any of these skills, run:

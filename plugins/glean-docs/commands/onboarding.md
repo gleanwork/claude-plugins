@@ -19,7 +19,6 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Actionable over comprehensive**: Focus on what to read and who to talk to
 - **Technical and social**: Include both code context and people context
-- **Use TodoWrite**: Track progress throughout
 
 ---
 
@@ -30,12 +29,11 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 Input: $ARGUMENTS
 
 **Actions**:
-1. Create todo list with all phases
-2. Use Glean chat for a synthesized overview:
+1. Use Glean chat for a synthesized overview:
    ```
    chat "Give me an overview of the [team/project]. What do they own? What are their main responsibilities? What are they working on?"
    ```
-3. Summarize the overview for context
+2. Summarize the overview for context
 
 ---
 
@@ -68,7 +66,7 @@ Input: $ARGUMENTS
 
 2. Search for recent activity:
    ```
-   search "[team/project] updated:past_month"
+   search query="[team/project]" updated="past_month"
    ```
 
 3. Find recent team meetings for current priorities:
@@ -83,8 +81,7 @@ Input: $ARGUMENTS
 **Goal**: Create a personalized onboarding doc
 
 **Actions**:
-1. Mark all todos complete
-2. Present the onboarding guide:
+Present the onboarding guide:
 
 ```markdown
 # Onboarding: [Team/Project Name]
@@ -142,3 +139,22 @@ Input: $ARGUMENTS
 ```
 
 ---
+
+## Troubleshooting
+
+### Glean MCP Not Connected
+If you see errors about missing `mcp__glean` tools:
+- Run `/glean-core:status` to check connection
+- Run `/glean-core:mcp-setup` to configure
+
+### Team/Project Not Found
+If the team or project isn't found:
+- Ask for alternative names or acronyms
+- Search for key people known to be on the team
+- Check if this is a new team without much documentation yet
+
+### Limited Information Available
+If little documentation exists:
+- Focus on people discovery - they can fill gaps
+- Note which areas lack documentation
+- Suggest the user contribute to docs as they learn

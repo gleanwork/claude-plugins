@@ -19,7 +19,6 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Prioritize ruthlessly**: They're already behind, don't overwhelm them
 - **Action items first**: Things assigned to them are highest priority
-- **Use TodoWrite**: Track progress throughout
 
 ---
 
@@ -30,9 +29,8 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 Input: $ARGUMENTS
 
 **Actions**:
-1. Create todo list with all phases
-2. If time period unclear, ask: "How long were you away?"
-3. Use the time period directly in Glean queries - Glean understands natural language dates like "last week", "past 2 weeks", "since Monday", etc.
+1. If time period unclear, ask: "How long were you away?"
+2. Use the time period directly in Glean queries - Glean understands natural language dates like "last week", "past 2 weeks", "since Monday", etc.
 
 ---
 
@@ -87,8 +85,7 @@ Input: $ARGUMENTS
 **Goal**: Present a scannable catch-up summary
 
 **Actions**:
-1. Mark all todos complete
-2. Present the catch-up report:
+Present the catch-up report:
 
 ```markdown
 # Catch-Up Summary: [Time Period]
@@ -130,3 +127,21 @@ Input: $ARGUMENTS
 ```
 
 ---
+
+## Troubleshooting
+
+### Glean MCP Not Connected
+If you see errors about missing `mcp__glean` tools:
+- Run `/glean-core:status` to check connection
+- Run `/glean-core:mcp-setup` to configure
+
+### Time Period Unclear
+If the user's time period is ambiguous:
+- Ask for clarification with specific options (e.g., "past week", "since Monday")
+- Default to "past week" if user confirms they want a general catch-up
+
+### No Action Items Found
+If no action items are found for the user:
+- This is good news - report it clearly
+- Still show FYI updates and decisions made
+- Note that the user may want to check specific channels directly

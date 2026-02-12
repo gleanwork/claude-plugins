@@ -1,6 +1,7 @@
 ---
 description: Identify stakeholders for a change, project, or decision
 argument-hint: Change description (e.g., "migrating auth to OAuth")
+allowed-tools: [AskUserQuestion]
 ---
 
 # Stakeholder Discovery
@@ -19,7 +20,6 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Quality over quantity**: Don't list everyone tangentially related
 - **Distinguish roles**: Approvers vs consultants vs FYI recipients
-- **Use TodoWrite**: Track progress throughout
 
 ---
 
@@ -30,11 +30,10 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 Input: $ARGUMENTS
 
 **Actions**:
-1. Create todo list with all phases
-2. If change is vague, ask:
-   - "What systems or components will this affect?"
-   - "Is this a technical change, process change, or both?"
-   - "What's the scope - single team or cross-team?"
+1. If change is vague, use `AskUserQuestion` to clarify:
+   - "What type of change is this?" (Options: Technical change, Process change, Both)
+   - "What's the scope?" (Options: Single team, Cross-team, Company-wide)
+   - If still unclear, ask: "What systems or components will this affect?"
 
 ---
 
@@ -67,8 +66,7 @@ Input: $ARGUMENTS
 **Goal**: Present organized stakeholder list with engagement plan
 
 **Actions**:
-1. Mark all todos complete
-2. Present the stakeholder map:
+Present the stakeholder map:
 
 ```markdown
 # Stakeholder Map: [Change/Project]
@@ -119,3 +117,22 @@ People who should know but don't need to approve:
 ```
 
 ---
+
+## Troubleshooting
+
+### Glean MCP Not Connected
+If you see errors about missing `mcp__glean` tools:
+- Run `/glean-core:status` to check connection
+- Run `/glean-core:mcp-setup` to configure
+
+### No Stakeholders Found
+If searches return no results:
+- Try searching for the affected systems directly
+- Look for recent RFCs or design docs in the area
+- Check org charts for team leads in related areas
+
+### Too Many Stakeholders
+If too many people appear relevant:
+- Prioritize by direct ownership vs tangential involvement
+- Categorize into "must consult" vs "inform only"
+- Focus on decision makers and direct code owners first

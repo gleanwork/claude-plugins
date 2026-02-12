@@ -44,34 +44,51 @@ When given multiple docs:
 
 ## Output Format
 
-Return structured analysis:
+Return structured analysis with tables for easy scanning:
 
 ```markdown
 ## Document Analysis: [Title]
 
-**URL**: [link]
-**Last Updated**: [date if available]
-**Author**: [if known]
+### Metadata
+| Attribute | Value |
+|-----------|-------|
+| **URL** | [link] |
+| **Last Updated** | [date if available] |
+| **Author** | [if known] |
+| **Status** | Active / Draft / Outdated |
 
 ### Summary
 [2-3 sentence overview]
 
 ### Key Points
-1. [Important point 1]
-2. [Important point 2]
-3. [Important point 3]
+| # | Point | Importance |
+|---|-------|------------|
+| 1 | [Important point] | High / Medium |
+| 2 | [Important point] | High / Medium |
+| 3 | [Important point] | High / Medium |
 
-### [Analysis-Specific Section]
-(e.g., Requirements, Decisions, Recommendations)
+### Requirements (if applicable)
+| ID | Requirement | Type | Status |
+|----|-------------|------|--------|
+| R1 | [Requirement text] | Functional / Non-functional | Implemented / Pending / Unknown |
+| R2 | [Requirement text] | [Type] | [Status] |
 
-- [Item 1]
-- [Item 2]
+### Decisions (if applicable)
+| Decision | Rationale | Date |
+|----------|-----------|------|
+| [What was decided] | [Why] | [When] |
 
 ### Related Documents
-- [Referenced Doc] ([link if found])
+| Document | Relationship |
+|----------|--------------|
+| [Doc title]([link]) | [How it relates] |
 
 ### Notes
-- [Any caveats, outdated info, or gaps noted]
+| Type | Note |
+|------|------|
+| Caveat | [Any caveats about this doc] |
+| Outdated | [Sections that may be outdated] |
+| Gap | [Missing information noted] |
 ```
 
 ## Guidelines

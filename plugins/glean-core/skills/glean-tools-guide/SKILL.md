@@ -150,6 +150,60 @@ The `user_activity` tool uses date range parameters (not query filters):
 
 Use for: standup notes, weekly summaries, 1:1 prep, finding documents you touched but forgot.
 
+## Example Tool Calls
+
+These examples show the correct syntax for each tool type.
+
+### Search (Structured Parameters)
+
+Pass filters as separate parameters, not in the query string:
+
+```
+search(query="authentication RFC", app="confluence", updated="past_month")
+search(query="API design", owner="me", sort_by_recency=true)
+search(query="onboarding guide", from="John Smith", after="2024-01-01")
+```
+
+### Code Search (Inline Filters)
+
+Include filters directly in the query string:
+
+```
+code_search("authentication handler owner:me updated:past_week")
+code_search("payment processor after:2024-06-01 before:2024-12-01")
+code_search("API endpoint from:\"Jane Doe\"")
+```
+
+### Employee Search (Inline Filters)
+
+Include filters directly in the query string:
+
+```
+employee_search("engineering manager reportsto:\"VP Engineering\"")
+employee_search("backend engineer startafter:2024-01-01")
+employee_search("data scientist roletype:\"individual contributor\"")
+```
+
+### Meeting Lookup (Natural Language + Inline Filters)
+
+Use natural language for dates; inline filters for other criteria:
+
+```
+meeting_lookup("my meetings today extract_transcript:\"true\"")
+meeting_lookup("standup last week participants:\"John Smith\"")
+meeting_lookup("design review past 2 weeks topic:\"architecture\"")
+```
+
+Note: Date filters (`after:`, `before:`) are documented but don't work reliably in practice. Use natural language dates instead ("today", "yesterday", "last week", "past 2 weeks").
+
+### User Activity (Structured Parameters)
+
+Pass date range as separate parameters:
+
+```
+user_activity(start_date="2024-01-08", end_date="2024-01-15")
+```
+
 ## Filter Best Practices
 
 **Structured vs Inline Filters:**

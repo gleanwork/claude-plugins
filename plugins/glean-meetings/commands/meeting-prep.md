@@ -19,7 +19,6 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Actionable prep**: Focus on what they need to know, not exhaustive history
 - **Scannable output**: Busy people need quick context
-- **Use TodoWrite**: Track progress throughout
 
 ---
 
@@ -30,13 +29,12 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 Input: $ARGUMENTS
 
 **Actions**:
-1. Create todo list with all phases
-2. Use meeting_lookup to find the meeting:
+1. Use meeting_lookup to find the meeting:
    ```
    meeting_lookup "[topic or person name] upcoming"
    ```
-3. If multiple matches, ask user to clarify
-4. Extract meeting details: title, time, attendees
+2. If multiple matches, ask user to clarify
+3. Extract meeting details: title, time, attendees
 
 ---
 
@@ -64,7 +62,7 @@ Input: $ARGUMENTS
 **Actions**:
 1. Search for related documents:
    ```
-   search "[meeting topic] updated:past_month"
+   search query="[meeting topic]" updated="past_month"
    ```
 
 2. For 1:1s or meetings with unfamiliar attendees, look up people:
@@ -81,8 +79,7 @@ Input: $ARGUMENTS
 **Goal**: Create actionable meeting prep
 
 **Actions**:
-1. Mark all todos complete
-2. Present the prep doc:
+Present the prep doc:
 
 ```markdown
 # Meeting Prep: [Meeting Name]
@@ -116,3 +113,22 @@ Input: $ARGUMENTS
 ```
 
 ---
+
+## Troubleshooting
+
+### Glean MCP Not Connected
+If you see errors about missing `mcp__glean` tools:
+- Run `/glean-core:status` to check connection
+- Run `/glean-core:mcp-setup` to configure
+
+### Meeting Not Found
+If the meeting can't be found:
+- Ask user to provide more specific details (exact title, attendee names)
+- Check if this is a new/first-time meeting with no history
+- Offer to prepare based on the topic alone
+
+### No Past Meetings
+If this is a new recurring meeting or first instance:
+- Focus on attendee context and relevant documents
+- Note that there's no meeting history to reference
+- Suggest the user share their agenda for better prep
