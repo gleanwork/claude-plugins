@@ -47,6 +47,16 @@
       "name": "glean-skills",
       "source": "./plugins/glean-skills",
       "description": "Discover and create Claude Code skills from work patterns."
+    },
+    {
+      "name": "glean-productivity",
+      "source": "./plugins/glean-productivity",
+      "description": "Personal productivity - daily briefings, weekly summaries, and activity analysis via Glean."
+    },
+    {
+      "name": "glean-project",
+      "source": "./plugins/glean-project",
+      "description": "Project intelligence - generate comprehensive handoff documents when transitioning ownership."
     }
   ]
 }

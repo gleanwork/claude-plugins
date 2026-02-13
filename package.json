@@ -30,7 +30,7 @@
     "release": "release-it"
   },
   "files": [
-    "manifest.json",
+    ".claude-plugin/**/*",
     "plugins/**/*",
     "README.md",
     "LICENSE"
