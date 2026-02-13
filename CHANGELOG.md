@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.12.0](///compare/v0.11.0...v0.12.0) (2026-02-13)
+
+### Features
+
+* add glean-plugin-checklist skill for marketplace consistency 9252912
+
+### Bug Fixes
+
+* add glean-productivity and glean-project to marketplace b77a400
+
 ## [0.11.0](///compare/v0.10.0...v0.11.0) (2026-02-12)
 
 ### Features
