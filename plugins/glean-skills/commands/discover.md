@@ -41,7 +41,23 @@ Spawn the `work-pattern-analyzer` agent to analyze the gathered data and identif
 - Workflow sequences
 - Manual processes that could be automated
 
-### Phase 3: Present Recommendations
+### Phase 3: Vet Recommendations (CRITICAL)
+
+The agent will critically evaluate each candidate:
+
+**What Gets Included:**
+- Tasks with clear recurrence (daily, weekly, monthly)
+- High cumulative value (frequency × time saved)
+- Patterns with evidence of repetition in the data
+
+**What Gets Rejected:**
+- One-time events (team mergers, migrations, reorgs)
+- Annual or rare tasks with low cumulative value
+- Activities triggered by unique circumstances
+
+The agent shows its vetting work, including rejected candidates and why.
+
+### Phase 4: Present Recommendations
 
 Format findings as actionable recommendations:
 
@@ -53,37 +69,54 @@ Format findings as actionable recommendations:
 - **Active Projects**: [from memory]
 - **Recent Focus**: [from activity]
 
+### Vetting Summary
+| Candidates Found | Passed Vetting | Rejected |
+|------------------|----------------|----------|
+| [#] | [#] | [#] |
+
 ### Recommended Skills
 
-#### High Value
-| Skill Name | Type | Why |
-|------------|------|-----|
-| [name] | [type] | [evidence from data] |
+#### High Value (Frequent + Automatable)
+| Skill Name | Frequency | Cumulative Impact |
+|------------|-----------|-------------------|
+| [name] | [daily/weekly] | [time saved × frequency] |
 
-#### Medium Value
-| Skill Name | Type | Why |
-|------------|------|-----|
-| [name] | [type] | [evidence from data] |
+#### Medium Value (Less Frequent but Significant)
+| Skill Name | Frequency | Cumulative Impact |
+|------------|-----------|-------------------|
+| [name] | [monthly] | [time saved × frequency] |
+
+### Rejected Candidates
+| Candidate | Reason |
+|-----------|--------|
+| [name] | [why it won't recur] |
 
 ### Create a Skill
 
 To create any of these skills:
-\`\`\`
+```
 /glean-skills:create <skill-name>
-\`\`\`
-
-Or describe what you want:
-\`\`\`
-/glean-skills:create "skill that does X when Y happens"
-\`\`\`
 ```
 
-## Tips
+Or describe what you want:
+```
+/glean-skills:create "skill that does X when Y happens"
+```
+```
 
-- Focus on patterns that appear multiple times
-- Prioritize by frequency × time saved
-- Consider both personal skills and team-sharable skills
-- Look for "I always do X before Y" patterns
+## Quality Over Quantity
+
+A few high-quality recommendations are better than many weak ones. The goal is to find skills that will save significant cumulative time through frequent use.
+
+**Good skill candidates:**
+- Daily standup prep (5 min × 5 days = 25 min/week saved)
+- PR review checklist (10 min × 10 PRs/week = 100 min/week saved)
+- Weekly status report (30 min × 1/week = 30 min/week saved)
+
+**Poor skill candidates:**
+- Team merger channel migration (2 hours, but happens once)
+- Annual performance review (1 hour, but once per year)
+- Office relocation checklist (happens once every few years)
 
 ---
 
@@ -103,5 +136,5 @@ If user activity data is sparse:
 ### No Patterns Found
 If no clear patterns emerge:
 - This might indicate varied work without repetition
+- This is a valid outcome - not everyone has automatable patterns
 - Ask user about tasks they find tedious or repetitive
-- Suggest common starter skills (meeting prep, status updates)
