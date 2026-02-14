@@ -31,6 +31,8 @@ Before implementing something, it's valuable to see how other teams have done it
 
 - **Prioritize recency**: Recent examples are more likely to follow current best practices
 - **Show context**: Code snippets without context aren't helpful
+- **Be skeptical**: Not every match is a good example
+- **Quality over quantity**: 3 excellent examples beats 10 mediocre ones
 
 ---
 
@@ -65,78 +67,158 @@ search "$ARGUMENTS how to use OR getting started"
 search "$ARGUMENTS best practices OR guidelines"
 ```
 
-### Phase 4: Present Examples
+### Phase 4: Vet Each Example (CRITICAL)
+
+**Goal**: Filter to high-quality examples - BE SKEPTICAL
+
+For each code example found, evaluate:
+
+**Quality Test**
+- Is this actually a good example to follow?
+- ✅ INCLUDE: Clean code, well-structured, tested, recent
+- ⚠️ CAUTION: Works but has issues (note them)
+- ❌ REJECT: Hacky, deprecated, anti-pattern, prototype/throwaway code
+
+**Recency Test**
+- Is this current?
+- ✅ INCLUDE: Updated in past 6 months
+- ⚠️ CAUTION: 6-12 months old - may be outdated
+- ❌ REJECT: 12+ months old with no activity (likely outdated patterns)
+
+**Context Test**
+- Is this a real usage or just noise?
+- ✅ INCLUDE: Production code, tests, well-maintained projects
+- ❌ REJECT: Experiments, abandoned PRs, copy-pasted boilerplate, generated code
+
+**Relevance Test**
+- Is this the same use case?
+- ✅ INCLUDE: Similar context to what user needs
+- ⚠️ NOTE: Different context but still instructive
+- ❌ REJECT: Just happens to use the same API for unrelated purpose
+
+**Anti-Pattern Signals - REJECT or WARN**:
+- Large try/catch blocks swallowing errors
+- Commented-out code
+- TODO comments indicating known issues
+- Files in `/deprecated/`, `/old/`, `/legacy/` paths
+- Tests that are skipped
+- Code with no recent commits in repo
+
+### Phase 5: Present Vetted Examples
 
 **Actions**:
-Format findings as actionable examples:
+Format vetted findings:
 
 ```markdown
 # Usage Examples: [API/Pattern]
 
+## Summary
+| Examples Found | High Quality | Cautionary | Rejected |
+|----------------|--------------|------------|----------|
+| [X] | [Y] | [Z] | [W] |
+
 ## Official Documentation
+[Only if actually found]
 - **[Doc title]** ([link]) - [what it covers]
 
-## Code Examples Found
+## Recommended Examples
 
-### Example 1: [Repo/Team Name]
+### Example 1: [Repo/Team Name] ⭐ Recommended
+**Quality**: High - [why this is a good example]
 **File:** [path] ([link])
+**Last Updated**: [date]
+
 **Context:** [brief description of how they use it]
 
 \`\`\`[language]
 [relevant code snippet]
 \`\`\`
 
-**Key takeaways:**
-- [pattern or technique worth noting]
-- [configuration approach]
+**Why this is good:**
+- [specific positive patterns]
+- [what makes this exemplary]
 
 ### Example 2: [Repo/Team Name]
+**Quality**: Good
 **File:** [path] ([link])
+**Last Updated**: [date]
+
 **Context:** [description]
 
 \`\`\`[language]
 [relevant code snippet]
 \`\`\`
 
+## Examples With Caveats
+[Only include if they're still useful despite issues]
+
+### [Repo/Team Name] - Use With Caution
+**File:** [path] ([link])
+**Caveat:** [What to watch out for]
+
+\`\`\`[language]
+[relevant code snippet]
+\`\`\`
+
+**What to copy**: [The good parts]
+**What to avoid**: [The problematic parts]
+
 ## Common Patterns Observed
-1. **[Pattern]**: Used in [X] places - [description]
-2. **[Pattern]**: [description]
+1. **[Pattern]**: Used in [X] high-quality examples - [description]
+
+## Anti-Patterns to Avoid
+[If you found examples of what NOT to do]
+- **[Anti-pattern]**: Seen in [X], but [why it's bad]
 
 ## Shared Libraries
-If there's a shared library, mention it:
-- **[library name]** ([link]) - Recommended over rolling your own
+[If there's a shared library, strongly recommend it]
+- **[library name]** ([link]) - Use this instead of rolling your own
 
 ## Who to Ask
 | Name | Why |
 |------|-----|
-| [Name] | Wrote [X], active maintainer |
+| [Name] | Wrote the recommended example |
 ```
 
-## Tips
+---
 
-- Prioritize recent examples over old ones
-- Note if there are conflicting patterns across teams
-- Highlight official/recommended approaches if they exist
-- Flag deprecated patterns users should avoid
+## If No Good Examples Found
+
+Be honest:
+
+```markdown
+# Usage Examples: [API/Pattern]
+
+## No High-Quality Examples Found
+
+I searched for examples of [API/Pattern] but didn't find examples I'd recommend following.
+
+**What I found:**
+- [X] matches, but all were [outdated/low quality/different context]
+
+**This could mean:**
+- This is a new API with limited adoption
+- Different terminology is used internally
+- Teams roll their own instead of using a standard
+
+**Suggested next steps:**
+1. Check the [API/library] official documentation directly
+2. Ask in [relevant Slack channel]
+3. Consider: Is there a reason this isn't widely used?
+```
 
 ---
 
 ## Troubleshooting
 
-### Glean MCP Not Connected
-If you see errors about missing `mcp__glean` tools:
-- Run `/glean-core:status` to check connection
-- Run `/glean-core:mcp-setup` to configure
-
 ### No Examples Found
 If searches return no results:
 - Try alternative names for the API/pattern
 - Search for the underlying technology instead
-- Check if this is a new API with limited adoption
 - Note the gap so user knows it's not widely used
 
 ### Too Many Examples
 If too many results appear:
-- Filter by recency (`updated:past_month`)
-- Focus on repos from teams known for good practices
-- Prioritize examples with tests
+- Apply vetting criteria strictly
+- Prioritize by recency and quality signals
+- Only include examples you'd actually recommend

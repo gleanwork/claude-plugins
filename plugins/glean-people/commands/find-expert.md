@@ -20,6 +20,8 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Activity over title**: Someone actively contributing beats someone nominally responsible
 - **Multiple signals**: Code + docs + discussions = true expertise
+- **Be skeptical**: Just mentioning a topic doesn't make someone an expert
+- **Quality over quantity**: 3 vetted experts beats 10 names
 
 ---
 
@@ -57,25 +59,47 @@ Input: $ARGUMENTS
 
 ---
 
-## Phase 3: Cross-Reference and Rank
+## Phase 3: Vet Each Candidate (CRITICAL)
 
-**Goal**: Identify people with strongest expertise signals
+**Goal**: Filter out weak candidates - BE SKEPTICAL
 
-**Actions**:
-1. For each person found, count signals:
-   - Code contributions (weight: high)
-   - Documentation authorship (weight: high)
-   - Meeting participation (weight: medium)
-   - Official role (weight: medium)
+For each person found, evaluate:
 
-2. People with multiple signals rank higher
-3. Note if expert has moved teams but retains knowledge
+**Expertise Evidence Test**
+- Did they do significant work, or just mentioned the topic once?
+- ✅ INCLUDE: Authored RFC, significant code contributions, documented expert
+- ❌ REJECT: Single Slack mention, attended a meeting, tangential involvement
+
+**Recency Test**
+- Are they still working in this area?
+- ✅ INCLUDE: Active in past 6 months
+- ⚠️ CAUTION: Active 6-12 months ago - note as "historical expert"
+- ❌ REJECT: No activity in 12+ months (unless noting as historical context only)
+
+**Role Relevance Test**
+- Are they still in a position to help?
+- ✅ INCLUDE: Still on relevant team, still has context
+- ⚠️ CAUTION: Changed teams but retains knowledge - note this
+- ❌ REJECT: Left company, completely different role now
+
+**Multiple Signals Test**
+- Do multiple sources confirm expertise?
+- 🏆 Strong: Code + docs + discussions (3+ signals)
+- ✅ Good: 2 independent signals
+- ⚠️ Weak: Single signal only - include with caveat
+- ❌ REJECT: No concrete evidence, just keyword matches
+
+**Vetting Table (include in output)**:
+| Name | Evidence Count | Recency | Verdict |
+|------|----------------|---------|---------|
+| [Name] | 3 signals | Active | ✅ Include |
+| [Name] | 1 signal | 18mo ago | ❌ Reject - stale, weak evidence |
 
 ---
 
 ## Phase 4: Generate Expertise Report
 
-**Goal**: Present ranked experts with contact info
+**Goal**: Present ONLY vetted experts with confidence levels
 
 **Actions**:
 Present the report:
@@ -83,40 +107,51 @@ Present the report:
 ```markdown
 # Expert Finder: [Topic]
 
+## Vetting Summary
+| Candidates Found | Passed Vetting | Rejected |
+|------------------|----------------|----------|
+| [X] | [Y] | [Z] |
+
 ## Top Experts
 
 ### 1. [Name] - [Current Role]
+**Confidence**: High / Medium / Low
 **Expertise Signals:**
 - [Signal 1 with evidence]
 - [Signal 2 with evidence]
 
 **Why they're a good fit:** [Specific evidence]
+**Last active:** [When]
 **Contact:** [email/Slack]
 
 ---
 
 ### 2. [Name] - [Current Role]
+**Confidence**: [Level]
 **Expertise Signals:**
 - [Signal 1]
 - [Signal 2]
 
 **Why they're a good fit:** [Specific evidence]
-
----
-
-### 3. [Name] - [Current Role]
-[Same structure]
+**Last active:** [When]
 
 ---
 
 ## Also Consider
 
+### Historical Experts
+People who had expertise but may be less current:
+- **[Name]**: Original architect (now on [other team]) - useful for historical context
+
 ### By Official Role
 - **[Team]**: Officially owns this area
 - **[Person]**: Team lead for [related team]
 
-### Historical Experts
-- **[Name]**: Original architect (now on [other team])
+## Rejected Candidates
+| Name | Reason |
+|------|--------|
+| [Name] | Single Slack mention - insufficient evidence |
+| [Name] | No activity in 18 months |
 
 ## How to Engage
 
@@ -132,6 +167,35 @@ Loop in [Person] - has sign-off authority
 
 ---
 
+## If No Experts Pass Vetting
+
+This is a valid outcome. Present clearly:
+
+```markdown
+# Expert Finder: [Topic]
+
+## No High-Confidence Experts Found
+
+I searched for experts on [topic] but didn't find people with strong evidence of expertise.
+
+**What I searched:**
+- Employee search: [results]
+- Code contributions: [results]
+- Documentation: [results]
+
+**This could mean:**
+- This is a new area without established experts
+- Expertise exists but isn't well-documented
+- Different terminology is used internally
+
+**Suggested next steps:**
+1. Try broader term: [suggestion]
+2. Ask in [related Slack channel]
+3. Check with [related team] leadership
+```
+
+---
+
 ## Troubleshooting
 
 ### Glean MCP Not Connected
@@ -139,14 +203,8 @@ If you see errors about missing `mcp__glean` tools:
 - Run `/glean-core:status` to check connection
 - Run `/glean-core:mcp-setup` to configure
 
-### No Experts Found
-If searches return no results:
-- Try broader topic terms
-- Search for related technologies
-- Check if this is a new area without established experts
-- Suggest reaching out to team leads in adjacent areas
-
-### Topic Still Unclear After Asking
-If clarification doesn't help:
-- Ask for a specific example of what they need help with
-- Suggest breaking down into smaller, more specific topics
+### Too Many Candidates
+If overwhelmed with results:
+- Apply vetting criteria strictly
+- Only include those with 2+ signals
+- Prioritize recency

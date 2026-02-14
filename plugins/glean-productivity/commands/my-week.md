@@ -19,6 +19,8 @@ If the input is empty or literal "$ARGUMENTS", default to "past week" (last 7 da
 
 - **Patterns over lists**: Highlight trends and themes
 - **Accomplishment-focused**: Emphasize what was completed
+- **Be skeptical of significance**: Not every activity is an accomplishment
+- **Quality over quantity**: A focused summary is more useful than exhaustive
 
 ---
 
@@ -66,25 +68,42 @@ If the input is empty or literal "$ARGUMENTS", default to "past week" (last 7 da
 
 ---
 
-## Phase 3: Analyze Patterns
+## Phase 3: Vet & Categorize (CRITICAL)
 
-**Goal**: Identify themes, accomplishments, and collaborations
+**Goal**: Separate accomplishments from routine activity - BE SKEPTICAL
 
-**Actions**:
-1. Spawn `activity-analyzer` agent with gathered data to:
-   - Identify major themes/projects worked on
-   - List key accomplishments with evidence
-   - Map collaboration patterns (who you worked with)
-   - Note recurring topics
-   - Flag items that seem incomplete
+For each item found, evaluate:
 
-2. Compile the analysis results
+**Accomplishment Test**
+- Is this a genuine accomplishment, or just routine activity?
+- ✅ ACCOMPLISHMENT: Completed something, shipped a feature, closed a project, made a decision
+- 📋 PROGRESS: Made progress but not complete
+- 🔄 ROUTINE: Regular activity (attending meetings, reading docs)
+- ❌ OMIT: Trivial activity not worth mentioning
+
+**Significance Test**
+- Would this matter in a status update or 1:1?
+- ✅ INCLUDE: Manager would care, stakeholders should know
+- ⚠️ MAYBE: Context-dependent
+- ❌ OMIT: Routine work that doesn't stand out
+
+**Evidence Test**
+- Can you point to concrete output?
+- ✅ STRONG: Document, commit, decision, shipped feature
+- ⚠️ WEAK: Participated, contributed, discussed
+- ❌ OMIT: No tangible evidence
+
+**Noise Signals - Don't list these as accomplishments**:
+- Attended meetings (unless outcome-focused)
+- Read documents (unless led to action)
+- Participated in discussions (unless you drove decisions)
+- Reviewed things (unless your review was consequential)
 
 ---
 
 ## Phase 4: Generate Weekly Summary
 
-**Goal**: Present a reflective weekly summary
+**Goal**: Present a focused, accomplishment-driven summary
 
 **Actions**:
 Present the summary:
@@ -93,90 +112,77 @@ Present the summary:
 # Weekly Summary: [Date Range]
 
 ## Overview
-[3-4 sentence narrative of what your week looked like - major themes, key accomplishments, collaboration patterns]
+[3-4 sentence narrative - focus on themes and accomplishments, not exhaustive activity]
 
 ## Key Accomplishments
+[Only include genuine completions with evidence]
 
 | # | Accomplishment | Evidence |
 |---|----------------|----------|
-| 1 | [What you completed] | [Doc/commit/meeting link] |
-| 2 | [What you completed] | [Evidence link] |
-| 3 | [What you completed] | [Evidence link] |
+| 1 | [What you completed] | [Link to doc/commit/decision] |
+| 2 | [What you completed] | [Link] |
 
 ## Projects Worked On
 
 ### [Project 1]
-- **Activity Level**: [High/Medium/Low based on touches]
-- **Key Activities**: [What you did]
-- **Status**: [Where it stands]
+- **Status**: [Where it stands after this week]
+- **Key Progress**: [What moved forward - be specific]
+- **Next Steps**: [What's coming]
 
 ### [Project 2]
-- **Activity Level**: [High/Medium/Low]
-- **Key Activities**: [What you did]
 - **Status**: [Where it stands]
+- **Key Progress**: [What moved forward]
+- **Next Steps**: [What's coming]
 
 ## Collaboration Map
 
-### People You Worked With
-| Person | Context | Interaction Type |
-|--------|---------|------------------|
-| [Name] | [Project/Topic] | [Meetings/Reviews/Docs] |
-
-### Teams Engaged
-- **[Team]**: [On what topic]
-
-## Meetings Summary
-
-| Category | Count | Key Outcomes |
-|----------|-------|--------------|
-| 1:1s | [X] | [Summary of themes] |
-| Team meetings | [Y] | [Key decisions] |
-| Cross-functional | [Z] | [Outcomes] |
-
-## Documents
-
-### Created/Updated
-- **[Doc Title]** - [Purpose] ([link])
-
-### Reviewed
-- **[Doc Title]** - [Your input] ([link])
+### Key Collaborators This Week
+| Person | Context | Outcome |
+|--------|---------|---------|
+| [Name] | [Project/Topic] | [What you produced together] |
 
 ## Open Items
 
-### Carry Forward to Next Week
-- [ ] [Item to continue]
-- [ ] [Item to continue]
+### Carry Forward
+- [ ] [Specific unfinished item]
+- [ ] [Specific unfinished item]
 
-### Waiting On Others
-- [ ] [Blocked item] - waiting on [person]
+### Blocked On
+- [ ] [Waiting on X from Y]
 
-## Reflection Prompts
-- **What went well**: [Based on accomplishments and patterns]
-- **What could improve**: [Based on gaps or recurring blockers]
-- **Focus for next week**: [Based on open items and upcoming deadlines]
+## Reflection
+- **What went well**: [Based on accomplishments]
+- **What could improve**: [Based on blockers or gaps]
 ```
 
 ---
 
-## Use Cases
+## If It Was a Quiet/Routine Week
 
-### For Status Updates
-Use the "Key Accomplishments" section directly in standups or status reports.
+Don't inflate accomplishments. Be honest:
 
-### For 1:1 Prep
-Use "Open Items" and "Reflection Prompts" as discussion points with your manager.
+```markdown
+# Weekly Summary: [Date Range]
 
-### For Self-Reflection
-Review patterns in collaborations and project distribution to understand where your time goes.
+## Overview
+Steady-state week focused on [ongoing work]. No major milestones reached, but progress made on [areas].
+
+## Progress Made
+- **[Project]**: Continued [activity] - [X]% complete
+- **[Project]**: [Status]
+
+## Routine Work
+- Attended [X] regular meetings
+- Reviewed [Y] documents
+- Participated in ongoing discussions
+
+## Looking Ahead
+Next week focus: [specific goals]
+```
 
 ---
 
 ## Troubleshooting
-
-### Glean MCP Not Connected
-If you see errors about missing `mcp__glean` tools:
-- Run `/glean-core:status` to check connection
-- Run `/glean-core:mcp-setup` to configure
 
 ### Limited Activity Data
 If activity data is sparse:

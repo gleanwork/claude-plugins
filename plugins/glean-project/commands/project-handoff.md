@@ -21,6 +21,8 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 - **Complete context**: Include everything needed to take over
 - **Actionable items**: Clear next steps and open items
 - **Tribal knowledge**: Capture what's not in docs
+- **Be skeptical**: Not every doc found is relevant to handoff
+- **Quality over quantity**: Focus on what the new owner actually needs
 
 ---
 
@@ -89,9 +91,45 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 ---
 
-## Phase 4: Generate Handoff Document
+## Phase 4: Vet All Content (CRITICAL)
 
-**Goal**: Create comprehensive handoff document
+**Goal**: Filter to what's genuinely needed for handoff - BE SKEPTICAL
+
+For each document found, evaluate:
+
+**Handoff Relevance Test**
+- Does the new owner need this to take over?
+- ✅ ESSENTIAL: Can't succeed without this
+- 📚 REFERENCE: Useful to know where it is
+- ❌ SKIP: Historical, tangential, or too detailed for handoff
+
+**Currency Test**
+- Is this still accurate?
+- ✅ CURRENT: Reflects present state
+- ⚠️ AGING: May not be current - note this
+- ❌ STALE: Misleading - don't include
+
+**Actionability Test**
+- Does this require action from new owner?
+- ✅ ACTION NEEDED: Clear follow-up required
+- 📋 AWARENESS: Should know but no action
+- ❌ FYI: Can discover later if needed
+
+For each person mentioned, evaluate:
+- Are they still relevant to this project?
+- What's the actual relationship (not just they were mentioned once)?
+- Why would the new owner need to know them?
+
+For each open item:
+- Is this actually still open?
+- Is this the new owner's responsibility?
+- What's the real deadline/urgency?
+
+---
+
+## Phase 5: Generate Handoff Document
+
+**Goal**: Create comprehensive, vetted handoff document
 
 **Actions**:
 Present the handoff document:
@@ -102,6 +140,16 @@ Present the handoff document:
 **Prepared by**: [Current owner]
 **Date**: [Today's date]
 **Reason for handoff**: [From Phase 1]
+
+---
+
+## Content Quality
+
+| Category | Items Found | Included | Reason for Filtering |
+|----------|-------------|----------|----------------------|
+| Documents | [X] | [Y] | [Z] historical/tangential |
+| People | [X] | [Y] | [Z] no longer relevant |
+| Open Items | [X] | [Y] | [Z] already resolved |
 
 ---
 
@@ -127,30 +175,23 @@ Present the handoff document:
 | **% Complete** | [Estimate] |
 | **Target Date** | [Date] |
 
-### Success Metrics
-- [Metric 1]: [Current vs target]
-- [Metric 2]: [Current vs target]
-
 ---
 
-## People & Relationships
+## People & Relationships (Vetted)
 
-### Your Role
-[What the new owner is responsible for]
-
-### Key Contacts
-
-| Person | Role | Relationship | How to Engage |
-|--------|------|--------------|---------------|
-| [Name] | [Role] | [Critical/Important/FYI] | [Best way to work with them] |
+### Key Contacts (must maintain these relationships)
+| Person | Role | Relationship | How to Engage | Why Critical |
+|--------|------|--------------|---------------|--------------|
+| [Name] | [Role] | [Critical/Important] | [Best approach] | [Specific reason] |
 
 ### Stakeholders to Keep Updated
 - [Name/Group] - [What they care about] - [How often]
 
-### Team Members
-| Name | Responsibility | Notes |
-|------|----------------|-------|
-| [Name] | [Area] | [Working style, strengths] |
+### Not Included
+| Person | Reason |
+|--------|--------|
+| [Name] | Historical involvement only |
+| [Name] | Left project |
 
 ---
 
@@ -159,10 +200,10 @@ Present the handoff document:
 ### The #1 Thing to Know
 [Critical context from current owner - from Phase 2]
 
-### Key Decisions Made
-| Decision | When | Why | Who to Ask |
-|----------|------|-----|------------|
-| [Decision] | [Date] | [Rationale] | [Person] |
+### Key Decisions Made (that still matter)
+| Decision | When | Why | Implications |
+|----------|------|-----|--------------|
+| [Decision] | [Date] | [Rationale] | [What this means for new owner] |
 
 ### Risks & Gotchas
 | Risk | Likelihood | Impact | Mitigation |
@@ -174,36 +215,44 @@ Present the handoff document:
 
 ---
 
-## Documentation Guide
+## Documentation Guide (Vetted)
 
 ### Must-Read Docs (in order)
-1. **[Doc Title]** ([link]) - [Why it's essential] - ~[X] min read
-2. **[Doc Title]** ([link]) - [Why] - ~[X] min read
-3. **[Doc Title]** ([link]) - [Why] - ~[X] min read
+Essential for taking over:
 
-### Reference Docs
-- [Doc Title] - [When you'd need this]
+1. **[Doc Title]** ([link])
+   - **Why essential**: [Specific reason]
+   - **Read time**: ~[X] min
+   - **Last updated**: [date] ✅
+
+2. **[Doc Title]** ([link])
+   - **Why essential**: [Reason]
+   - **Read time**: ~[X] min
+
+### Reference When Needed
+Know where these are but don't read upfront:
+- **[Doc Title]** - [When you'd need it]
+
+### Skipped Documents
+| Doc | Reason |
+|-----|--------|
+| [Title] | Historical - superseded by [other doc] |
+| [Title] | Too detailed for handoff - explore later if needed |
 
 ### Where Things Live
 | Resource | Location | Access Needed |
 |----------|----------|---------------|
 | [Code] | [Repo link] | [Permissions] |
 | [Docs] | [Folder link] | [Permissions] |
-| [Tracking] | [Jira/Asana link] | [Permissions] |
 
 ---
 
-## Open Items
+## Open Items (Vetted)
 
 ### Immediate (Next 2 Weeks)
-| Item | Status | Owner | Deadline | Notes |
-|------|--------|-------|----------|-------|
-| [Item] | [Status] | [Transfer to new owner] | [Date] | [Context] |
-
-### Upcoming (Next Month)
-| Item | Status | Dependencies |
-|------|--------|--------------|
-| [Item] | [Status] | [What it depends on] |
+| Item | Status | Deadline | What To Do | Notes |
+|------|--------|----------|------------|-------|
+| [Item] | [Status] | [Date] | [Specific action] | [Context] |
 
 ### Pending Decisions
 | Decision | Options | Who Decides | Deadline |
@@ -211,9 +260,15 @@ Present the handoff document:
 | [Decision] | [A, B, C] | [Person] | [Date] |
 
 ### Blockers
-| Blocker | Impact | Who Can Unblock | Action Needed |
-|---------|--------|-----------------|---------------|
-| [Blocker] | [Impact] | [Person] | [What to do] |
+| Blocker | Impact | Who Can Unblock |
+|---------|--------|-----------------|
+| [Blocker] | [Impact] | [Person] |
+
+### Filtered Out
+| Item | Reason |
+|------|--------|
+| [Item] | Already resolved |
+| [Item] | Not new owner's responsibility |
 
 ---
 
@@ -232,7 +287,6 @@ Present the handoff document:
 ### Access & Permissions Needed
 - [ ] [System/tool] - request from [person/team]
 - [ ] [Slack channel] - [how to join]
-- [ ] [Repository] - [how to get access]
 
 ---
 
@@ -240,19 +294,16 @@ Present the handoff document:
 
 ### Week 1: Orientation
 - [ ] Read essential docs (above)
-- [ ] Meet with [key person 1] to discuss [topic]
+- [ ] Meet with [key contact 1]
 - [ ] Get access to [systems]
-- [ ] Attend [meeting] as observer
 
 ### Week 2: Immersion
-- [ ] Meet with [key person 2]
-- [ ] Review [current work items]
-- [ ] Shadow [recurring process]
+- [ ] Take ownership of [first item]
+- [ ] Attend [key meeting]
 
 ### Week 3-4: Transition
-- [ ] Take over [responsibility 1]
+- [ ] Lead [responsibility]
 - [ ] Make decision on [pending item]
-- [ ] Lead [meeting/process]
 
 ---
 
@@ -273,16 +324,11 @@ After that, contact [backup person] for ongoing questions.
 
 ## Troubleshooting
 
-### Glean MCP Not Connected
-If you see errors about missing `mcp__glean` tools:
-- Run `/glean-core:status` to check connection
-- Run `/glean-core:mcp-setup` to configure
-
 ### Incomplete Information
 If project information is sparse:
 - Focus more on the tribal knowledge questions in Phase 2
 - Note gaps clearly in the handoff doc
-- Suggest the owner fill in missing sections manually
+- Don't pad with marginally relevant docs
 
 ### Owner Unavailable for Questions
 If the current owner can't provide context:

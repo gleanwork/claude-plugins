@@ -23,6 +23,8 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Breadth before depth**: Find all relevant pieces before diving deep
 - **Docs + code**: Both tell important parts of the story
+- **Be skeptical**: Not every search result is relevant context
+- **Freshness matters**: Stale docs can mislead
 
 ---
 
@@ -63,70 +65,141 @@ code_search "$ARGUMENTS owner:* updated:past_month"
 
 Cross-reference with `employee_search` for contact info.
 
-### Phase 4: Generate Context Report
+### Phase 4: Vet All Content (CRITICAL)
+
+**Goal**: Filter to genuinely useful context - BE SKEPTICAL
+
+For each piece of content, evaluate:
+
+**Relevance Test**
+- Is this actually about the target system?
+- ✅ INCLUDE: Core component, directly relevant
+- ⚠️ RELATED: Mentions the system but not central
+- ❌ REJECT: Keyword coincidence, different system
+
+**Currency Test**
+- Is this information still accurate?
+- ✅ CURRENT: Updated in past 6 months, matches code
+- ⚠️ AGING: 6-12 months old - note with caution
+- ❌ STALE: 12+ months old with no activity - likely outdated
+
+**Authority Test**
+- Is this authoritative information?
+- ✅ OFFICIAL: Approved RFC, design doc, official runbook
+- ⚠️ INFORMAL: Team wiki, notes, drafts
+- ❌ REJECT: Outdated proposals, rejected RFCs, abandoned work
+
+**Doc vs Code Consistency**
+- Do docs match current implementation?
+- ✅ CONSISTENT: Docs reflect current state
+- ⚠️ DIVERGED: Note discrepancy, prefer code as source of truth
+- ❌ MISLEADING: Doc significantly wrong - warn user
+
+**Repository Health Test**
+For each repository:
+- ✅ ACTIVE: Commits in past month
+- ⚠️ SLOWING: Last commit 1-6 months ago
+- ❌ STALE: No commits in 6+ months - note this clearly
+
+### Phase 5: Generate Vetted Context Report
 
 **Actions**:
-Present findings in this format:
+Present vetted findings:
 
 ```markdown
 # Codebase Context: [System Name]
 
+## Freshness Check
+| Component | Last Updated | Status |
+|-----------|--------------|--------|
+| Main repo | [date] | Active / Slowing / Stale |
+| Design doc | [date] | Current / Aging / Outdated |
+
 ## Overview
-[1-2 paragraph summary synthesized from design docs]
+[1-2 paragraph summary synthesized from CURRENT docs - note age of sources]
 
 ## Key Repositories
-| Repository | Purpose | Status |
-|------------|---------|--------|
-| [repo] | [what it does] | Active / Stale |
+| Repository | Purpose | Last Active | Status |
+|------------|---------|-------------|--------|
+| [repo] | [what it does] | [date] | Active / Stale |
 
 ## Architecture Highlights
-- **API Layer**: [description]
+[Only include if from recent/authoritative sources]
+- **API Layer**: [description] (source: [doc], updated [date])
 - **Data Model**: [description]
 - **Key Dependencies**: [list]
 
-## Documentation
-- **Design Doc**: [link] - [summary]
-- **RFC**: [link] - [summary]
-- **Runbook**: [link] - [summary]
+## Documentation (Vetted)
+[Only include docs that are still relevant]
 
-## Key Contributors (Past 3 Months)
-| Name | Role | Contact |
-|------|------|---------|
-| [Name] | [Title] | [email] |
+### Current & Authoritative
+| Doc | Type | Updated | Summary |
+|-----|------|---------|---------|
+| [Title] | RFC | [date] | [summary] |
+
+### Use With Caution (Aging)
+| Doc | Type | Updated | Caveat |
+|-----|------|---------|--------|
+| [Title] | Design doc | [date] | May not reflect current implementation |
+
+## Key Contributors
+| Name | Role | Last Active | Contact |
+|------|------|-------------|---------|
+| [Name] | [Title] | [date] | [email] |
 
 ## Related Systems
 - **Upstream**: [systems that call this one]
 - **Downstream**: [systems this one calls]
 
 ## Getting Started
-- [Key files to read first]
-- [Local setup notes if found]
+[Key files to read first - prioritize by relevance and currency]
+
+## Warnings
+[Any concerns about the system's state]
+- [ ] Documentation appears outdated - verify with team
+- [ ] Repository hasn't been updated in [X] months
+- [ ] Multiple docs conflict - check with [owner]
 ```
 
-## Tips
+---
 
-- If the system has multiple components, break them down separately
-- Note any discrepancies between docs and implementation
-- Highlight if the codebase appears unmaintained (no recent commits)
-- Suggest the user read specific files for deeper understanding
+## If Limited Context Found
+
+Don't pad with irrelevant results:
+
+```markdown
+# Codebase Context: [System Name]
+
+## Limited Context Available
+
+I found limited authoritative information about this system.
+
+**What I found:**
+- Code: [summary]
+- Docs: [summary - may be outdated]
+
+**Gaps:**
+- No recent design documentation
+- No clear architectural overview
+
+**Suggested next steps:**
+1. Check with [suggested team/person]
+2. Look for [related system] docs that may reference this
+3. Explore the code directly: [suggested entry points]
+```
 
 ---
 
 ## Troubleshooting
 
-### Glean MCP Not Connected
-If you see errors about missing `mcp__glean` tools:
-- Run `/glean-core:status` to check connection
-- Run `/glean-core:mcp-setup` to configure
-
 ### No Results Found
 If searches return no results:
 - Try alternative system names or acronyms
-- Search for related technologies or frameworks
-- Check if the system might be in a private repo with restricted access
+- Search for related technologies
+- Check if the system might be in a private repo
 
 ### Conflicting Information
 If docs and code don't match:
-- Note the discrepancy clearly in the report
+- Note the discrepancy clearly
 - Prefer code as source of truth for current state
 - Reference doc dates to identify which might be outdated

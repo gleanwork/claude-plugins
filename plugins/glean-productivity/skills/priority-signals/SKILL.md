@@ -21,6 +21,29 @@ Use this approach when users ask:
 - "What's critical right now?"
 - "Help me prioritize"
 
+## BE SKEPTICAL
+
+Not every item found is truly urgent. Before including results, evaluate:
+
+**Urgency Validity Test**
+- Is this genuinely urgent, or just recent/noisy?
+- ✅ URGENT: Explicit deadline, blocking others, explicitly marked urgent
+- ⚠️ IMPORTANT: Should address but not time-critical
+- ❌ NOISE: Just new, not actually urgent
+
+**Relevance Test**
+- Is this the user's responsibility?
+- ✅ INCLUDE: Directly assigned, explicitly mentioned
+- ❌ EXCLUDE: Just CC'd, tangentially related
+
+**Filter Out**:
+- Mass announcements
+- CC'd threads where they're not primary audience
+- "Urgent" labels on non-urgent items (urgency inflation)
+- Old items that were urgent but are now resolved
+
+**Quality over noise**: Better to report "nothing urgent" than overwhelm with false positives.
+
 ## Priority Signal Sources
 
 | Signal Type | Glean Tool | What to Look For |
@@ -50,11 +73,11 @@ search query="[user name] question OR asking" updated="past_week"
 
 ## Priority Tiers
 
-When presenting results, categorize by urgency:
+When presenting results, categorize by urgency (ONLY after vetting):
 
 **Tier 1: Immediate (Today)**
 - Explicit deadlines today
-- Items marked urgent/ASAP
+- Items marked urgent/ASAP with evidence it's genuine
 - Blockers on others
 
 **Tier 2: Soon (This Week)**
@@ -72,18 +95,42 @@ When presenting results, categorize by urgency:
 ```markdown
 ## Priority Triage
 
+### Vetting Summary
+| Found | Genuinely Urgent | Filtered Out |
+|-------|------------------|--------------|
+| [X] | [Y] | [Z - not actually urgent] |
+
 ### Immediate Attention
 | Item | Source | Why Urgent |
 |------|--------|------------|
-| [Item] | [Source] | [Reason] |
+| [Item] | [Source] | [Specific reason - deadline/blocker] |
 
 ### This Week
 | Item | Source | Deadline |
 |------|--------|----------|
 | [Item] | [Source] | [Date if known] |
 
-### On Your Radar
-- [Item] - [Context]
+### Filtered (Not Actually Urgent)
+- [Item] - [Why filtered: CC'd only / already resolved / etc.]
+```
+
+## If Nothing Is Urgent
+
+This is a valid and valuable answer:
+
+```markdown
+## Priority Triage
+
+### No Urgent Items Found
+
+Searched [X] sources and found no items requiring immediate attention.
+
+**What was checked:**
+- Direct mentions: None requiring action
+- Meeting action items: All current
+- Blocking requests: None found
+
+**Suggestion**: This might be a good time for [deep work / planning / etc.]
 ```
 
 ## Relationship to Commands

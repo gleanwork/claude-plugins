@@ -21,6 +21,36 @@ Use this approach when users ask:
 - "Who reports to [manager]?"
 - "Find someone who knows about [technology]"
 
+## BE SKEPTICAL
+
+Not everyone who appears in search results is a good recommendation.
+
+**Expertise Evidence Test**
+- Is there real evidence of expertise?
+- ✅ STRONG: Multiple signals (code + docs + involvement)
+- ⚠️ MODERATE: Single signal but significant
+- ❌ WEAK: Just mentioned once, attended a meeting
+
+**Recency Test**
+- Are they actively involved?
+- ✅ ACTIVE: Activity in past 6 months
+- ⚠️ HISTORICAL: 6-12 months ago
+- ❌ STALE: 12+ months - likely outdated
+
+**Availability Test**
+- Are they still in a relevant position?
+- ✅ CURRENT: Same team/role
+- ⚠️ MOVED: Changed teams but retains knowledge
+- ❌ GONE: Left company or completely different role
+
+**Filter Out**:
+- Single mentions without other evidence
+- People who just attended meetings on a topic
+- Former employees
+- People whose involvement is tangential
+
+**Quality over quantity**: Better to recommend 2 right people than 10 weak matches.
+
 ## Tool Selection
 
 | User Intent | Glean Tool |
@@ -66,7 +96,24 @@ For "who actually knows about X" questions, combine signals:
 2. **Code activity**: `code_search "[topic] owner:\"name\""`
 3. **Doc authorship**: `search "[topic] RFC owner:\"name\""`
 
-People with multiple signals are true experts.
+**People with multiple signals are true experts.** Single-signal matches should be noted with lower confidence.
+
+## If No Good Matches Found
+
+Don't pad with weak recommendations:
+
+```markdown
+No strong expertise matches found for [topic].
+
+**What was checked:**
+- Employee search: [results]
+- Code contributions: [results]
+- Doc authorship: [results]
+
+**Suggestions:**
+- Ask in [relevant channel]
+- Check with [related team] leadership
+```
 
 ## Relationship to Commands
 

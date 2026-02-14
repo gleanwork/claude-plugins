@@ -20,6 +20,8 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Quality over quantity**: Don't list everyone tangentially related
 - **Distinguish roles**: Approvers vs consultants vs FYI recipients
+- **Be skeptical**: Just because someone's name appears doesn't make them a stakeholder
+- **Fewer is better**: A focused list is more useful than a comprehensive one
 
 ---
 
@@ -61,9 +63,44 @@ Input: $ARGUMENTS
 
 ---
 
-## Phase 3: Generate Stakeholder Map
+## Phase 3: Vet Each Stakeholder (CRITICAL)
 
-**Goal**: Present organized stakeholder list with engagement plan
+**Goal**: Filter to people who genuinely need to be involved - BE SKEPTICAL
+
+For each person found, evaluate:
+
+**Direct Impact Test**
+- Will this change directly affect their work or systems?
+- ✅ INCLUDE: Owns affected code, manages affected team, depends on affected system
+- ❌ REJECT: Works in same general area but different systems, mentioned topic once
+
+**Decision Authority Test**
+- Do they need to approve, or just be informed?
+- 🔴 Approver: Has explicit sign-off authority
+- 🟡 Consultant: Has relevant expertise, should be consulted
+- 🟢 FYI: Should know, but no action required from them
+- ❌ REJECT: No clear reason to involve them
+
+**Current Relevance Test**
+- Are they still in a relevant position?
+- ✅ INCLUDE: Currently owns area, actively maintains system
+- ⚠️ CAUTION: Recently changed roles - confirm still relevant
+- ❌ REJECT: Former owner who's moved on, historical involvement only
+
+**Evidence Threshold**
+- Is there concrete evidence they're a stakeholder?
+- ✅ INCLUDE: Named in CODEOWNERS, documented owner, explicit dependency
+- ⚠️ CAUTION: Mentioned in related docs - verify relevance
+- ❌ REJECT: Just keyword matches, tangential involvement
+
+**Ask yourself**: "If I didn't include this person, what would go wrong?"
+- If the answer is "nothing" or "probably fine" → REJECT
+
+---
+
+## Phase 4: Generate Stakeholder Map
+
+**Goal**: Present organized, vetted stakeholder list
 
 **Actions**:
 Present the stakeholder map:
@@ -74,33 +111,35 @@ Present the stakeholder map:
 ## Summary
 [Brief description of the change and why stakeholders matter]
 
-## Decision Makers
+## Vetting Summary
+| Candidates Found | Included | Rejected |
+|------------------|----------|----------|
+| [X] | [Y] | [Z] |
+
+## Decision Makers (Must Approve)
 People who need to approve:
-| Name | Role | Why They Approve |
-|------|------|------------------|
-| [Name] | [Role] | [Reason] |
+| Name | Role | Why They Approve | Evidence |
+|------|------|------------------|----------|
+| [Name] | [Role] | [Reason] | [Source] |
 
-## Technical Owners
+## Technical Owners (Must Consult)
 People who own affected code/systems:
-| Name | Ownership | Recent Activity |
-|------|-----------|-----------------|
-| [Name] | [What they own] | [Activity] |
+| Name | Ownership | Last Active | Evidence |
+|------|-----------|-------------|----------|
+| [Name] | [What they own] | [When] | [CODEOWNERS/commits] |
 
-## Subject Matter Experts
-People with deep knowledge:
-| Name | Expertise | Contact |
-|------|-----------|---------|
-| [Name] | [Area] | [How to reach] |
-
-## Downstream Teams
+## Downstream Teams (Must Inform)
 Teams affected by this change:
-| Team/Person | Impact |
-|-------------|--------|
-| [Team] | [How affected] |
+| Team/Person | Impact | Evidence |
+|-------------|--------|----------|
+| [Team] | [How affected] | [Integration/dependency doc] |
 
-## Informed Parties
-People who should know but don't need to approve:
-- [Name] - [Why they should know]
+## Rejected Candidates
+| Name | Reason |
+|------|--------|
+| [Name] | Tangential involvement - no direct impact |
+| [Name] | Former owner, no longer relevant |
+| [Name] | Just mentioned topic, not a stakeholder |
 
 ## Recommended Engagement Order
 
@@ -108,12 +147,37 @@ People who should know but don't need to approve:
 1. Talk to [key person] about [specific question]
 2. Review with [technical owner]
 
-### Phase 2: Broader Review
-3. Share proposal with [team]
-4. Get sign-off from [decision maker]
+### Phase 2: Approval
+3. Get sign-off from [decision maker]
 
 ### Phase 3: Communicate
-5. Inform [downstream teams]
+4. Inform [downstream teams]
+```
+
+---
+
+## If Few/No Stakeholders Found
+
+This is valid - small changes may have few stakeholders:
+
+```markdown
+# Stakeholder Map: [Change/Project]
+
+## Minimal Stakeholders Identified
+
+This change appears to have limited stakeholder impact.
+
+**Confirmed Stakeholders:**
+- [Name]: [Role/reason]
+
+**Why the list is small:**
+- Change is contained to [specific area]
+- No downstream dependencies found
+- Single team ownership
+
+**Verify this is correct:**
+- Check with [team lead] that no dependencies were missed
+- Confirm [system] doesn't have undocumented consumers
 ```
 
 ---
@@ -125,14 +189,8 @@ If you see errors about missing `mcp__glean` tools:
 - Run `/glean-core:status` to check connection
 - Run `/glean-core:mcp-setup` to configure
 
-### No Stakeholders Found
-If searches return no results:
-- Try searching for the affected systems directly
-- Look for recent RFCs or design docs in the area
-- Check org charts for team leads in related areas
-
 ### Too Many Stakeholders
 If too many people appear relevant:
-- Prioritize by direct ownership vs tangential involvement
-- Categorize into "must consult" vs "inform only"
-- Focus on decision makers and direct code owners first
+- Apply vetting criteria strictly
+- Ask: "What breaks if I don't include them?"
+- Only include people with concrete evidence of stake

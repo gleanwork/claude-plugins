@@ -21,6 +21,36 @@ Use Glean code search when users ask about:
 - Examples of how to use an internal API/library
 - Code patterns used by other teams
 
+## BE SKEPTICAL
+
+Not every code result is worth presenting.
+
+**Quality Test**
+- Is this good code to reference?
+- ✅ GOOD: Clean, tested, actively maintained
+- ⚠️ ACCEPTABLE: Works but has caveats
+- ❌ POOR: Hacky, deprecated, abandoned
+
+**Recency Test**
+- Is this code maintained?
+- ✅ ACTIVE: Commits in past 3 months
+- ⚠️ SLOWING: 3-12 months since last commit
+- ❌ STALE: 12+ months - likely outdated patterns
+
+**Relevance Test**
+- Does this actually answer the question?
+- ✅ RELEVANT: Directly addresses what was asked
+- ⚠️ RELATED: Similar but different context
+- ❌ TANGENTIAL: Keyword match only
+
+**Filter Out**:
+- Code in `/deprecated/`, `/old/`, `/legacy/` paths
+- Abandoned repositories
+- Prototype/experimental code
+- Code with extensive TODO/FIXME comments
+
+**Quality over quantity**: 3 good examples beat 10 mediocre ones.
+
 ## Key Differentiator
 
 **Local tools (grep, glob) search only the current repo.** Glean searches across ALL repositories in the organization. This is powerful for:
@@ -60,16 +90,29 @@ code_search "*.proto user service"
 ## Workflow: Exploring a System
 
 1. **Find the code**: `code_search "[system name]"`
-2. **Find the docs**: `search "[system name] design doc OR architecture"`
-3. **Find the people**: `code_search "owner:* [system] updated:past_month"`
-4. **Read details**: `read_document` with URLs from results
+2. **Vet results**: Filter for quality and recency
+3. **Find the docs**: `search "[system name] design doc OR architecture"`
+4. **Find the people**: `code_search "owner:* [system] updated:past_month"`
+5. **Read details**: `read_document` with URLs from vetted results
 
-## Combining with Local Codebase
+## If No Good Code Found
 
-For comprehensive exploration:
-1. Use Glean `code_search` to find related implementations across the org
-2. Use local `Grep` and `Glob` to examine the current repository
-3. Synthesize patterns and differences
+Don't pad with weak results:
+
+```markdown
+No high-quality code examples found for [topic].
+
+**What was searched:**
+- [Queries attempted]
+
+**What was filtered:**
+- [X] matches - [reasons: outdated/poor quality]
+
+**Suggestions:**
+- Check external libraries
+- Ask in [relevant channel]
+- This may need to be built from scratch
+```
 
 ## Relationship to Commands
 

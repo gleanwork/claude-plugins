@@ -16,6 +16,14 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 ---
 
+## Core Principles
+
+- **Relevance over completeness**: Show the best results, not all results
+- **Be skeptical**: Not every keyword match is relevant
+- **Context matters**: Include enough info to assess relevance
+
+---
+
 ## Search Process
 
 ### 1. Execute Search
@@ -24,21 +32,71 @@ Use the Glean search tool with the provided query:
 - Search for: `$ARGUMENTS`
 - Return the most relevant results
 
-### 2. Present Results
+### 2. Assess Results
 
-For each result, show:
+For each result, quickly evaluate:
+
+**Relevance**:
+- ✅ RELEVANT: Actually about the query topic
+- ❌ SKIP: Keyword coincidence, different context
+
+**Currency**:
+- ✅ CURRENT: Recent update
+- ⚠️ OLD: May be outdated
+
+Only show results that pass relevance check. If old, note it.
+
+### 3. Present Vetted Results
+
+For each included result, show:
 - **Title** (as a clickable link if URL available)
 - **Source** (app/datasource)
+- **Last updated** (with freshness indicator: ✅ <6mo, ⚠️ 6-12mo, ❌ >12mo)
 - **Snippet** (relevant excerpt)
-- **Last updated** (if available)
+- **Relevance note** (why this matches)
 
-### 3. Offer Follow-up Actions
+### 4. Note Quality
+
+After results, include:
+- How many results were found vs shown
+- Any concerns about result quality
+- Suggestions if results seem limited
+
+### 5. Offer Follow-up Actions
 
 After showing results, use `AskUserQuestion` to offer next steps:
 - "What would you like to do next?" (Options: Read a document, Refine search, Search related topic, Done)
 
 If refining, ask about filters:
 - "How would you like to refine?" (Options: By date, By owner, By app/source, Different keywords)
+
+---
+
+## Example Output
+
+```markdown
+## Search Results: [query]
+
+Found [X] results, showing top [Y] most relevant:
+
+### 1. [Title] ✅
+**Source**: Confluence | **Updated**: 2 weeks ago ✅
+> [Relevant snippet...]
+
+**Why relevant**: [Brief note on why this matches]
+
+### 2. [Title] ⚠️
+**Source**: Slack | **Updated**: 8 months ago ⚠️
+> [Relevant snippet...]
+
+**Why relevant**: [Note] | **Caveat**: May be outdated
+
+---
+
+**Quality note**: [X] results filtered out (keyword matches in different context)
+
+**If these don't help**: Try [alternative search suggestion]
+```
 
 ---
 
@@ -57,6 +115,6 @@ If search returns no results:
 
 ### Too Many Results
 If too many results appear:
+- Apply stricter relevance filtering
 - Suggest adding filters (owner, date range, app)
-- Ask user to provide more specific terms
-- Sort by recency if looking for latest information
+- Focus on most recent and most relevant

@@ -21,6 +21,41 @@ Use this approach when users ask:
 - "Who's working on [project]?"
 - Quick project context questions
 
+## BE SKEPTICAL
+
+Not all project info is current or reliable. Before presenting information, evaluate:
+
+**Currency Test**
+- Is this information fresh?
+- ✅ INCLUDE: Updated in last 2 weeks
+- ⚠️ CONTEXT: Last 2-4 weeks (note it's aging)
+- ❌ EXCLUDE: Older than 1 month (status likely stale)
+
+**Authority Test**
+- Is this from an official source?
+- ✅ INCLUDE: From project lead, official docs, tracking systems
+- ⚠️ CONTEXT: From team members (secondary source)
+- ❌ EXCLUDE: Informal mentions, dated secondhand reports
+
+**Ownership Test**
+- Is the current owner clear?
+- ✅ INCLUDE: Explicitly assigned owner in system
+- ⚠️ CONTEXT: Appears to be owner but not confirmed
+- ❌ EXCLUDE: Unknown or orphaned projects
+
+**Cross-Reference Check**
+- Do sources agree?
+- ✅ INCLUDE: Multiple sources confirm status
+- ⚠️ CONTEXT: Single source, note confidence level
+- ❌ EXCLUDE: Conflicting information (needs clarification)
+
+**Filter Out**:
+- Projects that appear abandoned (no activity for >3 months)
+- Status without context (just "active" is meaningless)
+- Owner info you cannot confirm
+
+**If unsure**: Mark as "Status Unknown - Recommend checking with [owner]"
+
 ## Primary Approach
 
 For quick context, use Glean chat:

@@ -19,6 +19,8 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Actionable prep**: Focus on what they need to know, not exhaustive history
 - **Scannable output**: Busy people need quick context
+- **Be skeptical of relevance**: Not everything from past meetings matters
+- **Quality over completeness**: 5 good talking points beats 20 random ones
 
 ---
 
@@ -74,9 +76,44 @@ Input: $ARGUMENTS
 
 ---
 
-## Phase 4: Generate Prep Document
+## Phase 4: Vet Content (CRITICAL)
 
-**Goal**: Create actionable meeting prep
+**Goal**: Filter to what's actually useful for prep - BE SKEPTICAL
+
+For each piece of context, evaluate:
+
+**Relevance to THIS Meeting Test**
+- Will this actually come up in this meeting?
+- ✅ INCLUDE: Directly relates to likely agenda items
+- ⚠️ MAYBE: Tangentially related
+- ❌ OMIT: Historical but not relevant to upcoming discussion
+
+**Actionability Test**
+- Can they DO something with this info?
+- ✅ INCLUDE: Leads to a question, decision point, or prep action
+- ❌ OMIT: Just background noise
+
+**Recency Test**
+- Is this still current?
+- ✅ INCLUDE: Recent and still relevant
+- ⚠️ CAUTION: Old - verify if still applicable
+- ❌ OMIT: Superseded or resolved
+
+**Open Items Test**
+- Is this action item actually still open?
+- ✅ INCLUDE: Clearly still pending
+- ⚠️ VERIFY: May have been completed
+- ❌ OMIT: Likely completed or no longer relevant
+
+**For Attendee Info**:
+- Only include if the user is unfamiliar with them
+- Focus on relevant context, not full bio
+
+---
+
+## Phase 5: Generate Prep Document
+
+**Goal**: Create focused, actionable meeting prep
 
 **Actions**:
 Present the prep doc:
@@ -89,46 +126,78 @@ Present the prep doc:
 - **Attendees**: [list]
 - **Recurring**: [Yes/No, frequency]
 
-## Context from Past Meetings
+## Key Context (vetted for relevance)
 
-### Recent Decisions
-- [Decision] - [date]
+### Open Action Items Still Pending
+[Only items that are genuinely still open]
+- [ ] [Action] - assigned to [person] - [status if known]
 
-### Open Action Items
-- [ ] [Action] - assigned to [person]
+### Recent Decisions to Reference
+[Only if likely to come up]
+- [Decision] - [date] - [why it matters for this meeting]
 
 ### Recurring Topics
-- [Topic that comes up regularly]
+[Only if there's a pattern worth noting]
+- [Topic that comes up regularly and likely will again]
 
-## Relevant Updates
-- **[Document]**: [what changed or why it matters]
+## Relevant Documents
+[Only documents they should actually review]
+| Document | Why It Matters | Quick Summary |
+|----------|----------------|---------------|
+| [Title] | [Relevance to meeting] | [1-2 sentences] |
 
 ## Attendee Notes
-- **[Person]**: [relevant context]
+[Only for unfamiliar attendees]
+- **[Person]**: [relevant context for this meeting]
 
 ## Suggested Talking Points
-1. Follow up on [open item]
-2. Discuss [recent update]
-3. Address [unresolved question]
+[Prioritized list - what should they definitely bring up]
+1. [Most important topic/question]
+2. [Second priority]
+3. [Third priority]
+
+## Questions to Consider
+- [Question they might want to ask]
+- [Question they should be prepared to answer]
+```
+
+---
+
+## If First Meeting / No History
+
+Don't pad with irrelevant context:
+
+```markdown
+# Meeting Prep: [Meeting Name]
+
+## Meeting Details
+- **When**: [date/time]
+- **Attendees**: [list]
+- **First Instance**: Yes - no meeting history available
+
+## Attendee Context
+[Brief relevant info about attendees]
+
+## Related Documents
+[Relevant documents if any were found]
+
+## Suggested Approach
+Since this is the first instance:
+1. [Goal-setting suggestion]
+2. [Agenda clarification suggestion]
 ```
 
 ---
 
 ## Troubleshooting
 
-### Glean MCP Not Connected
-If you see errors about missing `mcp__glean` tools:
-- Run `/glean-core:status` to check connection
-- Run `/glean-core:mcp-setup` to configure
-
 ### Meeting Not Found
 If the meeting can't be found:
-- Ask user to provide more specific details (exact title, attendee names)
-- Check if this is a new/first-time meeting with no history
+- Ask user to provide more specific details
+- Check if this is a new/first-time meeting
 - Offer to prepare based on the topic alone
 
 ### No Past Meetings
-If this is a new recurring meeting or first instance:
+If this is a first instance:
 - Focus on attendee context and relevant documents
-- Note that there's no meeting history to reference
-- Suggest the user share their agenda for better prep
+- Don't apologize - just pivot to useful info

@@ -17,7 +17,63 @@ Use these patterns when:
 - Multiple sources have conflicting information
 - You're making inferences beyond what sources explicitly state
 
-## Confidence Dimensions
+---
+
+## Part 1: Vetting & Filtering (Before Presenting)
+
+**Be skeptical.** Not everything Glean returns should be presented. Better to return 3 high-quality results than 10 unvetted mentions.
+
+### Vetting Criteria
+
+Before including ANY result, evaluate:
+
+**1. Relevance Test**
+- Does this actually answer the question, or just contain matching keywords?
+- Is this about the same thing or just similar terminology?
+- ❌ REJECT: Tangential mentions, keyword coincidences, unrelated contexts
+
+**2. Authority Test**
+- 📗 **Official**: RFCs, approved specs, policies, CODEOWNERS → Include
+- 📙 **Semi-official**: Team wikis, project docs → Include with note
+- 📕 **Informal**: Slack discussions, drafts, personal notes → Include only if no official sources exist
+- ❌ REJECT: Clearly superseded or deprecated content
+
+**3. Recency Test**
+- ✅ **Current** (<3 months): Include with confidence
+- ⚠️ **Aging** (3-12 months): Include with staleness warning
+- ❌ **Stale** (12+ months): Only include if no alternatives, with strong warning
+- Ask: "Would this still be true today?"
+
+**4. Expertise Test (for people recommendations)**
+- Did they actually do significant work, or just mentioned it once?
+- Are they still in a relevant role?
+- Do multiple signals confirm expertise?
+- ❌ REJECT: Single mentions, departed employees, outdated ownership
+
+### "Nothing Found" Is Valid
+
+If vetting eliminates all candidates, say so clearly:
+
+```markdown
+No high-quality results found for [topic].
+
+**This could mean:**
+- The topic is new or undocumented
+- Different terminology is used internally
+- Access restrictions limit visibility
+- This genuinely doesn't exist
+
+**Suggested next steps:**
+- Try alternative terms: [suggestions]
+- Ask in [relevant Slack channel]
+- Check with [likely team]
+```
+
+Never pad results with low-quality matches to avoid saying "nothing found."
+
+---
+
+## Part 2: Confidence Dimensions (When Presenting)
 
 ### 1. Freshness
 
@@ -88,6 +144,8 @@ Do multiple sources agree?
 - "Single source - recommend verification"
 - "Note: Sources conflict on this point..."
 
+---
+
 ## Signal Templates
 
 ### For Search Results
@@ -142,6 +200,8 @@ Do multiple sources agree?
 **Recommendation**: Verify with [authoritative source/person]
 ```
 
+---
+
 ## Common Patterns
 
 ### Pattern: Stale Documentation
@@ -181,6 +241,8 @@ This is well-documented with multiple corroborating sources:
 
 High confidence in this answer.
 ```
+
+---
 
 ## When to Emphasize Confidence
 

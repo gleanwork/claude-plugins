@@ -31,6 +31,8 @@ Before building something, check if it already exists:
 
 - **Find the blessed path**: Look for official/platform solutions first
 - **Compare approaches**: Different solutions have different tradeoffs
+- **Be skeptical**: Not every implementation is worth following
+- **Quality over quantity**: 3 vetted implementations beats 10 random matches
 
 ---
 
@@ -76,94 +78,166 @@ search "$ARGUMENTS design doc OR RFC"
 search "$ARGUMENTS best practices OR guidelines"
 ```
 
-### Phase 5: Present Comparison
+### Phase 5: Vet Each Implementation (CRITICAL)
+
+**Goal**: Filter to implementations worth following - BE SKEPTICAL
+
+For each implementation found, evaluate:
+
+**Quality Test**
+- Is this actually good code to follow?
+- ✅ RECOMMENDED: Clean, tested, well-maintained, follows best practices
+- ⚠️ ACCEPTABLE: Works but has caveats
+- ❌ REJECT: Hacky, untested, deprecated, anti-pattern
+
+**Maintenance Test**
+- Is this actively maintained?
+- ✅ ACTIVE: Commits in past 3 months, active PR reviews
+- ⚠️ SLOWING: Last commit 3-12 months ago
+- ❌ STALE: No activity in 12+ months - likely outdated
+
+**Adoption Test**
+- Is this actually used or an abandoned experiment?
+- ✅ PRODUCTION: Deployed, actively used
+- ⚠️ LIMITED: Small usage, may have issues
+- ❌ REJECT: Experiments, prototypes, abandoned PRs
+
+**Ownership Test**
+- Is there someone maintaining this?
+- ✅ OWNED: Clear maintainer, responds to issues
+- ⚠️ UNCLEAR: Works but no clear owner
+- ❌ ORPHANED: No owner, no maintenance
+
+**Anti-Pattern Signals - REJECT or WARN**:
+- In `/deprecated/`, `/old/`, `/legacy/` paths
+- Large commented-out sections
+- TODOs indicating known issues
+- Skipped tests
+- Copy-pasted boilerplate
+- No tests at all
+
+### Phase 6: Present Vetted Comparison
 
 **Actions**:
-Present comparison:
+Present comparison of vetted implementations:
 
 ```markdown
 # Similar Implementations: [Pattern]
 
-## Summary
-Found [X] implementations across [Y] repositories.
+## Vetting Summary
+| Implementations Found | Recommended | Acceptable | Rejected |
+|-----------------------|-------------|------------|----------|
+| [X] | [Y] | [Z] | [W] |
 
-## Shared/Recommended Solution
+## Recommended Solution
 If there's an official or widely-used solution:
 - **Library**: [name] ([link])
 - **Maintained by**: [team/person]
-- **Recommendation**: Use this instead of building your own
+- **Status**: Active, [X] commits in past month
+- **Recommendation**: ⭐ Use this instead of building your own
 
-## Implementation Comparison
+## Vetted Implementations
 
-### Implementation 1: [Repo Name]
+### ⭐ Implementation 1: [Repo Name] - RECOMMENDED
+**Quality**: High
 **Location:** [path] ([link])
+**Last Updated**: [date]
+**Maintainer**: [person/team]
+
 **Approach:** [brief description]
+
+**Why recommended:**
+- [specific positive pattern]
+- [why this is well-done]
+
+**Caveats:** [any limitations]
+
+### Implementation 2: [Repo Name] - ACCEPTABLE
+**Quality**: Good with caveats
+**Location:** [path] ([link])
+**Last Updated**: [date]
+
+**Approach:** [brief description]
+
 **Pros:**
 - [advantage]
-- [advantage]
-**Cons:**
-- [limitation]
 
-### Implementation 2: [Repo Name]
+**Cons:**
+- [limitation - be specific]
+
+### Implementation 3: [Repo Name] - USE WITH CAUTION
+**Quality**: Acceptable but dated
 **Location:** [path] ([link])
-**Approach:** [brief description]
-**Pros:**
-- [advantage]
-**Cons:**
-- [limitation]
+**Last Updated**: [date] ⚠️
 
-### Implementation 3: [Repo Name]
-[continue pattern...]
+**Caveat:** [Why to be careful]
+
+## Rejected Implementations
+| Repo | Reason |
+|------|--------|
+| [repo] | No commits in 18 months, likely outdated |
+| [repo] | Prototype code, never production-ready |
+| [repo] | Known issues in TODO comments |
 
 ## Pattern Analysis
-
-| Repository | Approach | Active? | Test Coverage |
-|------------|----------|---------|---------------|
-| [repo] | [approach] | Yes/No | Good/Minimal |
-
-## Common Patterns Observed
-1. **[Pattern A]**: Used by [X] repos - [description]
-2. **[Pattern B]**: Used by [Y] repos - [description]
+| Pattern | Used By | Quality | Recommendation |
+|---------|---------|---------|----------------|
+| [Pattern A] | [X] repos | Good | Follow this approach |
+| [Pattern B] | [Y] repos | Mixed | Avoid unless [condition] |
 
 ## Anti-Patterns to Avoid
-Based on issues or deprecated code:
-- **[Anti-pattern]**: [why it's problematic]
+[If you found examples of what NOT to do]
+- **[Anti-pattern]**: Found in [repo], problematic because [reason]
 
 ## Recommendations
-Based on this analysis:
-1. **If you need [use case A]**: Use [implementation X] because [reason]
-2. **If you need [use case B]**: Use [implementation Y] because [reason]
-3. **Consider contributing**: If no good solution exists, consider building a shared library
+
+1. **Best option**: Use [recommended implementation] because [reason]
+2. **If that doesn't fit**: Consider [alternative] for [use case]
+3. **Avoid**: Don't follow [anti-pattern] approach
 
 ## Related Documentation
 - **[RFC/Design doc]** ([link]) - [summary]
 ```
 
-## Tips
+---
 
-- Look for both successes and failures
-- Note which implementations are actively maintained
-- Identify if there's a "blessed" approach from platform teams
-- Flag deprecated or legacy implementations to avoid
-- Suggest consolidation opportunities if there's too much duplication
+## If No Good Implementations Found
+
+Be honest - this is valuable information:
+
+```markdown
+# Similar Implementations: [Pattern]
+
+## No Recommended Implementations Found
+
+I searched for implementations of [pattern] but didn't find any I'd recommend following.
+
+**What I found:**
+- [X] matches, but all were [outdated/low quality/abandoned]
+
+**This could mean:**
+- This problem may not have a standard solution internally
+- Teams may be using external libraries instead
+- Naming conventions may differ
+
+**Suggested next steps:**
+1. Check for external libraries: [suggestions]
+2. Ask in [relevant Slack channel] about approaches
+3. If building new, consider making it a shared library
+```
 
 ---
 
 ## Troubleshooting
 
-### Glean MCP Not Connected
-If you see errors about missing `mcp__glean` tools:
-- Run `/glean-core:status` to check connection
-- Run `/glean-core:mcp-setup` to configure
-
 ### No Implementations Found
 If searches return no results:
-- Try synonyms (e.g., "rate limiting" → "throttling", "quota")
-- Search for the problem being solved, not just the solution name
-- Check if this might be handled by an external library
+- Try synonyms (e.g., "rate limiting" → "throttling")
+- Search for the problem, not just the solution name
+- Check for external library usage
 
 ### Too Many Implementations
-If many duplicated solutions exist:
-- Focus on the most recently updated ones
-- Look for platform team ownership as a signal of quality
-- Note the duplication as a potential consolidation opportunity
+If many solutions exist:
+- Apply vetting criteria strictly
+- Focus on most recently maintained
+- Note duplication as potential consolidation opportunity

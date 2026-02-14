@@ -21,6 +21,35 @@ Use this approach when users ask:
 - "Help me remember what I worked on"
 - "What should I put in my status update?"
 
+## BE SKEPTICAL
+
+Not every activity is worth highlighting. Before including items, evaluate:
+
+**Significance Test**
+- Is this a meaningful contribution?
+- ✅ INCLUDE: Created docs, made decisions, completed tasks
+- ⚠️ MAYBE: Reviewed items, attended meetings
+- ❌ EXCLUDE: Just viewed something, minor edits, noise
+
+**Accomplishment Test**
+- Did the user actually accomplish something?
+- ✅ INCLUDE: Finished tasks, shipped features, resolved issues
+- ⚠️ CONTEXT: In-progress work (note the status)
+- ❌ EXCLUDE: Started but abandoned, just browsing
+
+**Relevance Test**
+- Does this reflect real work the user did?
+- ✅ INCLUDE: Direct contributions with clear ownership
+- ❌ EXCLUDE: Auto-generated, mass-distributed, tangential CC's
+
+**Filter Out**:
+- Automated notifications
+- Documents the user only viewed briefly
+- Mass emails or announcements received
+- Activity with no meaningful outcome
+
+**Quality over quantity**: A focused summary of 5-7 accomplishments is better than 20 trivial activities.
+
 ## Primary Tools
 
 | Tool | Purpose | When to Use |

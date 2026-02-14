@@ -19,6 +19,8 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Actionable over comprehensive**: Focus on what to read and who to talk to
 - **Technical and social**: Include both code context and people context
+- **Be skeptical**: Not every doc found is essential reading
+- **Quality over quantity**: 5 must-read docs beats 20 "might be useful" links
 
 ---
 
@@ -76,9 +78,47 @@ Input: $ARGUMENTS
 
 ---
 
-## Phase 4: Generate Onboarding Guide
+## Phase 4: Vet All Content (CRITICAL)
 
-**Goal**: Create a personalized onboarding doc
+**Goal**: Filter to truly essential items - BE SKEPTICAL
+
+For each document, evaluate:
+
+**Essential Reading Test**
+- Does someone new NEED to read this?
+- ✅ MUST-READ: Foundational understanding, will be referenced constantly
+- 📚 HELPFUL: Good context but not required to start
+- ❌ SKIP: Nice to have, can find later, or outdated
+
+**Freshness Test**
+- Is this current?
+- ✅ CURRENT: Updated in past 6 months
+- ⚠️ AGING: 6-12 months - include with note
+- ❌ STALE: 12+ months with no updates - likely misleading
+
+**Accuracy Test**
+- Does this reflect reality?
+- ✅ ACCURATE: Matches what the team actually does
+- ⚠️ OUTDATED: May not reflect current state
+- ❌ MISLEADING: Significantly wrong - don't include
+
+**Essential Reading Criteria**:
+Include ONLY if the doc:
+1. Is referenced by team members regularly
+2. Contains foundational context that won't change
+3. Is necessary to understand before contributing
+4. Is the canonical source for something important
+
+**For people, evaluate**:
+- Is this person still on the team?
+- Are they a good first contact or too senior/busy?
+- What's the best reason to meet with them?
+
+---
+
+## Phase 5: Generate Vetted Onboarding Guide
+
+**Goal**: Create a focused, actionable onboarding guide
 
 **Actions**:
 Present the onboarding guide:
@@ -86,75 +126,131 @@ Present the onboarding guide:
 ```markdown
 # Onboarding: [Team/Project Name]
 
+## Vetting Summary
+| Items Found | Essential | Helpful | Skipped |
+|-------------|-----------|---------|---------|
+| Docs: [X] | [Y] | [Z] | [W] |
+| People: [X] | [Y] | - | - |
+
 ## Team Overview
-[2-3 sentence summary from Phase 1]
+[2-3 sentence summary - focus on what matters for a new person]
 
 ## Key People
+
+### First Contacts (Start here)
+| Name | Role | Good For | Contact |
+|------|------|----------|---------|
+| [Name] | [Role] | [Why meet first] | [email] |
 
 ### Leadership
 | Name | Role | Contact |
 |------|------|---------|
 | [Name] | [Role] | [email] |
 
-### Go-To Experts
-| Name | Expertise |
-|------|-----------|
-| [Name] | [Area] |
+### Domain Experts
+| Name | Expertise | When to Contact |
+|------|-----------|-----------------|
+| [Name] | [Area] | [What questions] |
 
 ### Recent Hires (Onboarding Buddies)
-- [Name] - started [date]
+- [Name] - started [date] - can share fresh perspective
 
-## Essential Reading
+## Essential Reading (Vetted)
 
-### Must-Read Docs
-1. **[Doc Title]** ([link]) - [why it's important]
-2. **[Doc Title]** ([link]) - [why it's important]
+### Must-Read First (in order)
+These are required to start contributing:
 
-### Architecture References
-- [System Design Doc] ([link])
+1. **[Doc Title]** ([link])
+   - **Why essential**: [specific reason]
+   - **Read time**: ~[X] minutes
+   - **Last updated**: [date] ✅
+
+2. **[Doc Title]** ([link])
+   - **Why essential**: [reason]
+   - **Read time**: ~[X] minutes
+   - **Last updated**: [date]
+
+### Reference When Needed
+Don't read upfront, but know where to find:
+- **[Doc Title]** ([link]) - [when you'd need it]
+
+### Skipped Docs
+| Doc | Reason Skipped |
+|-----|----------------|
+| [Title] | Outdated (last updated [date]) |
+| [Title] | Not essential for new team members |
 
 ## Current Priorities
+[Only include if clearly current]
 - **[Initiative 1]**: [brief description]
-- **[Initiative 2]**: [brief description]
 
 ## Key Systems & Repos
-| System/Repo | Purpose |
-|-------------|---------|
-| [Name] | [What it does] |
+| System/Repo | Purpose | Start Here? |
+|-------------|---------|-------------|
+| [Name] | [What it does] | Yes/No |
 
 ## Meetings to Join
-| Meeting | Frequency | Purpose |
-|---------|-----------|---------|
-| [Name] | [freq] | [what it's for] |
+| Meeting | Frequency | Purpose | Join Immediately? |
+|---------|-----------|---------|-------------------|
+| [Name] | [freq] | [what it's for] | Yes/No |
 
-## Suggested First Steps
-1. Read [essential doc]
-2. Set up 1:1 with [key person]
-3. Get access to [system/repo]
-4. Attend [meeting]
+## Suggested First Week
 
-## Questions to Ask
-- [Question about team priorities]
-- [Question about current projects]
+### Day 1-2: Reading
+- [ ] Read [essential doc 1]
+- [ ] Read [essential doc 2]
+
+### Day 3-4: People
+- [ ] Meet with [first contact] - discuss [topic]
+- [ ] Introduce yourself in [Slack channel]
+
+### Day 5: Systems
+- [ ] Get access to [system]
+- [ ] Clone [repo] and explore
+
+## What NOT to Worry About Yet
+- [Topic that seems important but isn't for week 1]
+- [System that's complex but not needed initially]
+```
+
+---
+
+## If Limited Information Found
+
+Be honest about gaps:
+
+```markdown
+# Onboarding: [Team/Project Name]
+
+## Limited Onboarding Resources
+
+I found limited onboarding documentation for this team/project.
+
+**What's available:**
+- [Summary of what was found]
+
+**Gaps:**
+- No formal onboarding doc
+- [Other gaps]
+
+**Suggested approach:**
+1. Start with [best contact found]
+2. Ask them for: [specific questions]
+3. Consider documenting what you learn for the next person
 ```
 
 ---
 
 ## Troubleshooting
 
-### Glean MCP Not Connected
-If you see errors about missing `mcp__glean` tools:
-- Run `/glean-core:status` to check connection
-- Run `/glean-core:mcp-setup` to configure
-
 ### Team/Project Not Found
 If the team or project isn't found:
 - Ask for alternative names or acronyms
 - Search for key people known to be on the team
-- Check if this is a new team without much documentation yet
+- Check if this is a new team without much documentation
 
 ### Limited Information Available
 If little documentation exists:
-- Focus on people discovery - they can fill gaps
-- Note which areas lack documentation
-- Suggest the user contribute to docs as they learn
+- This is valuable information - note the gap
+- Focus on people discovery
+- Don't pad with marginally relevant docs

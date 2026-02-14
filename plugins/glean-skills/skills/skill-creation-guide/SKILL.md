@@ -15,6 +15,40 @@ Use this guide when you want to:
 - Learn skill development best practices
 - Convert a repeated workflow into a skill
 
+## BE SKEPTICAL
+
+Not every idea makes a good skill. Before creating one, evaluate:
+
+**Recurrence Test**
+- Will this be used repeatedly?
+- ✅ CREATE: Weekly or more frequent use
+- ⚠️ RECONSIDER: Monthly use - may not be worth it
+- ❌ SKIP: One-time need - don't create a skill
+
+**Automation Test**
+- Can this actually be automated?
+- ✅ CREATE: Clear, repeatable process
+- ⚠️ RECONSIDER: Requires significant judgment each time
+- ❌ SKIP: Too context-dependent, each case is unique
+
+**Value Test**
+- Is the cumulative time savings significant?
+- ✅ CREATE: Saves meaningful time per use
+- ⚠️ RECONSIDER: Marginal time savings
+- ❌ SKIP: Takes longer to invoke than doing manually
+
+**Duplication Test**
+- Does this already exist?
+- ✅ CREATE: Novel approach to an unaddressed need
+- ⚠️ RECONSIDER: Similar to existing skill - maybe enhance instead
+- ❌ SKIP: Already covered by existing skill or command
+
+**Don't create skills for**:
+- One-time organizational events (team mergers, annual planning)
+- Tasks that are fundamentally different each time
+- Simple tasks that take <30 seconds manually
+- Things you'll forget exist and never invoke
+
 ## What is a Skill?
 
 A skill is a markdown file that teaches Claude how to handle specific situations. Skills auto-trigger based on context and provide specialized guidance.

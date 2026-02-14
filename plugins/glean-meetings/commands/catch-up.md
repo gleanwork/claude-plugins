@@ -19,6 +19,8 @@ If the input is empty or literal "$ARGUMENTS", show brief usage with 2-3 example
 
 - **Prioritize ruthlessly**: They're already behind, don't overwhelm them
 - **Action items first**: Things assigned to them are highest priority
+- **Be skeptical**: Not everything that happened matters to them
+- **Less is more**: Better to miss something minor than overwhelm with noise
 
 ---
 
@@ -56,33 +58,45 @@ Input: $ARGUMENTS
 
 ---
 
-## Phase 3: Prioritize & Triage
+## Phase 3: Vet Each Item (CRITICAL)
 
-**Goal**: Categorize by urgency
+**Goal**: Filter aggressively - BE SKEPTICAL
 
-**Actions**:
-1. Review all findings and categorize:
+For each item found, evaluate:
 
-   **Needs Immediate Attention**
-   - Action items assigned to the user
-   - Questions waiting for their response
-   - Blockers on their work
+**Direct Impact Test**
+- Does this directly involve them or just happen near them?
+- ✅ INCLUDE: Assigned to them, @-mentioned, their projects affected
+- ❌ OMIT: Happened on their team but doesn't involve them
 
-   **Review Soon**
-   - Decisions affecting their area
-   - New proposals to weigh in on
-   - Project status changes
+**Action Required Test**
+- Do they need to DO something?
+- 🔴 URGENT: Blocking someone, deadline passed/soon, explicit request
+- 🟡 SHOULD ACT: They should respond but not time-critical
+- 🟢 FYI: No action required, just awareness
+- ❌ OMIT: Nothing for them to do and not significant to know
 
-   **FYI**
-   - Company announcements
-   - Team updates
-   - General context
+**Still Relevant Test**
+- Is this still relevant or was it handled?
+- ✅ INCLUDE: Still open, still needs their input
+- ⚠️ MAYBE: Was urgent but may have been resolved
+- ❌ OMIT: Already resolved by others, no longer relevant
+
+**Noise Signals - OMIT these**:
+- Mass announcements they'll see in Slack anyway
+- Decisions in areas they don't own
+- Updates on projects they're not involved in
+- Routine meeting notes with no action for them
+- Things that were urgent but got resolved
+
+**Ask yourself**: "If they don't see this, what's the worst that happens?"
+- If "nothing" or "minor inconvenience" → OMIT
 
 ---
 
 ## Phase 4: Generate Report
 
-**Goal**: Present a scannable catch-up summary
+**Goal**: Present a focused, vetted catch-up summary
 
 **Actions**:
 Present the catch-up report:
@@ -91,39 +105,70 @@ Present the catch-up report:
 # Catch-Up Summary: [Time Period]
 
 ## TL;DR
-[2-3 sentence summary of the most important things]
+[2-3 sentence summary - focus on what requires action]
+
+## Vetting Summary
+| Items Found | Included | Filtered Out |
+|-------------|----------|--------------|
+| [X] | [Y] | [Z] |
 
 ## Needs Immediate Attention
+[Only include items that genuinely require their action]
 
 ### Action Items for You
-- [ ] [Action] - from [source] - [deadline if known]
+| Priority | Item | Source | Why Urgent |
+|----------|------|--------|------------|
+| 🔴 | [Action] | [from] | [blocking/deadline] |
+| 🟡 | [Action] | [from] | [should address soon] |
 
 ### Questions Waiting for You
 - [Question] - asked by [person] in [source]
 
-## Review Soon
+## Important Decisions Made
+[Only decisions that affect their work]
 
-### Decisions Made
-- **[Decision]**: [summary] ([link])
+| Decision | Impact on You | Link |
+|----------|---------------|------|
+| [Decision] | [How it affects them] | [link] |
 
-### New Proposals
-- **[Title]**: [summary] ([link])
-
-## FYI
-
-### Key Updates
+## FYI (Low Priority)
+[Brief list - they can skip this section if busy]
 - [Update 1]
 - [Update 2]
 
-## Meetings You Missed
-| Meeting | Key Takeaways | Action Items |
-|---------|---------------|--------------|
-| [Meeting] | [summary] | [items] |
-
 ## Suggested First Actions
-1. [Most urgent]
+1. [Most urgent - with specific action]
 2. [Second priority]
-3. [Third priority]
+
+## What You Can Ignore
+Things that happened but don't require your attention:
+- [Category]: [summary of what was filtered]
+```
+
+---
+
+## If Nothing Critical Happened
+
+This is a valid outcome - be clear about it:
+
+```markdown
+# Catch-Up Summary: [Time Period]
+
+## TL;DR
+No critical items require your immediate attention. Welcome back!
+
+## What I Checked
+- Meetings: [X] meetings, [Y] with your involvement
+- Mentions: [Z] mentions of you
+- Action items: None assigned to you
+
+## Minor Updates
+If you have time, these may be of interest:
+- [Low-priority update 1]
+- [Low-priority update 2]
+
+## Suggested Action
+Check [specific Slack channel] for any direct messages you may have received.
 ```
 
 ---
@@ -137,11 +182,10 @@ If you see errors about missing `mcp__glean` tools:
 
 ### Time Period Unclear
 If the user's time period is ambiguous:
-- Ask for clarification with specific options (e.g., "past week", "since Monday")
+- Ask for clarification with specific options
 - Default to "past week" if user confirms they want a general catch-up
 
 ### No Action Items Found
-If no action items are found for the user:
+If no action items are found:
 - This is good news - report it clearly
-- Still show FYI updates and decisions made
-- Note that the user may want to check specific channels directly
+- Don't pad with low-value items to seem comprehensive

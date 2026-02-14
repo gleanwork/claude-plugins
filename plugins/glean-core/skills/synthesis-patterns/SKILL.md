@@ -16,6 +16,44 @@ Use this approach when:
 - Building a comprehensive answer from partial information
 - Sources seem to conflict or overlap
 
+## BE SKEPTICAL
+
+When synthesizing across multiple sources, aggressive vetting is essential:
+
+**Source Quality Test**
+- Is each source authoritative?
+- ✅ INCLUDE: Official docs, code, recent meetings
+- ⚠️ CONTEXT: Secondary sources, somewhat dated
+- ❌ EXCLUDE: Hearsay, speculation, very old information
+
+**Recency vs Authority**
+- When sources disagree on recency, choose wisely:
+- ✅ TRUST: Recent information from official source
+- ⚠️ CAUTION: Very recent but unofficial vs stale but official
+- ❌ AVOID: Treating old info as current just because it's "official"
+
+**Completeness Check**
+- Do you have the full picture?
+- ✅ INCLUDE: 3+ sources align, comprehensive coverage
+- ⚠️ CONTEXT: Limited sources, note gaps explicitly
+- ❌ EXCLUDE: Single source for multi-faceted questions
+
+**Conflict Resolution**
+- When sources conflict, don't hide it:
+- ✅ INCLUDE: Conflict + explanation of which is likely correct
+- ❌ EXCLUDE: Picking one source without acknowledging disagreement
+
+**Filter Out**:
+- Unattributed claims
+- Information older than 3 months (unless structure/architecture)
+- Synthesis that glosses over fundamental disagreements
+- "I synthesized this" without showing your work
+
+**Say "I don't know"** when:
+- Sources are missing or conflicting
+- Information is too stale to be reliable
+- You lack sufficient data to synthesize confidently
+
 ## The Synthesis Framework
 
 ### 1. Identify Information Types Needed
