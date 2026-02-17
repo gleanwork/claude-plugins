@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.13.0](///compare/v0.12.1...v0.13.0) (2026-02-17)
+
+### Features
+
+* add planning bridge to glean-code plugin 5f0dec7
+
 ## [0.12.1](///compare/v0.12.0...v0.12.1) (2026-02-16)
 
 ## [0.12.0](///compare/v0.11.0...v0.12.0) (2026-02-13)
