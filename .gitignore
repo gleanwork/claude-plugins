@@ -21,3 +21,6 @@ npm-debug.log*
 
 # Versioned plugin directories (created by Claude Code plugin system)
 plugins/**/[0-9]*.[0-9]*.[0-9]*
+
+# Bun lockfile (not used in this project)
+bun.lock
