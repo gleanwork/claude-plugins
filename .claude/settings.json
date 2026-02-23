@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node scripts/validate-plugins.mjs 2>&1 | tail -30"
+          }
+        ]
+      }
+    ]
+  }
+}
