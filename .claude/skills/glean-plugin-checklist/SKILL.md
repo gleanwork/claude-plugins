@@ -138,7 +138,7 @@ Add an entry to the `plugins["@release-it/bumper"].out` array, after the last ex
 Verify the entry was added:
 
 ```bash
-bash .claude/skills/glean-plugin-checklist/scripts/check-bumper.sh <plugin-name>
+node .claude/skills/glean-plugin-checklist/scripts/check-bumper.mjs <plugin-name>
 ```
 
 ## Verification Commands
@@ -161,7 +161,7 @@ done
 grep "<plugin-name>" README.md
 
 # Check .release-it.json bumper includes the plugin
-bash .claude/skills/glean-plugin-checklist/scripts/check-bumper.sh <plugin-name>
+node .claude/skills/glean-plugin-checklist/scripts/check-bumper.mjs <plugin-name>
 ```
 
 ## Common Mistakes to Avoid
