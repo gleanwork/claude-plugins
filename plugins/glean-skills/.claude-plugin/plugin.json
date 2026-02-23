@@ -1,6 +1,6 @@
 {
   "name": "glean-skills",
-  "version": "0.9.1",
+  "version": "1.0.0",
   "description": "Discover and create Claude Code skills from Glean work patterns",
   "author": {
     "name": "Glean",
