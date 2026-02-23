@@ -48,6 +48,22 @@
         {
           "file": "plugins/glean-code/.claude-plugin/plugin.json",
           "path": "version"
+        },
+        {
+          "file": "plugins/glean-dev-docs/.claude-plugin/plugin.json",
+          "path": "version"
+        },
+        {
+          "file": "plugins/glean-skills/.claude-plugin/plugin.json",
+          "path": "version"
+        },
+        {
+          "file": "plugins/glean-productivity/.claude-plugin/plugin.json",
+          "path": "version"
+        },
+        {
+          "file": "plugins/glean-project/.claude-plugin/plugin.json",
+          "path": "version"
         }
       ]
     }
