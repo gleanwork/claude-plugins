@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](///compare/v1.0.0...v1.1.0) (2026-02-23)
+
+### Features
+
+* add plugin-reviewer subagent eb0e354
+* add release-workflow skill 5afcf07
+
+### Bug Fixes
+
+* add missing plugins to release-it bumper 5207b0b
+* add vetting phase to skill discovery to filter one-off activities 6b2f351
+* align plugin versions to 1.0.0 35c4374
+
 ## [1.0.0](///compare/v0.13.0...v1.0.0) (2026-02-21)
 
 ## [0.13.0](///compare/v0.12.1...v0.13.0) (2026-02-17)

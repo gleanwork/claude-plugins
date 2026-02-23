@@ -1,6 +1,6 @@
 {
   "name": "glean-productivity",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Personal productivity tools - daily briefings, weekly summaries, and activity analysis via Glean. Requires glean-core.",
   "author": {
     "name": "Glean",
