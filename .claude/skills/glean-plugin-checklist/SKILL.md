@@ -120,6 +120,27 @@ When releasing a new version:
 2. Update `package.json` version
 3. Update ALL `plugins/*/.claude-plugin/plugin.json` versions
 
+### 6. Add to .release-it.json bumper (REQUIRED)
+
+Path: `.release-it.json`
+
+Add an entry to the `plugins["@release-it/bumper"].out` array, after the last existing entry:
+
+```json
+{
+  "file": "plugins/<plugin-name>/.claude-plugin/plugin.json",
+  "path": "version"
+}
+```
+
+**If you skip this step**, the plugin version will fall behind the marketplace version on every future release. This failure is silent — no error will be thrown and no CI check will catch it.
+
+Verify the entry was added:
+
+```bash
+node -e "const c=JSON.parse(require('fs').readFileSync('.release-it.json','utf8')); const found=c.plugins['@release-it/bumper'].out.some(o=>o.file.includes('<plugin-name>')); console.log(found?'found in bumper':'MISSING from bumper')"
+```
+
 ## Verification Commands
 
 After adding a plugin, verify with:
@@ -138,6 +159,9 @@ done
 
 # Check README mentions the plugin
 grep "<plugin-name>" README.md
+
+# Check .release-it.json bumper includes the plugin
+node -e "const c=JSON.parse(require('fs').readFileSync('.release-it.json','utf8')); const found=c.plugins['@release-it/bumper'].out.some(o=>o.file.includes('<plugin-name>')); console.log(found?'in bumper: ok':'MISSING from bumper')"
 ```
 
 ## Common Mistakes to Avoid
