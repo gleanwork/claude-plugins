@@ -138,7 +138,7 @@ Add an entry to the `plugins["@release-it/bumper"].out` array, after the last ex
 Verify the entry was added:
 
 ```bash
-node -e "const c=JSON.parse(require('fs').readFileSync('.release-it.json','utf8')); const found=c.plugins['@release-it/bumper'].out.some(o=>o.file.includes('<plugin-name>')); console.log(found?'found in bumper':'MISSING from bumper')"
+bash .claude/skills/glean-plugin-checklist/scripts/check-bumper.sh <plugin-name>
 ```
 
 ## Verification Commands
@@ -161,7 +161,7 @@ done
 grep "<plugin-name>" README.md
 
 # Check .release-it.json bumper includes the plugin
-node -e "const c=JSON.parse(require('fs').readFileSync('.release-it.json','utf8')); const found=c.plugins['@release-it/bumper'].out.some(o=>o.file.includes('<plugin-name>')); console.log(found?'in bumper: ok':'MISSING from bumper')"
+bash .claude/skills/glean-plugin-checklist/scripts/check-bumper.sh <plugin-name>
 ```
 
 ## Common Mistakes to Avoid
