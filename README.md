@@ -59,7 +59,7 @@ Official Glean plugins for [Claude Code](https://claude.com/claude-code), enabli
 
 - [Claude Code](https://claude.com/claude-code) (latest version)
 - A Glean account with MCP access
-- Your Glean MCP server URL (format: `https://[instance]-be.glean.com/mcp/[server-name]`)
+- Your Glean MCP server URL (find it at [app.glean.com/admin/about-glean](https://app.glean.com/admin/about-glean)); format: `[server-url]/mcp/[server-name]`
 
 ## Support
 
