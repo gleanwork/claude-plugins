@@ -11,11 +11,9 @@ Help the user configure a Glean MCP server for Claude Code. This command can be 
 
 Guide the user through these steps interactively using AskUserQuestion:
 
-### Step 1: Get Instance Name
+### Step 1: Get Server URL
 
-Ask the user for their Glean instance name. Explain that if their Glean URL is `https://acme-be.glean.com`, their instance name is `acme`.
-
-You can find your Glean URL here: <https://app.glean.com/admin/about-glean>
+Ask the user for their Glean server URL. Explain that they can find it at <https://app.glean.com/admin/about-glean>. The URL will look something like `https://acme-be.glean.com` or `https://be-4f5226e2.glean.com`.
 
 ### Step 2: Get Server Name
 
@@ -33,8 +31,10 @@ Ask what friendly name to use for this server in Claude Code. Suggest:
 Once you have all three values, construct and run the command:
 
 ```bash
-claude mcp add [friendly-name] https://[instance]-be.glean.com/mcp/[server-name] --transport http --scope user
+claude mcp add [friendly-name] [server-url]/mcp/[server-name] --transport http --scope user
 ```
+
+Where `[server-url]` is the URL from Step 1 (e.g., `https://acme-be.glean.com` or `https://be-4f5226e2.glean.com`).
 
 ### Step 5: Confirm Success
 
@@ -47,8 +47,8 @@ After running the command:
 
 ## Important Notes
 
-- The URL format is: `https://[instance]-be.glean.com/mcp/[server-name]`
-- The `-be` suffix is required (it's the backend endpoint)
+- The URL format is: `[server-url]/mcp/[server-name]`
+- Find your server URL at <https://app.glean.com/admin/about-glean>
 - Transport must be `http` (Glean MCP is a remote server)
 - Scope should be `user` for personal configuration
 - Claude Code handles OAuth authentication automatically on first tool use
