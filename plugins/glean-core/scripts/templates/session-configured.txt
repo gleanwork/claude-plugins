@@ -1,3 +1,4 @@
 Glean (v{{VERSION}}) - Work AI is connected.
 
 Type /glean- to discover available commands.
+Glean is continuously learning your preferences. To disable, edit your settings.json hooks config or run `claude config` to remove the glean-core Stop hook.

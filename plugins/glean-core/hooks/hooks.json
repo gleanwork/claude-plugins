@@ -1,5 +1,5 @@
 {
-  "description": "Glean plugin hooks for session initialization",
+  "description": "Glean plugin hooks for session initialization and memory sync",
   "hooks": {
     "SessionStart": [
       {
@@ -7,8 +7,20 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/session-start.sh",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/session-start.mjs",
             "timeout": 15
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/sync-memories.mjs",
+            "timeout": 30
           }
         ]
       }
