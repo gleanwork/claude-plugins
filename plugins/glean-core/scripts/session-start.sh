@@ -28,7 +28,7 @@ output_json() {
 
 # Check if any Glean MCP servers are configured
 if node -e "const c=require('$HOME/.claude.json'); process.exit(Object.keys(c.mcpServers||{}).some(k=>k.toLowerCase().includes('glean'))?0:1)" 2>/dev/null; then
-  output_json "$TEMPLATES_DIR/session-configured.txt"
+  exit 0
 else
   output_json "$TEMPLATES_DIR/session-unconfigured.txt"
 fi
