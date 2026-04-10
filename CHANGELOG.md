@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.1](///compare/v1.1.0...v1.1.1) (2026-04-10)
+
+### Bug Fixes
+
+* suppress startup message when Glean is already configured d1e4942
+
 ## [1.1.0](///compare/v1.0.0...v1.1.0) (2026-02-23)
 
 ### Features
