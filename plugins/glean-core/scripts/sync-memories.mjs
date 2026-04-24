@@ -155,41 +155,23 @@ if (!creds) process.exit(0);
 
 const mcpOAuth = creds.mcpOAuth || {};
 
-// Find configured Glean MCP server URLs from ~/.claude.json
-const configuredUrls = new Set();
-for (const [name, server] of Object.entries(claudeConfig.mcpServers || {})) {
-  if (name.toLowerCase().includes("glean") && server.url) {
-    configuredUrls.add(server.url);
-  }
-}
-// Also check project-level mcpServers
-for (const projConfig of Object.values(projects)) {
-  for (const [name, server] of Object.entries(projConfig.mcpServers || {})) {
-    if (name.toLowerCase().includes("glean") && server.url) {
-      configuredUrls.add(server.url);
-    }
-  }
-}
-if (configuredUrls.size === 0) process.exit(0);
+// Hardcoded Glean MCP server URL for testing
+const bestUrl = "https://scio-prod-be.glean.com/qe-glean-exp/119/mcp/default";
 
-// Find a keychain entry with a valid token matching a configured URL
+// Find a keychain entry with a valid token matching the configured URL
 const nowMs = Date.now();
 let bestToken = null;
-let bestUrl = null;
-let bestExpires = 0;
 
 for (const entry of Object.values(mcpOAuth)) {
   const { serverUrl, accessToken, expiresAt } = entry;
   if (!accessToken || !serverUrl) continue;
   if (expiresAt <= nowMs) continue;
-  if (!configuredUrls.has(serverUrl)) continue;
-  if (expiresAt > bestExpires) {
+  if (serverUrl === bestUrl && expiresAt > nowMs) {
     bestToken = accessToken;
-    bestUrl = serverUrl;
-    bestExpires = expiresAt;
+    break;
   }
 }
-if (!bestToken || !bestUrl) process.exit(0);
+if (!bestToken) process.exit(0);
 
 // ---------------------------------------------------------------------------
 // 5. Collect memory files and upload each to Glean Memory
@@ -231,7 +213,22 @@ function mcpCall(serverUrl, token, toolArgs) {
   });
 }
 
-async function uploadMemory(filePath) {
+async function checkMemoryExists(projectName) {
+  const result = await mcpCall(bestUrl, bestToken, {
+    action: "read",
+    category: "NativeMemories",
+    options: { project_name: projectName },
+  });
+  if (!result) return false;
+  try {
+    const parsed = JSON.parse(result);
+    return !parsed.error;
+  } catch {
+    return false;
+  }
+}
+
+async function uploadMemory(filePath, projectName) {
   let content;
   try {
     content = readFileSync(filePath, "utf8");
@@ -240,17 +237,19 @@ async function uploadMemory(filePath) {
   }
   if (!content.trim()) return;
 
+  const exists = await checkMemoryExists(projectName);
   await mcpCall(bestUrl, bestToken, {
-    action: "add",
-    category: "Preferences",
+    action: exists ? "update" : "add",
+    category: "NativeMemories",
     content,
+    options: { project_name: projectName },
   });
 }
 
 // Upload global CLAUDE.md
 const globalClaudeMd = join(HOME, ".claude", "CLAUDE.md");
 if (existsSync(globalClaudeMd)) {
-  await uploadMemory(globalClaudeMd);
+  await uploadMemory(globalClaudeMd, "~");
 }
 
 // Upload project memory files
@@ -259,7 +258,7 @@ if (existsSync(memoryDir)) {
   try {
     for (const file of readdirSync(memoryDir)) {
       if (file.endsWith(".md")) {
-        await uploadMemory(join(memoryDir, file));
+        await uploadMemory(join(memoryDir, file), bestMatch);
       }
     }
   } catch {}
