@@ -8,7 +8,7 @@ Analyze your Glean work patterns to find automation opportunities that could bec
 
 ## Prerequisites Check
 
-First, verify Glean MCP is connected by checking for `mcp__glean_default__` tools (or similar Glean server tools). If not connected, inform the user to run `/glean-core:status` or `/glean-core:mcp-setup`.
+First, verify Glean MCP is connected by checking for Glean MCP tools (or similar Glean server tools). If not connected, inform the user to run `/glean-core:status` or `/glean-core:mcp-setup`.
 
 ---
 
@@ -123,7 +123,7 @@ A few high-quality recommendations are better than many weak ones. The goal is t
 ## Troubleshooting
 
 ### Glean MCP Not Connected
-If you see errors about missing `mcp__glean` tools:
+If you see errors about missing Glean MCP tools:
 - Run `/glean-core:status` to check connection
 - Run `/glean-core:mcp-setup` to configure
 

@@ -18,12 +18,12 @@ claude plugins add gleanwork/claude-plugins/glean-project
 
 | Command | Description |
 |---------|-------------|
-| `/project-handoff` | Generate a comprehensive handoff document |
+| `/glean-project:project-handoff` | Generate a comprehensive handoff document |
 
 ### Example: Project Handoff
 
 ```
-/project-handoff search v2
+/glean-project:project-handoff search v2
 ```
 
 **Output includes:**

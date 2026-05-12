@@ -1,15 +1,19 @@
 ---
 name: project-awareness
-description: Use when the user asks about project status, ownership, or context. Triggers on phrases like "status of X project", "who owns Y", "what's happening with Z", "project update", "where does the project stand", "what's the state of", "who's working on", or when needing quick project context without a full analysis.
+description: Quick project context — surface a project's status, owner, recent activity, and key links. Use when the user wants a fast situational read on a project, not a deep handoff document.
+when_to_use: |
+  Trigger phrases include "what's the status of", "who owns", "what's happening with", "where does the project stand", "who's working on", "what's the state of", "project update on", "quick read on".
+
+  Don't use this for full handoff documents (use `/glean-project:project-handoff` for comprehensive context) or for queries about the user's own work (use `using-glean-productivity`).
 ---
 
 # Project Awareness
 
 When users ask about projects, their status, or ownership, use Glean to quickly gather relevant context.
 
-## Tool Naming
+## Tools
 
-See the `glean-tools-guide` skill for Glean MCP tool naming conventions.
+This skill drives the standard Glean MCP tools. For full param shape and pitfalls of `chat`, `search`, `employee_search`, and `meeting_lookup`, see the `using-glean` skill's reference files in the `glean-core` plugin.
 
 ## When This Applies
 
