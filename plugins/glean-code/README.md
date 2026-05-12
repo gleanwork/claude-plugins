@@ -1,6 +1,6 @@
 # Glean Code
 
-**Cross-repository code exploration - search code across your org, find examples, and discover similar implementations.**
+**Cross-repository code exploration — search code across your org, find examples, and discover similar implementations.**
 
 Leverage Glean's code search to explore beyond your local repository.
 
@@ -15,24 +15,33 @@ claude plugin install glean-core  # if not already installed
 claude plugin install glean-code
 ```
 
-## What's Included
+## What's included
 
-### Skills
-- **code-exploration** - Guidance for cross-repo code search, triggers on implementation questions
-- **plan-prep** - Research enterprise context before entering plan mode, triggers on planning-related phrases
+### Skill
+
+- **`using-glean-code`** — Auto-triggers on cross-repo code questions ("how is X implemented", "where is the code for", "find similar code", "how do other teams handle Y"). The skill teaches the workflow; the canonical `code_search` tool reference lives in `glean-core` (see [`using-glean/reference/code-search.md`](../glean-core/skills/using-glean/reference/code-search.md)).
+
+  Reference files under [`skills/using-glean-code/reference/`](skills/using-glean-code/reference/):
+
+  | File | Covers |
+  |---|---|
+  | `exploration.md` | Workflow for exploring an unfamiliar system across repos |
+  | `plan-prep.md` | Gathering enterprise context before entering plan mode |
 
 ### Agents
-- **codebase-navigator** - Navigates internal repositories to find implementations and patterns
-- **plan-prep-researcher** - Gathers design docs, implementations, stakeholders, and related systems for planning
+
+- **codebase-navigator** — Navigates internal repositories to find implementations and patterns
+- **plan-prep-researcher** — Gathers design docs, implementations, stakeholders, and related systems for planning
 
 ### Commands
-- `/glean-code:codebase-context <system>` - Get architectural context from internal repos
-- `/glean-code:find-examples <API/pattern>` - Find usage examples across the org
-- `/glean-code:code-owners <component>` - Identify who owns/maintains code areas
-- `/glean-code:similar-code <pattern>` - Find similar implementations across repos
-- `/glean-code:plan-prep <task>` - Research enterprise context before entering plan mode
 
-## Example Usage
+- `/glean-code:codebase-context <system>` — Get architectural context from internal repos
+- `/glean-code:find-examples <API/pattern>` — Find usage examples across the org
+- `/glean-code:code-owners <component>` — Identify who owns/maintains code areas
+- `/glean-code:similar-code <pattern>` — Find similar implementations across repos
+- `/glean-code:plan-prep <task>` — Research enterprise context before entering plan mode
+
+## Example usage
 
 ```bash
 # Get context before working on a system
@@ -57,7 +66,7 @@ claude plugin install glean-code
 /glean-code:plan-prep Implement webhooks
 ```
 
-## Key Differentiator
+## Key differentiator
 
 **Local search tools only see your current repo.** Glean Code searches across ALL repositories in your organization. This enables:
 
@@ -66,23 +75,9 @@ claude plugin install glean-code
 - Finding owners: "Who's actively working on payments?"
 - Avoiding duplication: "Has someone already built a rate limiter?"
 
-## Works for Monorepos and Multi-Repo
+## Works for monorepos and multi-repo
 
 Whether your company uses a monorepo or multiple repositories, Glean Code searches across everything that's indexed.
-
-## Planning with Enterprise Context
-
-The plan-prep command brings enterprise knowledge into your planning process:
-
-- **Research Before Planning**: Use `/glean-code:plan-prep` to gather design docs, similar implementations, and stakeholder info
-- **Better Decisions**: See what's been tried, what patterns are proven, and who needs to be involved
-- **Informed Architecture**: Make decisions informed by organizational knowledge and prior art
-
-Example workflow:
-1. Run `/glean-code:plan-prep "Add webhook support to payments service"`
-2. Review the enterprise context: design decisions, similar implementations, stakeholders
-3. Enter plan mode with this fresh knowledge
-4. Design your approach informed by organizational patterns and constraints
 
 ## Support
 
