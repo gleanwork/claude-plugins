@@ -1,50 +1,55 @@
 ---
 name: dev-docs-guide
-description: Use when the user asks about Glean APIs, SDKs, developer integration, MCP configuration, indexing, authentication, or Glean platform development. Triggers on "Glean API", "Glean SDK", "integrate with Glean", "Glean MCP", "Glean authentication", "indexing API", "Glean developer docs", "Glean REST API", or building integrations with Glean.
+description: Search the public Glean developer documentation for API, SDK, MCP, authentication, indexing, and integration details. Use when the user is building with Glean rather than searching internal company knowledge.
+when_to_use: |
+  Trigger phrases include "Glean API", "Glean SDK", "integrate with Glean", "Glean MCP setup", "indexing API", "Glean REST", "Glean Python SDK", "Glean JavaScript SDK", "how do I authenticate with Glean", "Glean platform docs".
+
+  Don't use this for searching internal company knowledge — that's the `using-glean` skill in `glean-core`. This skill is for the public Glean platform documentation.
 ---
 
 # Glean Developer Documentation Guide
 
 When users ask about developing with Glean, use the Glean Developer Docs MCP tools.
 
-## Tool Naming
+## Tools
 
-Tools follow the pattern: `mcp__glean_dev_docs__[tool]`
-- `docs_search` - Search across documentation
-- `docs_fetch` - Get full page content
+This skill uses two tools (refer to them by their bare names):
 
-If tools unavailable, suggest running `/glean-dev-docs:setup`.
+- `docs_search` — search across the public Glean developer documentation
+- `docs_fetch` — get the full content of a documentation page by URL
 
-## When to Use
+If these tools aren't visible in the active inventory, the user hasn't configured the Glean Dev Docs MCP server. Suggest `/glean-dev-docs:setup`.
 
-- **Glean API** - endpoints, authentication, rate limits
-- **SDK usage** - Python, JavaScript installation and examples
-- **MCP integration** - server configuration, tool capabilities
-- **Platform concepts** - indexing, search configuration, connectors
+## When to use
 
-## Tool Selection
+- **Glean API** — endpoints, authentication, rate limits
+- **SDK usage** — Python, JavaScript installation and examples
+- **MCP integration** — server configuration, tool capabilities
+- **Platform concepts** — indexing, search configuration, connectors
+
+## Tool selection
 
 | Need | Tool | Example |
-|------|------|---------|
+|---|---|---|
 | Find relevant docs | `docs_search` | `docs_search "API authentication"` |
 | Get implementation details | `docs_fetch` | `docs_fetch "https://developers.glean.com/docs/api/auth"` |
 
 ## Workflow
 
 1. **Search first**: `docs_search "user query terms"`
-2. **Review results**: Identify most relevant pages
+2. **Review results**: identify the most relevant pages
 3. **Fetch for details**: `docs_fetch "[url]"` for code examples
-4. **Cite sources**: Always include documentation URLs
+4. **Cite sources**: always include documentation URLs
 
-## Query Tips
+## Query tips
 
 Good: `"OAuth token refresh"`, `"Python SDK search API"`
 Less effective: `"authentication"`, `"API"`, `"how to use"`
 
-## Differentiating from Enterprise Glean
+## Differentiating from enterprise Glean
 
 This skill is for **public developer documentation**:
-- How to build with Glean APIs/SDKs
+- How to build with Glean APIs / SDKs
 - MCP configuration guides
 
-For **internal company data** (Slack, email, internal docs), guide to glean-core plugins instead.
+For **internal company data** (Slack, email, internal docs), use the `using-glean` skill in `glean-core` instead.

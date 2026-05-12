@@ -1,6 +1,6 @@
 # Glean Docs
 
-**Document intelligence - analyze docs, verify specs against implementation, and onboard to new areas.**
+**Document intelligence — analyze docs, verify specs against implementation, and onboard to new areas.**
 
 Deep analysis of enterprise documents and specifications.
 
@@ -15,16 +15,18 @@ claude plugin install glean-core  # if not already installed
 claude plugin install glean-docs
 ```
 
-## What's Included
+## What's included
+
+### Skills
+
+- **`verify-rfc`** — Auto-triggers on "verify the RFC", "compare design doc to implementation", "is the spec implemented", "what's drifted from the RFC". Invokable as `/glean-docs:verify-rfc <RFC or topic>`.
+- **`onboarding`** — Auto-triggers on "onboard me on", "get me up to speed on", "intro to [team]", "I'm new to". Invokable as `/glean-docs:onboarding <team or project>`.
 
 ### Agent
-- **doc-reader** - Reads and analyzes enterprise documents to extract key information, requirements, or structured summaries
 
-### Commands
-- `/glean-docs:verify-rfc <RFC or topic>` - Verify an RFC or design doc against the actual implementation
-- `/glean-docs:onboarding <team or project>` - Get up to speed on a new team or project
+- **doc-reader** — Reads and analyzes enterprise documents to extract key information, requirements, or structured summaries.
 
-## Example Usage
+## Example usage
 
 ```bash
 # Verify specs against code
@@ -35,17 +37,17 @@ claude plugin install glean-docs
 /glean-docs:onboarding payments team
 /glean-docs:onboarding search infrastructure
 
-# The doc-reader agent is automatically triggered
+# Skills auto-trigger on natural-language asks
 "Summarize the key requirements from the API spec"
 "What does the design doc say about error handling?"
 ```
 
 ## Features
 
-- **RFC Verification** - Compare specs to implementation, find gaps
-- **Onboarding** - Curated introduction to a team or project
-- **Document Analysis** - Extract requirements, decisions, and key points
-- **Cross-Reference** - Connect docs to code and people
+- **RFC verification** — compare specs to implementation, find gaps
+- **Onboarding** — curated introduction to a team or project
+- **Document analysis** — extract requirements, decisions, and key points
+- **Cross-reference** — connect docs to code and people
 
 ## Support
 

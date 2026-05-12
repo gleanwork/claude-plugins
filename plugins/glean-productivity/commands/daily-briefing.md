@@ -183,7 +183,7 @@ If you have time, these updates might be of interest:
 ## Troubleshooting
 
 ### Glean MCP Not Connected
-If you see errors about missing `mcp__glean` tools:
+If you see errors about missing Glean MCP tools:
 - Run `/glean-core:status` to check connection
 - Run `/glean-core:mcp-setup` to configure
 

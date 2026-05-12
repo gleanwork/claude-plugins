@@ -1,5 +1,50 @@
 # Changelog
 
+## Unreleased
+
+### ⚠️ Breaking changes
+
+This release consolidates several plugins around the [Anthropic-recommended progressive-disclosure pattern](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices) — one parent skill per plugin with topic-specific reference files loaded on demand. Several skill names have changed; the slash invocation paths for the corresponding consolidated skills have changed accordingly.
+
+The motivation: the old structure put many sibling skills' descriptions into Claude's startup context simultaneously, which on a typical install pushed the description budget over its limit and caused descriptions (the trigger signals) to be silently truncated. The consolidation drops one description per plugin into the listing while moving per-tool / per-topic depth into reference files that are only read when needed.
+
+#### `glean-core` — six skills consolidated into one
+
+| Removed slash path | Replacement |
+|---|---|
+| `/glean-core:enterprise-search` | `/glean-core:using-glean` (or just ask in natural language) |
+| `/glean-core:meeting-context` | `/glean-core:using-glean` |
+| `/glean-core:people-lookup` | `/glean-core:using-glean` |
+| `/glean-core:synthesis-patterns` | `/glean-core:using-glean` |
+| `/glean-core:confidence-signals` | `/glean-core:using-glean` |
+| `/glean-core:glean-tools-guide` | `/glean-core:using-glean` |
+
+The new `using-glean` skill carries an intent-to-tool decision tree and links to per-MCP-tool reference files (`reference/search.md`, `reference/employee-search.md`, `reference/meeting-lookup.md`, etc.).
+
+#### `glean-code` — two skills consolidated into one
+
+| Removed slash path | Replacement |
+|---|---|
+| `/glean-code:code-exploration` | `/glean-code:using-glean-code` |
+| `/glean-code:plan-prep` | `/glean-code:using-glean-code` |
+
+#### `glean-productivity` — two skills consolidated into one
+
+| Removed slash path | Replacement |
+|---|---|
+| `/glean-productivity:activity-synthesis` | `/glean-productivity:using-glean-productivity` |
+| `/glean-productivity:priority-signals` | `/glean-productivity:using-glean-productivity` |
+
+#### Workflow plugins — `commands/` migrated to `skills/`
+
+`glean-search`, `glean-people`, `glean-meetings`, and `glean-docs` had `commands/` directories that have been migrated to `skills/`. Per Anthropic's plugin docs, these are equivalent at runtime — slash invocations are unchanged (`/glean-search:search`, `/glean-people:find-expert`, `/glean-people:stakeholders`, `/glean-meetings:catch-up`, `/glean-meetings:meeting-prep`, `/glean-docs:onboarding`, `/glean-docs:verify-rfc` all continue to work). The migration enables the skills to auto-trigger on natural-language phrases and unlocks the `reference/` directory pattern for future use.
+
+### Improvements
+
+- Description quality: every plugin's `SKILL.md` now uses a `description` + `when_to_use` pair with concrete trigger phrasing, dropping the previous "Auto-triggers when X tool is considered" framing that didn't reflect how skill triggering actually works.
+- `scripts/validate-plugins.mjs`: now correctly passes through YAML block-scalar indicators (`|` and `>`) instead of double-quoting them, allowing multi-paragraph `when_to_use` content.
+
+
 ## [1.1.1](///compare/v1.1.0...v1.1.1) (2026-04-10)
 
 ### Bug Fixes

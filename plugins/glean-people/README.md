@@ -15,16 +15,18 @@ claude plugin install glean-core   # if not already installed
 claude plugin install glean-people
 ```
 
-## What's Included
+## What's included
+
+### Skills
+
+- **`find-expert`** — Auto-triggers on "who knows about", "expert on", "go-to person for", "who has worked on". Invokable as `/glean-people:find-expert <topic>`.
+- **`stakeholders`** — Auto-triggers on "who needs to know", "stakeholders for", "who should I loop in", "who needs to approve". Invokable as `/glean-people:stakeholders <change>`.
 
 ### Agent
-- **people-finder** - Finds people by role, expertise, activity, or organizational relationships
 
-### Commands
-- `/glean-people:find-expert <topic>` - Find domain experts based on actual activity
-- `/glean-people:stakeholders <change>` - Identify stakeholders for a change or project
+- **people-finder** — Finds people by role, expertise, activity, or organizational relationships.
 
-## Example Usage
+## Example usage
 
 ```bash
 # Find experts
@@ -35,18 +37,18 @@ claude plugin install glean-people
 /glean-people:stakeholders migrating auth to OAuth
 /glean-people:stakeholders deprecating the legacy API
 
-# The people-finder agent is automatically triggered
+# Skills auto-trigger on natural-language asks
 "Who works on the payments team?"
 "Who should I talk to about the billing module?"
 ```
 
-## How It Works
+## How it works
 
-This plugin combines multiple signals to find the right people:
-- **Employee search** - Official roles and org structure
-- **Code contributions** - Who's actively coding in an area
-- **Document authorship** - Who wrote the design docs
-- **Meeting participation** - Who's in relevant discussions
+The skills combine multiple signals to find the right people:
+- **Employee search** — official roles and org structure
+- **Code contributions** — who's actively coding in an area
+- **Document authorship** — who wrote the design docs
+- **Meeting participation** — who's in relevant discussions
 
 ## Support
 

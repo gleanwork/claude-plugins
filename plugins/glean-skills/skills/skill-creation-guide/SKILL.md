@@ -1,6 +1,10 @@
 ---
 name: skill-creation-guide
-description: Auto-triggers when users discuss creating skills or ask about SKILL.md format. Triggers on phrases like "create a skill", "write a skill", "make a skill", "new skill", "SKILL.md format", "skill structure", "how do skills work", "skill best practices", or when the user wants to add custom behavior to Claude Code.
+description: Guide the user through creating a new Claude Code skill — SKILL.md format, frontmatter, progressive disclosure, when to use reference files, common pitfalls.
+when_to_use: |
+  Trigger phrases include "create a skill", "write a skill", "make a skill", "new skill", "SKILL.md format", "how do skills work", "skill structure", "skill best practices", "convert this workflow into a skill", "I want to add a custom command".
+
+  Don't use this for invoking existing skills — only when the user is authoring a new one or wants to understand the skill format itself.
 ---
 
 # Skill Creation Guide
