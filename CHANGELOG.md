@@ -1,5 +1,41 @@
 # Changelog
 
+## [2.0.0](///compare/v1.1.1...v2.0.0) (2026-05-12)
+
+### ⚠ BREAKING CHANGES
+
+* **glean-productivity:** /glean-productivity:activity-synthesis and
+/glean-productivity:priority-signals slash paths no longer exist. Use
+/glean-productivity:using-glean-productivity, or ask in natural
+language and let the skill auto-trigger.
+
+Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
+* **glean-code:** /glean-code:code-exploration and /glean-code:plan-prep
+slash paths no longer exist. Use /glean-code:using-glean-code, or ask
+in natural language and let the skill auto-trigger. The
+/glean-code:plan-prep command (a separate command, not the skill of
+the same name) remains and is unchanged.
+
+Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
+* **glean-core:** the old slash paths
+(/glean-core:enterprise-search, /glean-core:meeting-context,
+/glean-core:people-lookup, /glean-core:synthesis-patterns,
+/glean-core:confidence-signals, /glean-core:glean-tools-guide) no
+longer exist. Use /glean-core:using-glean or simply ask in natural
+language and let the skill auto-trigger.
+
+Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
+
+### Bug Fixes
+
+* **validate-plugins:** allow YAML block-scalar indicators in frontmatter 41e1589
+
+### Code Refactoring
+
+* **glean-code:** consolidate two skills into using-glean-code with reference files 4730c44
+* **glean-core:** consolidate six skills into using-glean with per-tool reference files 0000296
+* **glean-productivity:** consolidate two skills into using-glean-productivity with reference files da63b95
+
 ## Unreleased
 
 ### ⚠️ Breaking changes

@@ -1,6 +1,6 @@
 {
   "name": "glean-project",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "Project handoff documents - generate comprehensive handoff docs when transitioning project ownership via Glean. Requires glean-core.",
   "author": {
     "name": "Glean",
