@@ -1,5 +1,9 @@
 ---
-description: Catch up on what you missed while away (PTO, sick days, etc.)
+description: Catch up on what you missed while away — meetings, decisions, action items, mentions, important threads
+when_to_use: |
+  Trigger phrases include "what did I miss", "catch me up", "I was out", "I'm back from PTO", "summarize while I was away", "what happened last week while I was off", "I just got back", "fill me in on what I missed".
+
+  Use when the user has been away (PTO, sick, deep work, time off) and needs a structured summary of meetings, decisions, mentions, and action items from a defined time window.
 argument-hint: Time period (e.g., "last week", "since Monday")
 ---
 
@@ -176,7 +180,7 @@ Check [specific Slack channel] for any direct messages you may have received.
 ## Troubleshooting
 
 ### Glean MCP Not Connected
-If you see errors about missing `mcp__glean` tools:
+If you see errors about missing Glean MCP tools:
 - Run `/glean-core:status` to check connection
 - Run `/glean-core:mcp-setup` to configure
 

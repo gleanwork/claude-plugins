@@ -1,5 +1,9 @@
 ---
 description: Quick search across Glean enterprise knowledge
+when_to_use: |
+  Trigger phrases include "find the doc about", "search for", "where is", "look up", "search company knowledge", "search Glean for". Use when the user wants a fast, structured search of internal documents (not full Glean MCP exploration).
+
+  For broader enterprise queries that may need synthesis or multiple tools, prefer the `using-glean` skill in glean-core.
 argument-hint: <search query>
 allowed-tools: [AskUserQuestion]
 ---
@@ -103,7 +107,7 @@ Found [X] results, showing top [Y] most relevant:
 ## Troubleshooting
 
 ### Glean MCP Not Connected
-If you see errors about missing `mcp__glean` tools:
+If you see errors about missing Glean MCP tools:
 - Run `/glean-core:status` to check connection
 - Run `/glean-core:mcp-setup` to configure
 

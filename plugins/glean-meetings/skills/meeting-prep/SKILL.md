@@ -1,5 +1,9 @@
 ---
-description: Prepare for an upcoming meeting with context and talking points
+description: Prepare for an upcoming meeting with context from past meetings, related docs, and attendee information
+when_to_use: |
+  Trigger phrases include "prep for my meeting", "context for the [meeting]", "what should I know before", "1:1 prep with", "prepare for [name]", "background on this meeting", "agenda context", "talking points for".
+
+  Use when the user has an upcoming meeting and wants relevant context: prior meeting history with the same people / on the same topic, related documents, recent activity that affects what should be discussed.
 argument-hint: Meeting name, topic, or person for 1:1
 ---
 

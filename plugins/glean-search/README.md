@@ -15,15 +15,17 @@ claude plugin install glean-core   # if not already installed
 claude plugin install glean-search
 ```
 
-## What's Included
+## What's included
+
+### Skill
+
+- **`search`** — Auto-triggers on quick-search phrasing ("find the doc about", "search for", "where is", "look up"). Invokable as `/glean-search:search <query>`.
 
 ### Agent
-- **enterprise-searcher** - Cross-source search specialist that finds relevant information across documents, wikis, Slack, email, and more
 
-### Commands
-- `/glean-search:search <query>` - Quick search with formatted results
+- **enterprise-searcher** — Cross-source search specialist that finds relevant information across documents, wikis, Slack, email, and more.
 
-## Example Usage
+## Example usage
 
 ```bash
 # Quick searches
@@ -31,17 +33,19 @@ claude plugin install glean-search
 /glean-search:search API documentation updated:past_week
 /glean-search:search owner:"Jane Doe" project roadmap
 
-# The enterprise-searcher agent is automatically triggered for complex searches
+# The skill auto-triggers when you ask in natural language
 "Find all documents about the authentication migration"
 ```
 
-## Search Tips
+## Search tips
 
 Use filters to narrow results:
-- `owner:"John Smith"` - Documents created by a person
-- `updated:past_week` - Recently updated documents
-- `app:confluence` - Documents from a specific app
-- `after:2024-01-01` - Documents after a date
+- `owner:"John Smith"` — documents created by a person
+- `updated:past_week` — recently updated documents
+- `app:confluence` — documents from a specific app
+- `after:2024-01-01` — documents after a date
+
+For full filter syntax see the `using-glean` skill's `reference/search.md` in `glean-core`.
 
 ## Support
 

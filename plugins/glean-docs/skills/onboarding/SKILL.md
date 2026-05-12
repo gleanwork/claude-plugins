@@ -1,5 +1,9 @@
 ---
-description: Get up to speed on a new team or project
+description: Get up to speed on a new team, project, or area — surface key people, foundational docs, current priorities, and recent activity
+when_to_use: |
+  Trigger phrases include "onboard me on", "get me up to speed on", "intro to [team / area / project]", "I'm new to", "help me understand [team]", "where do I start with", "ramp up on", "background on the [team] team".
+
+  Use when the user is joining a new team, taking on a new area, or learning a system from scratch and wants a structured ramp-up rather than searching ad hoc.
 argument-hint: Team or project name (e.g., "payments team", "search infrastructure")
 ---
 

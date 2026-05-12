@@ -1,5 +1,9 @@
 ---
-description: Verify an RFC or design doc against the actual implementation
+description: Verify an RFC or design doc against the actual implementation — find drift, missing pieces, and undocumented changes
+when_to_use: |
+  Trigger phrases include "verify the RFC", "compare design doc to implementation", "is the spec implemented", "does the code match the design", "what's drifted from the RFC", "audit the [doc] against", "spec compliance check", "is what we built what we designed".
+
+  Use when the user has an RFC, ADR, design doc, or spec and wants to know how the actual implementation compares — what's done, what's missing, what diverged.
 argument-hint: RFC URL or topic to search for
 ---
 

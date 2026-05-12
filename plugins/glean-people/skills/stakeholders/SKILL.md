@@ -1,5 +1,9 @@
 ---
-description: Identify stakeholders for a change, project, or decision
+description: Identify the people who need to be informed, consulted, or asked to approve a change, project, or decision
+when_to_use: |
+  Trigger phrases include "who needs to know about", "who should I loop in", "stakeholders for", "who needs to approve", "who should I consult on", "who's affected by", "RACI for", "who should review".
+
+  Use when the user is planning a change, refactor, migration, or strategic decision and needs to know who to inform, consult, or get approval from.
 argument-hint: Change description (e.g., "migrating auth to OAuth")
 allowed-tools: [AskUserQuestion]
 ---
@@ -185,7 +189,7 @@ This change appears to have limited stakeholder impact.
 ## Troubleshooting
 
 ### Glean MCP Not Connected
-If you see errors about missing `mcp__glean` tools:
+If you see errors about missing Glean MCP tools:
 - Run `/glean-core:status` to check connection
 - Run `/glean-core:mcp-setup` to configure
 

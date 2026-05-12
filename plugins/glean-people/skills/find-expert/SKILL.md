@@ -1,5 +1,9 @@
 ---
-description: Find someone who truly knows about a topic based on actual activity and contributions
+description: Find someone who truly knows about a topic by combining code, doc, and meeting signals — not just titles
+when_to_use: |
+  Trigger phrases include "who knows about", "find someone who knows", "expert on", "go-to person for", "who has worked on", "who has expertise in", "who can I ask about", "subject matter expert".
+
+  Don't use this for plain name lookups (use the `using-glean` skill's employee_search reference). Use this when the user wants real expertise signals, not just role/title matches.
 argument-hint: Topic or technology (e.g., "Kubernetes", "billing system")
 allowed-tools: [AskUserQuestion]
 ---
@@ -199,7 +203,7 @@ I searched for experts on [topic] but didn't find people with strong evidence of
 ## Troubleshooting
 
 ### Glean MCP Not Connected
-If you see errors about missing `mcp__glean` tools:
+If you see errors about missing Glean MCP tools:
 - Run `/glean-core:status` to check connection
 - Run `/glean-core:mcp-setup` to configure
 
