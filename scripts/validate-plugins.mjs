@@ -16,6 +16,8 @@ import process from "node:process";
 
 // Characters that require quoting in YAML values when unquoted
 const YAML_SPECIAL_CHARS = /[{}[\]*&#!|>%@`]/;
+// YAML block-scalar headers (| or > with optional chomp/indent indicators) — leave them alone
+const BLOCK_SCALAR_HEADER = /^[|>][1-9]?[+-]?$/;
 const FRONTMATTER_REGEX = /^---\s*\n([\s\S]*?)---\s*\n?/;
 
 const pluginNamePattern = /^[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$/;
@@ -41,6 +43,10 @@ function quoteSpecialValues(text) {
         (value.startsWith('"') && value.endsWith('"')) ||
         (value.startsWith("'") && value.endsWith("'"))
       ) { result.push(line); continue; }
+      // Block-scalar indicators (key: |, key: >, with optional chomp/indent) are
+      // valid YAML and must pass through unchanged so the parser can read the
+      // indented body that follows.
+      if (BLOCK_SCALAR_HEADER.test(value.trim())) { result.push(line); continue; }
       if (YAML_SPECIAL_CHARS.test(value)) {
         const escaped = value.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
         result.push(`${key}: "${escaped}"`);
