@@ -1,6 +1,6 @@
-# glean-productivity
+# Glean Productivity
 
-Personal productivity tools powered by Glean - daily briefings, weekly summaries, and activity analysis.
+Personal productivity tools powered by Glean — daily briefings, weekly summaries, activity synthesis, and priority triage.
 
 ## Overview
 
@@ -14,20 +14,39 @@ claude plugins add gleanwork/claude-plugins/glean-productivity
 
 **Requires**: `glean-core` plugin for Glean MCP configuration.
 
-## Commands
+## What's included
+
+### Skill
+
+- **`using-glean-productivity`** — Auto-triggers on personal-productivity questions ("what have I been working on", "what's urgent", "summarize my week"). The canonical Glean tool references (`user_activity`, `read_memory`, `search`, `meeting_lookup`) live in `glean-core`; this skill carries the workflow.
+
+  Reference files under [`skills/using-glean-productivity/reference/`](skills/using-glean-productivity/reference/):
+
+  | File | Covers |
+  |---|---|
+  | `activity.md` | Retrospective questions: what the user did, accomplishments, status updates |
+  | `priorities.md` | Prospective questions: urgent items, blockers, attention triage |
+
+### Commands
 
 | Command | Description |
-|---------|-------------|
-| `/daily-briefing` | What happened in the last 24 hours - mentions, shared docs, decisions, action items |
-| `/my-week` | Weekly summary of your activity, accomplishments, and collaborations |
+|---|---|
+| `/glean-productivity:daily-briefing` | What happened in the last 24 hours — mentions, shared docs, decisions, action items |
+| `/glean-productivity:my-week` | Weekly summary of your activity, accomplishments, and collaborations |
 
-### Example: Daily Briefing
+### Agents
+
+| Agent | Purpose |
+|---|---|
+| `activity-analyzer` | Analyzes activity data to categorize by priority, identify patterns, and extract accomplishments |
+
+## Example: Daily Briefing
 
 ```
-/daily-briefing
+/glean-productivity:daily-briefing
 
 # Or with a focus area:
-/daily-briefing payments team
+/glean-productivity:daily-briefing payments team
 ```
 
 **Output includes:**
@@ -38,13 +57,13 @@ claude plugins add gleanwork/claude-plugins/glean-productivity
 - Documents shared with you
 - Today's meetings with prep suggestions
 
-### Example: Weekly Summary
+## Example: Weekly Summary
 
 ```
-/my-week
+/glean-productivity:my-week
 
 # Or with a specific time period:
-/my-week past 2 weeks
+/glean-productivity:my-week past 2 weeks
 ```
 
 **Output includes:**
@@ -56,58 +75,28 @@ claude plugins add gleanwork/claude-plugins/glean-productivity
 - Open items to carry forward
 - Reflection prompts for 1:1s
 
-## Skills
+## Use cases
 
-These skills trigger automatically when relevant:
-
-| Skill | Triggers On |
-|-------|-------------|
-| `activity-synthesis` | "What have I been working on?", "my recent activity", "what did I do last week" |
-| `priority-signals` | "What's urgent?", "what needs my attention?", "what should I focus on?" |
-
-## Agents
-
-| Agent | Purpose |
-|-------|---------|
-| `activity-analyzer` | Analyzes activity data to categorize by priority, identify patterns, and extract accomplishments |
-
-## Glean Tools Used
-
-- `user_activity` - Your work activity feed
-- `meeting_lookup` - Meetings and transcripts
-- `search` - Documents and mentions
-- `chat` - AI synthesis across sources
-- `memory` - Your roles, projects, preferences
-
-## Use Cases
-
-### Morning Routine
-Start your day with `/daily-briefing` to know exactly what needs your attention.
-
-### Status Updates
-Use `/my-week` to quickly generate content for standups or status reports.
-
-### 1:1 Prep
-The "Reflection Prompts" section in `/my-week` provides ready-made discussion points.
-
-### After PTO
-Combine with `/glean-meetings:catch-up` for comprehensive catch-up after time away.
+- **Morning routine**: `/glean-productivity:daily-briefing` to know what needs attention
+- **Status updates**: `/glean-productivity:my-week` for standups and status reports
+- **1:1 prep**: the reflection prompts in `/my-week` are ready-made discussion points
+- **After PTO**: combine with `/glean-meetings:catch-up` for comprehensive catch-up
 
 ## Troubleshooting
 
-### Glean MCP Not Connected
+### Glean MCP not connected
 If commands fail with missing tool errors:
 - Run `/glean-core:status` to check connection
 - Run `/glean-core:mcp-setup` to configure
 
-### Limited Activity Data
+### Limited activity data
 If activity data is sparse:
 - You may work primarily in systems not indexed by Glean
 - Commands will supplement with meeting and document data
 - Consider which data sources are connected to your Glean instance
 
-## Related Plugins
+## Related plugins
 
-- `glean-core` - Required foundation
-- `glean-meetings` - Meeting prep and catch-up
-- `glean-people` - Find experts and stakeholders
+- `glean-core` — required foundation
+- `glean-meetings` — meeting prep and catch-up
+- `glean-people` — find experts and stakeholders
