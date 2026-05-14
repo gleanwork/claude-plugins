@@ -278,19 +278,27 @@ function mcpCall(serverUrl, token, toolArgs) {
   });
 }
 
-async function checkMemoryExists(projectName) {
+async function findExistingMemoryId(projectName) {
   const result = await mcpCall(bestUrl, bestToken, {
     action: "read",
+    memory_source: "ClaudeCode",
     category: "NativeMemories",
-    options: { project_name: projectName },
+    read_filters: { project_name: projectName },
+    limit: 1,
   });
-  if (!result) return false;
+  if (!result) return null;
   try {
     const parsed = JSON.parse(result);
-    return !parsed.error;
-  } catch {
-    return false;
-  }
+    const content = parsed?.result?.content;
+    if (!content || !Array.isArray(content)) return null;
+    for (const block of content) {
+      if (block.type === "text" && block.text) {
+        const match = block.text.match(/\n\s+id:\s+([0-9a-f]+)\n/);
+        if (match) return match[1];
+      }
+    }
+  } catch {}
+  return null;
 }
 
 async function uploadMemory(filePath, projectName) {
@@ -307,15 +315,17 @@ async function uploadMemory(filePath, projectName) {
   }
 
   log(`uploading ${filePath} for project=${projectName} (${content.length} chars)`);
-  const exists = await checkMemoryExists(projectName);
-  log(`memory exists=${exists} for project=${projectName}`);
-  await mcpCall(bestUrl, bestToken, {
-    action: exists ? "update" : "add",
+  const memoryId = await findExistingMemoryId(projectName);
+  log(`existing memory_id=${memoryId} for project=${projectName}`);
+  const args = {
+    action: memoryId ? "update" : "add",
     memory_source: "ClaudeCode",
     category: "NativeMemories",
     content,
     options: { project_name: projectName },
-  });
+  };
+  if (memoryId) args.memory_id = memoryId;
+  await mcpCall(bestUrl, bestToken, args);
 }
 
 // Upload global CLAUDE.md
