@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 // session-start.mjs — SessionStart hook for glean-core plugin.
-// Outputs a systemMessage indicating whether Glean MCP is configured.
-// Shows a one-time memory disclaimer on first run when memory sync is active.
+//
+// Non-memory behavior matches main: silent when configured, setup prompt when not.
+// Memory disclaimer: shown once when Glean MCP is configured, then silent forever.
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import { join, dirname } from "path";
@@ -37,28 +38,38 @@ try {
   );
 } catch {}
 
-// Read the appropriate template
-const templateFile = gleanConfigured
-  ? "session-configured.txt"
-  : "session-unconfigured.txt";
+// --- Not configured: show setup prompt (same as main) ---
+if (!gleanConfigured) {
+  let content;
+  try {
+    content = readFileSync(join(templatesDir, "session-unconfigured.txt"), "utf8");
+  } catch {
+    process.exit(0);
+  }
+  content = content.replace(/\{\{VERSION\}\}/g, version);
+  console.log(`{\n  "systemMessage": ${JSON.stringify(content)}\n}`);
+  process.exit(0);
+}
 
+// --- Configured + already shown disclaimer: silent (same as main) ---
+if (existsSync(SENTINEL)) {
+  process.exit(0);
+}
+
+// --- Configured + first time: show one-time memory disclaimer ---
 let content;
 try {
-  content = readFileSync(join(templatesDir, templateFile), "utf8");
+  content = readFileSync(join(templatesDir, "session-configured.txt"), "utf8");
 } catch {
   process.exit(0);
 }
 content = content.replace(/\{\{VERSION\}\}/g, version);
+content +=
+  "\nGlean is continuously learning your preferences. To disable, edit your settings.json hooks config or run `claude config` to remove the glean-core Stop hook.";
 
-// Show memory disclaimer once when Glean MCP is configured
-if (gleanConfigured && !existsSync(SENTINEL)) {
-  content +=
-    "\nGlean is continuously learning your preferences. To disable, edit your settings.json hooks config or run `claude config` to remove the glean-core Stop hook.";
-  try {
-    mkdirSync(STATE_DIR, { recursive: true });
-    writeFileSync(SENTINEL, new Date().toISOString());
-  } catch {}
-}
+try {
+  mkdirSync(STATE_DIR, { recursive: true });
+  writeFileSync(SENTINEL, new Date().toISOString());
+} catch {}
 
-const escaped = JSON.stringify(content);
-console.log(`{\n  "systemMessage": ${escaped}\n}`);
+console.log(`{\n  "systemMessage": ${JSON.stringify(content)}\n}`);
