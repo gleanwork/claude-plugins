@@ -5,7 +5,7 @@
 // Receives JSON on stdin: { "session_id": "...", "cwd": "...", "hook_event_name": "Stop" }
 // Cross-platform: macOS (Keychain), Windows (Credential Manager), Linux (credentials file).
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from "fs";
+import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync, readdirSync } from "fs";
 import { join, sep } from "path";
 import { homedir, platform } from "os";
 import { execSync } from "child_process";
@@ -16,6 +16,18 @@ const HOME = homedir();
 const STATE_DIR = join(HOME, ".claude", "hooks-state");
 const STATE_FILE = join(STATE_DIR, "glean-memory-sync.jsonl");
 const CLAUDE_CONFIG_PATH = join(HOME, ".claude.json");
+const LOG_FILE = join(STATE_DIR, "glean-memory-sync.log");
+
+function log(msg) {
+  const ts = new Date().toISOString();
+  const line = `[${ts}] ${msg}\n`;
+  try {
+    mkdirSync(STATE_DIR, { recursive: true });
+    appendFileSync(LOG_FILE, line);
+  } catch {}
+}
+
+log("--- sync-memories.mjs invoked ---");
 
 // ---------------------------------------------------------------------------
 // 1. Read hook input from stdin
@@ -29,11 +41,17 @@ function readStdin() {
 }
 
 const input = readStdin();
+log(`stdin: ${input.trim() || "(empty)"}`);
 let cwd;
 try {
   cwd = JSON.parse(input).cwd;
-} catch {}
-if (!cwd) process.exit(0);
+} catch (e) {
+  log(`ERROR parsing stdin JSON: ${e.message}`);
+}
+if (!cwd) {
+  log("EXIT: no cwd in input");
+  process.exit(0);
+}
 
 // ---------------------------------------------------------------------------
 // 2. Resolve project directory from CWD
@@ -44,7 +62,8 @@ if (!cwd) process.exit(0);
 let claudeConfig;
 try {
   claudeConfig = JSON.parse(readFileSync(CLAUDE_CONFIG_PATH, "utf8"));
-} catch {
+} catch (e) {
+  log(`EXIT: cannot read ${CLAUDE_CONFIG_PATH}: ${e.message}`);
   process.exit(0);
 }
 
@@ -55,7 +74,11 @@ for (const projPath of Object.keys(projects)) {
     bestMatch = projPath;
   }
 }
-if (!bestMatch) process.exit(0);
+if (!bestMatch) {
+  log(`EXIT: no matching project for cwd=${cwd} (keys: ${Object.keys(projects).join(", ")})`);
+  process.exit(0);
+}
+log(`matched project: ${bestMatch}`);
 
 // Encode path: replace separators with "-" and remove dots
 // On Windows paths use \, on Unix /. Both become "-".
@@ -80,7 +103,11 @@ if (existsSync(STATE_FILE)) {
         const entry = JSON.parse(line);
         if (entry.project === projectEncoded) {
           const elapsed = now - (entry.ts || 0);
-          if (elapsed < CADENCE_SECONDS) process.exit(0);
+          if (elapsed < CADENCE_SECONDS) {
+            log(`EXIT: cadence skip — last sync ${elapsed}s ago (< ${CADENCE_SECONDS}s)`);
+            process.exit(0);
+          }
+          log(`cadence OK — last sync ${elapsed}s ago`);
           break;
         }
       } catch {}
@@ -151,7 +178,11 @@ function readCredentialsFile() {
 }
 
 const creds = getCredentialsFromKeychain();
-if (!creds) process.exit(0);
+if (!creds) {
+  log("EXIT: no credentials found");
+  process.exit(0);
+}
+log("credentials retrieved OK");
 
 const mcpOAuth = creds.mcpOAuth || {};
 
@@ -170,7 +201,11 @@ for (const projConfig of Object.values(projects)) {
     }
   }
 }
-if (configuredUrls.size === 0) process.exit(0);
+if (configuredUrls.size === 0) {
+  log("EXIT: no Glean MCP server URLs found in config");
+  process.exit(0);
+}
+log(`found ${configuredUrls.size} Glean MCP URL(s): ${[...configuredUrls].join(", ")}`);
 
 // Find a keychain entry with a valid token matching a configured URL
 const nowMs = Date.now();
@@ -189,7 +224,11 @@ for (const entry of Object.values(mcpOAuth)) {
     bestExpires = expiresAt;
   }
 }
-if (!bestToken || !bestUrl) process.exit(0);
+if (!bestToken || !bestUrl) {
+  log(`EXIT: no valid OAuth token (checked ${Object.keys(mcpOAuth).length} entries, ${configuredUrls.size} configured URLs)`);
+  process.exit(0);
+}
+log(`using token for ${bestUrl} (expires ${new Date(bestExpires).toISOString()})`);
 
 // ---------------------------------------------------------------------------
 // 5. Collect memory files and upload each to Glean Memory
@@ -223,9 +262,15 @@ function mcpCall(serverUrl, token, toolArgs) {
     const req = request(options, (res) => {
       let data = "";
       res.on("data", (chunk) => (data += chunk));
-      res.on("end", () => resolve(data));
+      res.on("end", () => {
+        log(`MCP response (${res.statusCode}): ${data.substring(0, 200)}`);
+        resolve(data);
+      });
     });
-    req.on("error", () => resolve(null));
+    req.on("error", (e) => {
+      log(`MCP request error: ${e.message}`);
+      resolve(null);
+    });
     req.write(body);
     req.end();
   });
@@ -250,12 +295,18 @@ async function uploadMemory(filePath, projectName) {
   let content;
   try {
     content = readFileSync(filePath, "utf8");
-  } catch {
+  } catch (e) {
+    log(`ERROR reading ${filePath}: ${e.message}`);
     return;
   }
-  if (!content.trim()) return;
+  if (!content.trim()) {
+    log(`SKIP empty file: ${filePath}`);
+    return;
+  }
 
+  log(`uploading ${filePath} for project=${projectName} (${content.length} chars)`);
   const exists = await checkMemoryExists(projectName);
+  log(`memory exists=${exists} for project=${projectName}`);
   await mcpCall(bestUrl, bestToken, {
     action: exists ? "update" : "add",
     memory_source: "ClaudeCode",
@@ -268,19 +319,27 @@ async function uploadMemory(filePath, projectName) {
 // Upload global CLAUDE.md
 const globalClaudeMd = join(HOME, ".claude", "CLAUDE.md");
 if (existsSync(globalClaudeMd)) {
+  log("uploading global CLAUDE.md");
   await uploadMemory(globalClaudeMd, "~");
+} else {
+  log("no global CLAUDE.md found");
 }
 
 // Upload project memory files
 const memoryDir = join(projectDir, "memory");
+log(`checking memory dir: ${memoryDir}`);
 if (existsSync(memoryDir)) {
   try {
-    for (const file of readdirSync(memoryDir)) {
-      if (file.endsWith(".md")) {
-        await uploadMemory(join(memoryDir, file), bestMatch);
-      }
+    const files = readdirSync(memoryDir).filter(f => f.endsWith(".md"));
+    log(`found ${files.length} memory files: ${files.join(", ")}`);
+    for (const file of files) {
+      await uploadMemory(join(memoryDir, file), bestMatch);
     }
-  } catch {}
+  } catch (e) {
+    log(`ERROR reading memory dir: ${e.message}`);
+  }
+} else {
+  log(`memory dir does not exist: ${memoryDir}`);
 }
 
 // ---------------------------------------------------------------------------
@@ -313,3 +372,4 @@ if (!found) {
 }
 
 writeFileSync(STATE_FILE, stateLines.join("\n") + "\n");
+log("sync complete, state file updated");
