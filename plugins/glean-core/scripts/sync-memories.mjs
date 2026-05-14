@@ -301,20 +301,13 @@ async function findExistingMemoryId(projectName) {
   return null;
 }
 
-async function uploadMemory(filePath, projectName) {
-  let content;
-  try {
-    content = readFileSync(filePath, "utf8");
-  } catch (e) {
-    log(`ERROR reading ${filePath}: ${e.message}`);
-    return;
-  }
+async function uploadMemory(content, projectName) {
   if (!content.trim()) {
-    log(`SKIP empty file: ${filePath}`);
+    log(`SKIP empty content for project=${projectName}`);
     return;
   }
 
-  log(`uploading ${filePath} for project=${projectName} (${content.length} chars)`);
+  log(`uploading for project=${projectName} (${content.length} chars)`);
   const memoryId = await findExistingMemoryId(projectName);
   log(`existing memory_id=${memoryId} for project=${projectName}`);
   const args = {
@@ -332,20 +325,38 @@ async function uploadMemory(filePath, projectName) {
 const globalClaudeMd = join(HOME, ".claude", "CLAUDE.md");
 if (existsSync(globalClaudeMd)) {
   log("uploading global CLAUDE.md");
-  await uploadMemory(globalClaudeMd, "~");
+  try {
+    const content = readFileSync(globalClaudeMd, "utf8");
+    await uploadMemory(content, "~");
+  } catch (e) {
+    log(`ERROR reading global CLAUDE.md: ${e.message}`);
+  }
 } else {
   log("no global CLAUDE.md found");
 }
 
-// Upload project memory files
+// Upload project memory files — concat all .md files into one entry
 const memoryDir = join(projectDir, "memory");
 log(`checking memory dir: ${memoryDir}`);
 if (existsSync(memoryDir)) {
   try {
     const files = readdirSync(memoryDir).filter(f => f.endsWith(".md"));
     log(`found ${files.length} memory files: ${files.join(", ")}`);
+    const parts = [];
     for (const file of files) {
-      await uploadMemory(join(memoryDir, file), bestMatch);
+      try {
+        const text = readFileSync(join(memoryDir, file), "utf8");
+        if (text.trim()) parts.push(`# ${file}\n\n${text}`);
+      } catch (e) {
+        log(`ERROR reading ${file}: ${e.message}`);
+      }
+    }
+    if (parts.length > 0) {
+      const merged = parts.join("\n\n---\n\n");
+      log(`merged ${parts.length} files into ${merged.length} chars`);
+      await uploadMemory(merged, bestMatch);
+    } else {
+      log("no non-empty memory files to upload");
     }
   } catch (e) {
     log(`ERROR reading memory dir: ${e.message}`);
