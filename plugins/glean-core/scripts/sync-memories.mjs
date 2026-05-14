@@ -186,28 +186,28 @@ log("credentials retrieved OK");
 
 const mcpOAuth = creds.mcpOAuth || {};
 
-// Find configured Glean MCP server URLs from ~/.claude.json
-const configuredUrls = new Set();
+// Find configured Glean MCP server hostnames from ~/.claude.json
+const configuredHosts = new Set();
 for (const [name, server] of Object.entries(claudeConfig.mcpServers || {})) {
   if (name.toLowerCase().includes("glean") && server.url) {
-    configuredUrls.add(server.url);
+    try { configuredHosts.add(new URL(server.url).hostname); } catch {}
   }
 }
 // Also check project-level mcpServers
 for (const projConfig of Object.values(projects)) {
   for (const [name, server] of Object.entries(projConfig.mcpServers || {})) {
     if (name.toLowerCase().includes("glean") && server.url) {
-      configuredUrls.add(server.url);
+      try { configuredHosts.add(new URL(server.url).hostname); } catch {}
     }
   }
 }
-if (configuredUrls.size === 0) {
-  log("EXIT: no Glean MCP server URLs found in config");
+if (configuredHosts.size === 0) {
+  log("EXIT: no Glean MCP server hosts found in config");
   process.exit(0);
 }
-log(`found ${configuredUrls.size} Glean MCP URL(s): ${[...configuredUrls].join(", ")}`);
+log(`found ${configuredHosts.size} Glean MCP host(s): ${[...configuredHosts].join(", ")}`);
 
-// Find a keychain entry with a valid token matching a configured URL
+// Find a keychain entry with a valid token matching a configured host
 const nowMs = Date.now();
 let bestToken = null;
 let bestUrl = null;
@@ -217,7 +217,9 @@ for (const entry of Object.values(mcpOAuth)) {
   const { serverUrl, accessToken, expiresAt } = entry;
   if (!accessToken || !serverUrl) continue;
   if (expiresAt <= nowMs) continue;
-  if (!configuredUrls.has(serverUrl)) continue;
+  let entryHost;
+  try { entryHost = new URL(serverUrl).hostname; } catch { continue; }
+  if (!configuredHosts.has(entryHost)) continue;
   if (expiresAt > bestExpires) {
     bestToken = accessToken;
     bestUrl = serverUrl;
@@ -225,7 +227,7 @@ for (const entry of Object.values(mcpOAuth)) {
   }
 }
 if (!bestToken || !bestUrl) {
-  log(`EXIT: no valid OAuth token (checked ${Object.keys(mcpOAuth).length} entries, ${configuredUrls.size} configured URLs)`);
+  log(`EXIT: no valid OAuth token (checked ${Object.keys(mcpOAuth).length} entries, ${configuredHosts.size} configured hosts)`);
   process.exit(0);
 }
 log(`using token for ${bestUrl} (expires ${new Date(bestExpires).toISOString()})`);
