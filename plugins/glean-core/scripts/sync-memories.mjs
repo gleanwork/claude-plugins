@@ -11,7 +11,7 @@ import { homedir, platform } from "os";
 import { execSync } from "child_process";
 import { request } from "https";
 
-const CADENCE_SECONDS = 3600; // 1 hour
+const CADENCE_SECONDS = 86400; // 24 hours
 const HOME = homedir();
 const STATE_DIR = join(HOME, ".claude", "hooks-state");
 const STATE_FILE = join(STATE_DIR, "glean-memory-sync.jsonl");
@@ -65,7 +65,7 @@ const projectEncoded = bestMatch
 const projectDir = join(HOME, ".claude", "projects", projectEncoded);
 
 // ---------------------------------------------------------------------------
-// 3. Cadence check — skip if last sync for this project was less than 1 hour ago
+// 3. Cadence check — skip if last sync for this project was less than 24 hours ago
 //    State is stored as JSONL, one {"project":"...","ts":...} per line.
 // ---------------------------------------------------------------------------
 mkdirSync(STATE_DIR, { recursive: true });
