@@ -278,29 +278,6 @@ function mcpCall(serverUrl, token, toolArgs) {
   });
 }
 
-async function findExistingMemoryId(projectName) {
-  const result = await mcpCall(bestUrl, bestToken, {
-    action: "read",
-    memory_source: "ClaudeCode",
-    category: "NativeMemories",
-    read_filters: { project_name: projectName },
-    limit: 1,
-  });
-  if (!result) return null;
-  try {
-    const parsed = JSON.parse(result);
-    const content = parsed?.result?.content;
-    if (!content || !Array.isArray(content)) return null;
-    for (const block of content) {
-      if (block.type === "text" && block.text) {
-        const match = block.text.match(/\n\s+id:\s+([0-9a-f]+)\n/);
-        if (match) return match[1];
-      }
-    }
-  } catch {}
-  return null;
-}
-
 async function uploadMemory(content, projectName) {
   if (!content.trim()) {
     log(`SKIP empty content for project=${projectName}`);
@@ -308,17 +285,15 @@ async function uploadMemory(content, projectName) {
   }
 
   log(`uploading for project=${projectName} (${content.length} chars)`);
-  const memoryId = await findExistingMemoryId(projectName);
-  log(`existing memory_id=${memoryId} for project=${projectName}`);
-  const args = {
-    action: memoryId ? "update" : "add",
+  // Always use "add" — the server enforces keep(1) per project_name via
+  // evict_oldest policy, which only triggers on add (not update).
+  await mcpCall(bestUrl, bestToken, {
+    action: "add",
     memory_source: "ClaudeCode",
     category: "NativeMemories",
     content,
     options: { project_name: projectName },
-  };
-  if (memoryId) args.memory_id = memoryId;
-  await mcpCall(bestUrl, bestToken, args);
+  });
 }
 
 // Upload global CLAUDE.md
