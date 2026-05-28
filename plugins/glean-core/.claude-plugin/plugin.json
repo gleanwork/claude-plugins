@@ -10,7 +10,6 @@
   "homepage": "https://docs.glean.com/administration/platform/mcp/about",
   "repository": "https://github.com/gleanwork/claude-plugins",
   "license": "MIT",
-  "hooks": "./hooks/hooks.json",
   "keywords": [
     "glean",
     "mcp",
