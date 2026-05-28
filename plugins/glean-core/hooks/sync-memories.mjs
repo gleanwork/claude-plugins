@@ -91,7 +91,15 @@ if (!bestMatch) {
 log(`matched project: ${bestMatch}`);
 
 const projectEncoded = encodeClaudeProjectPath(bestMatch);
-const projectDir = join(HOME, ".claude", "projects", projectEncoded);
+const projectEncodedLeading = "-" + projectEncoded;
+const projectDir = [projectEncoded, projectEncodedLeading]
+  .map((enc) => join(HOME, ".claude", "projects", enc))
+  .find((dir) => existsSync(dir));
+if (!projectDir) {
+  log(`EXIT: project dir not found (tried ${projectEncoded} and ${projectEncodedLeading})`);
+  process.exit(0);
+}
+log(`using project dir: ${projectDir}`);
 
 // ---------------------------------------------------------------------------
 // 3. Cadence check — skip if last sync for this project was less than 24 hours ago
