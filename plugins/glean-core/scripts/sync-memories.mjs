@@ -56,7 +56,7 @@ if (!cwd) {
 // ---------------------------------------------------------------------------
 // 2. Resolve project directory from CWD
 //    Claude Code stores projects in ~/.claude/projects/<encoded-path>/
-//    Encoding: replace path separators with "-" and remove "." chars.
+//    Encoding: replace path separators and "." chars with "-".
 //    We find the matching project by checking ~/.claude.json projects keys.
 // ---------------------------------------------------------------------------
 let claudeConfig;
@@ -80,11 +80,13 @@ if (!bestMatch) {
 }
 log(`matched project: ${bestMatch}`);
 
-// Encode path: replace separators with "-" and remove dots
-// On Windows paths use \, on Unix /. Both become "-".
+// Encode path: replace separators and dots with "-".
+// On Windows paths use \, on Unix /. Both become "-". Dots in path segments
+// (e.g. usernames like "first.last") also become "-" — Claude Code does the
+// same when computing ~/.claude/projects/<encoded> dir names.
 const projectEncoded = bestMatch
   .replace(/[\\/]/g, "-")
-  .replace(/\./g, "");
+  .replace(/\./g, "-");
 const projectDir = join(HOME, ".claude", "projects", projectEncoded);
 
 // ---------------------------------------------------------------------------
