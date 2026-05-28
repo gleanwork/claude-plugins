@@ -6,7 +6,7 @@
 // Cross-platform: macOS (Keychain), Windows (Credential Manager), Linux (credentials file).
 
 import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync, readdirSync } from "fs";
-import { join, sep } from "path";
+import { join, sep, resolve } from "path";
 import { homedir, platform } from "os";
 import { execSync } from "child_process";
 import { request } from "https";
@@ -56,9 +56,19 @@ if (!cwd) {
 // ---------------------------------------------------------------------------
 // 2. Resolve project directory from CWD
 //    Claude Code stores projects in ~/.claude/projects/<encoded-path>/
-//    Encoding: replace path separators with "-" and remove "." chars.
+//    Encoding: split into segments, replace dots with "-", join with "-".
 //    We find the matching project by checking ~/.claude.json projects keys.
 // ---------------------------------------------------------------------------
+
+function encodeClaudeProjectPath(inputPath) {
+  const normalized = resolve(inputPath);
+  return normalized
+    .split(/[\\/]+/)
+    .filter(Boolean)
+    .map((seg) => seg.replace(/\./g, "-"))
+    .join("-");
+}
+
 let claudeConfig;
 try {
   claudeConfig = JSON.parse(readFileSync(CLAUDE_CONFIG_PATH, "utf8"));
@@ -80,11 +90,7 @@ if (!bestMatch) {
 }
 log(`matched project: ${bestMatch}`);
 
-// Encode path: replace separators with "-" and remove dots
-// On Windows paths use \, on Unix /. Both become "-".
-const projectEncoded = bestMatch
-  .replace(/[\\/]/g, "-")
-  .replace(/\./g, "");
+const projectEncoded = encodeClaudeProjectPath(bestMatch);
 const projectDir = join(HOME, ".claude", "projects", projectEncoded);
 
 // ---------------------------------------------------------------------------
