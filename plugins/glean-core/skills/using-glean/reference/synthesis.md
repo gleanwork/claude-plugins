@@ -19,7 +19,7 @@ Some questions can't be answered by a single Glean tool. Use this file when the 
 | Recent discussion / decisions | `meeting_lookup` |
 | Org structure, role, reporting | `employee_search` |
 | Code-level truth (what's actually built) | `code_search` |
-| User's own context / personalization | `read_memory`, `user_activity` |
+| User's own context / personalization | `memory`, `user_activity` |
 | Structured entity / relationship | `knowledge_graph_query` |
 
 ## Patterns

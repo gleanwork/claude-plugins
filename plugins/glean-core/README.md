@@ -29,7 +29,7 @@ claude plugin install glean-core
   | `outlook-search.md` | The `outlook_search` tool (Microsoft 365 email) |
   | `read-document.md` | The `read_document` tool: full content by URL |
   | `user-activity.md` | The `user_activity` tool: the user's own work history |
-  | `memory.md` | `read_memory` + `memory_schema` |
+  | `memory.md` | `memory` + `memory_schema` |
   | `knowledge-graph.md` | `knowledge_graph_query` + `knowledge_graph_schema` |
   | `agents-as-tools.md` | Discovering and invoking dynamic Glean platform agents |
   | `synthesis.md` | Combining multiple tools for cross-source answers |

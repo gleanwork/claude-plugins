@@ -30,7 +30,7 @@ If no Glean tools are visible, the user has not configured a Glean MCP server. S
 | Outlook messages, threads, attachments | `outlook_search` | [outlook-search.md](reference/outlook-search.md) |
 | Reading a specific URL / document | `read_document` | [read-document.md](reference/read-document.md) |
 | The user's own recent activity (standup, weekly summary) | `user_activity` | [user-activity.md](reference/user-activity.md) |
-| The user's stored memories / personalization | `read_memory` (+ `memory_schema`) | [memory.md](reference/memory.md) |
+| The user's stored memories / personalization | `memory` (+ `memory_schema`) | [memory.md](reference/memory.md) |
 | Structured entity / relationship queries | `knowledge_graph_query` (+ `knowledge_graph_schema`) | [knowledge-graph.md](reference/knowledge-graph.md) |
 
 The reference files are loaded only when needed. Open the relevant one before invoking a tool you haven't used recently — each file carries the exact param shape, the filter syntax, and the pitfalls that have bitten previous calls.

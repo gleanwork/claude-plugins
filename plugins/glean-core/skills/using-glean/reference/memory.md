@@ -1,10 +1,10 @@
-# `read_memory` + `memory_schema` — the user's long-term work memory
+# `memory` + `memory_schema` — the user's long-term work memory
 
 Glean Memory stores per-user context: writing style, role, active projects, explicit notes the user saved, recent topics. Use it to personalize responses and to recall facts the user established in earlier sessions.
 
 The two tools are paired:
 - **`memory_schema`** — discover what categories exist and what fields each carries (call first if unsure)
-- **`read_memory`** — read entries from one or more categories
+- **`memory`** — read entries from one or more categories
 
 ## When to use
 
@@ -26,7 +26,7 @@ Memory categories are an enum; field shapes per category are also enumerated. Do
 ```
 1. memory_schema()                              -> list of categories
 2. memory_schema(category="ActiveProjects")     -> field schema for that category
-3. read_memory(action="read", category="ActiveProjects", query="…")
+3. memory(action="read", category="ActiveProjects", query="…")
 ```
 
 For routine reads of well-known categories, you can skip step 2 — but always run step 1 if you're unfamiliar with what's available.
@@ -35,7 +35,7 @@ For routine reads of well-known categories, you can skip step 2 — but always r
 
 `WritingStyle`, `RolesAndResponsibilities`, `ActiveProjects`, `ExplicitMemories`, `RecentTopics`, `CommunicationPreferences`, `KnowledgeLevelMap`, `Preferences`, `GoalsAndPriorities`, `IdentityAndNarrative`, `ConstraintsAndGuardrails`, `DecisionHeuristics`, `WorkingStyle`, `DomainContext`, `RelationshipContext`, `CommitmentsAndResponsibilities`, `ContextualState`, `Miscellaneous`, `NativeMemories`.
 
-If your client has write access (varies by Glean instance and integration), `read_memory` also supports `action: "add" | "update" | "delete"`. Default is `"read"`.
+If your client has write access (varies by Glean instance and integration), `memory` also supports `action: "add" | "update" | "delete"`. Default is `"read"`.
 
 ## Parameters (read action)
 
@@ -51,10 +51,10 @@ If your client has write access (varies by Glean instance and integration), `rea
 ## Examples
 
 ```
-read_memory(action="read", category="ActiveProjects")
-read_memory(action="read", category="WritingStyle", limit=3)
-read_memory(action="read", query="auth migration", limit=5)
-read_memory(action="read", category="ExplicitMemories", read_filters={"topic":"deployment"})
+memory(action="read", category="ActiveProjects")
+memory(action="read", category="WritingStyle", limit=3)
+memory(action="read", query="auth migration", limit=5)
+memory(action="read", category="ExplicitMemories", read_filters={"topic":"deployment"})
 ```
 
 ## Pitfalls
@@ -65,4 +65,4 @@ read_memory(action="read", category="ExplicitMemories", read_filters={"topic":"d
 
 ## Typical follow-up
 
-For status reports / weekly summaries, pair `read_memory` (what the user *says* they work on) with `user_activity` ([user-activity.md](user-activity.md), what they actually touched) and surface any drift.
+For status reports / weekly summaries, pair `memory` (what the user *says* they work on) with `user_activity` ([user-activity.md](user-activity.md), what they actually touched) and surface any drift.

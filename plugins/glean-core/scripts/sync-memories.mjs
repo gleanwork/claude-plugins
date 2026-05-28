@@ -242,7 +242,7 @@ function mcpCall(serverUrl, token, toolArgs) {
       id: 1,
       method: "tools/call",
       params: {
-        name: "read_memory",
+        name: "memory",
         arguments: toolArgs,
       },
     });

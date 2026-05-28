@@ -18,7 +18,7 @@ claude plugins add gleanwork/claude-plugins/glean-productivity
 
 ### Skill
 
-- **`using-glean-productivity`** — Auto-triggers on personal-productivity questions ("what have I been working on", "what's urgent", "summarize my week"). The canonical Glean tool references (`user_activity`, `read_memory`, `search`, `meeting_lookup`) live in `glean-core`; this skill carries the workflow.
+- **`using-glean-productivity`** — Auto-triggers on personal-productivity questions ("what have I been working on", "what's urgent", "summarize my week"). The canonical Glean tool references (`user_activity`, `memory`, `search`, `meeting_lookup`) live in `glean-core`; this skill carries the workflow.
 
   Reference files under [`skills/using-glean-productivity/reference/`](skills/using-glean-productivity/reference/):
 
