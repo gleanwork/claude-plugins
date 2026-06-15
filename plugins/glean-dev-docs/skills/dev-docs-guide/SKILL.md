@@ -1,10 +1,6 @@
 ---
 name: dev-docs-guide
-description: Search the public Glean developer documentation for API, SDK, MCP, authentication, indexing, and integration details. Use when the user is building with Glean rather than searching internal company knowledge.
-when_to_use: |
-  Trigger phrases include "Glean API", "Glean SDK", "integrate with Glean", "Glean MCP setup", "indexing API", "Glean REST", "Glean Python SDK", "Glean JavaScript SDK", "how do I authenticate with Glean", "Glean platform docs".
-
-  Don't use this for searching internal company knowledge — that's the `using-glean` skill in `glean-core`. This skill is for the public Glean platform documentation.
+description: Search the public Glean developer documentation for API, SDK, MCP, authentication, indexing, and integration details. Use when the user is building with Glean rather than searching internal company knowledge — trigger phrases include Glean API, Glean SDK, integrate with Glean, indexing API, Glean Python or JavaScript SDK, and how to authenticate with Glean. Don't use it for internal company knowledge, which the using-glean skill covers.
 ---
 
 # Glean Developer Documentation Guide
@@ -18,7 +14,7 @@ This skill uses two tools (refer to them by their bare names):
 - `docs_search` — search across the public Glean developer documentation
 - `docs_fetch` — get the full content of a documentation page by URL
 
-If these tools aren't visible in the active inventory, the user hasn't configured the Glean Dev Docs MCP server. Suggest `/glean-dev-docs:setup`.
+If these tools aren't visible in the active inventory, the user hasn't configured the Glean Dev Docs MCP server for this host — point them at their host's Glean Dev Docs MCP setup.
 
 ## When to use
 
@@ -52,4 +48,4 @@ This skill is for **public developer documentation**:
 - How to build with Glean APIs / SDKs
 - MCP configuration guides
 
-For **internal company data** (Slack, email, internal docs), use the `using-glean` skill in `glean-core` instead.
+For **internal company data** (Slack, email, internal docs), use the `using-glean` skill instead.

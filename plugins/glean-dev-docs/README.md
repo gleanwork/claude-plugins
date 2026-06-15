@@ -1,31 +1,33 @@
 # Glean Developer Docs
 
-Access Glean's developer documentation from Claude Code.
+Search the public [Glean developer documentation](https://docs.glean.com) — APIs, SDKs,
+MCP, authentication, indexing, and integration guides for building *with* Glean.
+
+This is a separate, focused plugin for people building on the Glean platform. For
+searching your own company's internal knowledge, use the main **Glean** plugin instead.
 
 ## Setup
 
-```bash
-/glean-dev-docs:setup
-```
+### 1. Install the plugin
 
-## Usage
+Install from your host's plugin marketplace (Claude Code or Cursor).
 
-Once configured, ask naturally about Glean development:
-- "How do I authenticate with the Glean API?"
-- "Show me Python SDK examples for search"
-- "What MCP tools does Glean provide?"
+### 2. Configure the Glean Dev Docs MCP server
 
-The skill auto-triggers and uses `docs_search` + `docs_fetch` to find answers.
+This plugin uses the public Glean Developer Docs MCP server. See your host's MCP
+setup to add it; no Glean account is required.
 
-## MCP Server
+## What's Included
 
-- **URL**: https://developers.glean.com/mcp
-- **Transport**: HTTP
-- **Auth**: None (public docs)
+A single skill that auto-triggers when you ask about building with Glean — API
+syntax, SDK usage, MCP setup, indexing, authentication, and platform integration.
+It searches the public developer documentation and returns cited answers.
 
-## vs Other Glean Plugins
+## Support
 
-| Plugin | Purpose | Requires |
-|--------|---------|----------|
-| **glean-dev-docs** | Public developer documentation | None |
-| glean-core | Enterprise knowledge | Glean account |
+- [Glean Developer Documentation](https://docs.glean.com)
+- [GitHub Issues](https://github.com/gleanwork/agent-plugins/issues)
+
+## License
+
+MIT — see [LICENSE](LICENSE) for details.
