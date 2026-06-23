@@ -1,7 +1,7 @@
 {
-  "name": "glean-dev-docs",
+  "name": "glean",
   "version": "3.0.0",
-  "description": "Search the public Glean developer documentation — APIs, SDKs, MCP, and integration guides for building with Glean.",
+  "description": "Official Glean plugin — search documents, Slack, and email; explore code across repos; find experts and stakeholders; prep for meetings and onboarding.",
   "author": {
     "name": "Glean",
     "email": "steve.calvert@glean.com",

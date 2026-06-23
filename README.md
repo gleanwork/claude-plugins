@@ -1,59 +1,71 @@
 # Glean Plugins for Claude Code
 
-[![GA](https://img.shields.io/badge/-GA-F6F3EB?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMzIgMzIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0yNC4zMDA2IDIuOTU0MjdMMjAuNzY1NiAwLjE5OTk1MUwxNy45MDI4IDMuOTk1MjdDMTMuNTY1MyAxLjkzNDk1IDguMjMwMTkgMy4wODQzOSA1LjE5Mzk0IDcuMDA5ODNDMS42NTg4OCAxMS41NjQyIDIuNDgzIDE4LjExMzggNy4wMzczOCAyMS42NDg5QzguNzcyMzggMjIuOTkzNSAxMC43ODkzIDIzLjcwOTIgMTIuODI3OSAyMy44MTc3QzE2LjE0NjEgMjQuMDEyOCAxOS41MDc3IDIyLjYyNDggMjEuNjc2NSAxOS44MDU1QzI0LjczNDQgMTUuODggMjQuNTE3NSAxMC40MTQ4IDIxLjQ1OTYgNi43Mjc4OUwyNC4zMDA2IDIuOTU0MjdaTTE4LjExOTcgMTcuMDUxMkMxNi4xMDI4IDE5LjYzMiAxMi4zNzI1IDIwLjEwOTEgOS43NzAwMSAxOC4wOTIyQzcuMTg5MTkgMTYuMDc1MiA2LjcxMjA3IDEyLjMyMzMgOC43MjkwMSA5Ljc0MjQ2QzkuNzA0OTQgOC40ODQ1OCAxMS4xMTQ2IDcuNjgyMTQgMTIuNjc2MSA3LjQ4Njk2QzEzLjA0NDggNy40NDM1OCAxMy40MTM1IDcuNDIxOSAxMy43ODIyIDcuNDQzNThDMTQuOTc1IDcuNTA4NjUgMTYuMTI0NCA3Ljk0MjM5IDE3LjA3ODcgOC42Nzk3N0MxOS42NTk1IDEwLjcxODQgMjAuMTM2NiAxNC40NzAzIDE4LjExOTcgMTcuMDUxMloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNC41MTc2IDIxLjY5MjJDMjMuOTMyIDIyLjQ1MTMgMjMuMjgxNCAyMy4xMjM2IDIyLjU2NTcgMjMuNzUyNUMyMS44NzE3IDI0LjMzODEgMjEuMTEyNyAyNC44ODAzIDIwLjMxMDIgMjUuMzM1N0MxOS41Mjk1IDI1Ljc2OTUgMTguNjgzNyAyNi4xMzgyIDE3LjgzNzggMjYuNDIwMUMxNi45OTIgMjYuNzAyIDE2LjEwMjggMjYuODk3MiAxNS4yMTM3IDI3LjAwNTdDMTQuMzI0NSAyNy4xMTQxIDEzLjQzNTMgMjcuMTU3NSAxMi41MjQ0IDI3LjA5MjRDMTEuNjEzNSAyNy4wMjczIDEwLjcyNDMgMjYuODc1NSA5Ljg1Njg0IDI2LjY1ODdMOS42NjE2NSAyNy4zNzQzTDguNzcyNDYgMzAuOTk2MkM5LjkwMDIxIDMxLjI5OTggMTEuMDQ5NyAzMS40NzMzIDEyLjIyMDggMzEuNTZDMTIuMjY0MiAzMS41NiAxMi4zMjkyIDMxLjU2IDEyLjM3MjYgMzEuNTZDMTMuNTAwMyAzMS42MjUxIDE0LjY0OTggMzEuNTgxNyAxNS43NTU4IDMxLjQ1MTZDMTYuOTI3IDMxLjI5OTggMTguMDk4MSAzMS4wMzk1IDE5LjIyNTggMzAuNjcwOEMyMC4zNTM2IDMwLjMwMjIgMjEuNDU5NyAyOS44MjUgMjIuNTAwNyAyOS4yMzk1QzIzLjU2MzQgMjguNjUzOSAyNC41NjEgMjcuOTM4MiAyNS40OTM1IDI3LjE1NzVDMjYuNDQ3OCAyNi4zNTUgMjcuMzE1MyAyNS40NDQyIDI4LjA3NDQgMjQuNDQ2NUMyOC4xODI4IDI0LjMxNjQgMjguMjY5NSAyNC4xNjQ2IDI4LjM3OCAyNC4wMTI4TDI0Ljc3NzkgMjEuMzQ1MkMyNC42Njk0IDIxLjQ1MzcgMjQuNjA0NCAyMS41ODM4IDI0LjUxNzYgMjEuNjkyMloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPg==&labelColor=343CED)](https://github.com/gleanwork/.github/blob/main/docs/repository-stability.md#ga)
+> **Generated repository.** Built from
+> [gleanwork/agent-plugins](https://github.com/gleanwork/agent-plugins) via
+> [pluginpack](https://github.com/gleanwork/pluginpack). Don't hand-edit managed
+> files here — changes are made in `agent-plugins` and synced down automatically.
 
-Official Glean plugins for [Claude Code](https://claude.com/claude-code), enabling enterprise knowledge integration directly in your development workflow.
+Official Glean plugins for [Claude Code](https://claude.com/claude-code) —
+enterprise knowledge, search, people, code, and meetings, right in your
+development workflow.
 
-## Quick Start
+## ⚠️ v3.0.0 — plugins consolidated (one-time migration)
 
-```bash
-# Add the Glean marketplace
-/plugin marketplace add gleanwork/claude-plugins
+The nine area-specific plugins (`glean-core`, `glean-search`, `glean-people`,
+`glean-meetings`, `glean-docs`, `glean-code`, `glean-skills`,
+`glean-productivity`, `glean-project`) are now a **single `glean` plugin**. Same
+skills and agents — they auto-trigger by task, so there's no per-area install
+anymore. `glean-dev-docs` is unchanged.
 
-# Install core (required)
-/plugin install glean-core
+Claude Code doesn't auto-migrate renamed plugins, so the old ones will show
+**`failed to load`** after you refresh the marketplace. Switch once:
 
-# Install feature plugins you need
-/plugin install glean-search
-/plugin install glean-meetings
-/plugin install glean-people
-/plugin install glean-docs
-/plugin install glean-code
-/plugin install glean-skills
-/plugin install glean-productivity
-/plugin install glean-project
-
-# Configure your Glean connection
-/glean-core:mcp-setup
 ```
+/plugin marketplace remove glean-plugins
+/plugin marketplace add gleanwork/claude-plugins
+/plugin install glean@glean-plugins
+/plugin install glean-dev-docs@glean-plugins
+```
+
+Restart Claude Code if prompted. `glean` carries everything the old plugins did.
+
+<details><summary>Prefer to migrate plugin-by-plugin?</summary>
+
+```
+/plugin marketplace update glean-plugins
+/plugin uninstall glean-core@glean-plugins
+/plugin uninstall glean-search@glean-plugins
+/plugin uninstall glean-people@glean-plugins
+/plugin uninstall glean-meetings@glean-plugins
+/plugin uninstall glean-docs@glean-plugins
+/plugin uninstall glean-code@glean-plugins
+/plugin uninstall glean-skills@glean-plugins
+/plugin uninstall glean-productivity@glean-plugins
+/plugin uninstall glean-project@glean-plugins
+/plugin install glean@glean-plugins
+```
+
+(`glean-dev-docs` stays as-is.)
+
+</details>
+
+## Quick start (new install)
+
+```
+/plugin marketplace add gleanwork/claude-plugins
+/plugin install glean@glean-plugins
+/plugin install glean-dev-docs@glean-plugins
+```
+
+Then connect a Glean MCP server — ask Claude to "set up Glean" and the `glean`
+plugin's `connect-glean` skill walks you through it. Skills auto-trigger by task.
 
 ## Plugins
 
-| Plugin | Description | Docs |
-|--------|-------------|------|
-| **[glean-core](plugins/glean-core)** | Foundation plugin with MCP setup, skills, and agents. **Required by all other plugins.** | [README](plugins/glean-core/README.md) |
-| **[glean-search](plugins/glean-search)** | Enterprise search across docs, Slack, email, and more | [README](plugins/glean-search/README.md) |
-| **[glean-meetings](plugins/glean-meetings)** | Meeting prep, catch-up, and transcript analysis | [README](plugins/glean-meetings/README.md) |
-| **[glean-people](plugins/glean-people)** | Find experts and identify stakeholders | [README](plugins/glean-people/README.md) |
-| **[glean-docs](plugins/glean-docs)** | RFC verification and team onboarding | [README](plugins/glean-docs/README.md) |
-| **[glean-code](plugins/glean-code)** | Cross-repo code exploration and examples | [README](plugins/glean-code/README.md) |
-| **[glean-skills](plugins/glean-skills)** | Discover and create skills from Glean work patterns | [README](plugins/glean-skills/README.md) |
-| **[glean-productivity](plugins/glean-productivity)** | Daily briefings, weekly summaries, and activity synthesis | [README](plugins/glean-productivity/README.md) |
-| **[glean-project](plugins/glean-project)** | Project context and handoff documentation | [README](plugins/glean-project/README.md) |
-
-## Which Plugin Do I Need?
-
-| I want to... | Install |
-|--------------|---------|
-| Search company docs, Slack, wikis | `glean-core` + `glean-search` |
-| Prepare for meetings or catch up after PTO | `glean-core` + `glean-meetings` |
-| Find who knows about a topic | `glean-core` + `glean-people` |
-| Verify specs match implementation | `glean-core` + `glean-docs` |
-| Find code examples across repos | `glean-core` + `glean-code` |
-| Create skills from my work patterns | `glean-core` + `glean-skills` |
-| Get daily briefings or weekly summaries | `glean-core` + `glean-productivity` |
-| Get project context or create handoffs | `glean-core` + `glean-project` |
-| All of the above | Install all plugins |
+| Plugin | Description |
+|--------|-------------|
+| **[glean](plugins/glean)** | Enterprise knowledge — search docs/Slack/email, cross-repo code exploration, people & experts, meeting prep & catch-up, onboarding, productivity. |
+| **[glean-dev-docs](plugins/glean-dev-docs)** | Search Glean's public developer documentation — APIs, SDKs, MCP, and integration guides. |
 
 ## Requirements
 

@@ -1,62 +1,22 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "glean-plugins",
-  "version": "2.0.0",
-  "description": "Official Glean plugins for Claude Code - enterprise knowledge integration",
+  "version": "3.0.0",
+  "description": "Official Glean plugins for Claude Code — enterprise knowledge, search, people, code, and meetings.",
   "owner": {
     "name": "Glean",
     "email": "steve.calvert@glean.com"
   },
   "plugins": [
     {
-      "name": "glean-core",
-      "source": "./plugins/glean-core",
-      "description": "Core Glean MCP integration - shared skills, tool guidance, and configuration. Required foundation for all other Glean plugins."
-    },
-    {
-      "name": "glean-search",
-      "source": "./plugins/glean-search",
-      "description": "Enterprise search across documents, Slack, email, and other sources via Glean."
-    },
-    {
-      "name": "glean-people",
-      "source": "./plugins/glean-people",
-      "description": "Find experts, understand org structure, and identify stakeholders via Glean."
-    },
-    {
-      "name": "glean-meetings",
-      "source": "./plugins/glean-meetings",
-      "description": "Meeting intelligence - analyze transcripts, prepare for meetings, and catch up after time off."
-    },
-    {
-      "name": "glean-docs",
-      "source": "./plugins/glean-docs",
-      "description": "Document intelligence - analyze docs, verify specs, and onboard to new areas."
-    },
-    {
-      "name": "glean-code",
-      "source": "./plugins/glean-code",
-      "description": "Cross-repository code exploration - search code across your org, find examples, and discover similar implementations."
+      "name": "glean",
+      "source": "./plugins/glean",
+      "description": "Official Glean plugin — search documents, Slack, and email; explore code across repos; find experts and stakeholders; prep for meetings and onboarding."
     },
     {
       "name": "glean-dev-docs",
       "source": "./plugins/glean-dev-docs",
-      "description": "Access Glean's developer documentation - search API references, SDK guides, and integration tutorials."
-    },
-    {
-      "name": "glean-skills",
-      "source": "./plugins/glean-skills",
-      "description": "Discover and create Claude Code skills from work patterns."
-    },
-    {
-      "name": "glean-productivity",
-      "source": "./plugins/glean-productivity",
-      "description": "Personal productivity - daily briefings, weekly summaries, and activity analysis via Glean."
-    },
-    {
-      "name": "glean-project",
-      "source": "./plugins/glean-project",
-      "description": "Project intelligence - generate comprehensive handoff documents when transitioning ownership."
+      "description": "Search the public Glean developer documentation — APIs, SDKs, MCP, and integration guides for building with Glean."
     }
   ]
 }
