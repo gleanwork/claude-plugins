@@ -9,11 +9,15 @@ code exploration, and people discovery directly in your development workflow.
 
 Install from the Claude Code plugin marketplace.
 
-### 2. Set up Glean
+### 2. Configure your Glean MCP server
 
-Start Claude Code and prompt the harness to set up Glean, for example: `Set up
-Glean for me`. Complete the browser OAuth flow when prompted, then return to
-Claude Code.
+Add your Glean MCP server (get your server URL from the [Glean MCP configurator](https://app.glean.com/settings/install?mcpConfigure=true)):
+
+```bash
+claude mcp add glean https://YOUR-INSTANCE-be.glean.com/mcp/default --transport http --scope user
+```
+
+Restart Claude Code after adding — OAuth authentication is handled automatically on first use.
 
 ## What's Included
 
@@ -28,14 +32,14 @@ by task — there's no per-skill install. They cover:
 - **Personal productivity** — summarize your own activity, prep status updates, and surface what needs your attention.
 - **Skill authoring** — discover automation opportunities and generate new skills.
 
-The plugin provides a local Glean MCP server. If no Glean tools are visible,
-ask the user to set up Glean by prompting the harness (for example, `Set up
-Glean for me`).
+Glean tools are used through whatever Glean MCP server is connected in Claude
+Code; if none is configured, see the setup above.
 
 ## Requirements
 
 - [Claude Code](https://claude.com/claude-code) (latest version)
 - A Glean account with MCP access
+- Your Glean MCP server URL (get it from the [Glean MCP configurator](https://app.glean.com/settings/install?mcpConfigure=true))
 
 ## Support
 
