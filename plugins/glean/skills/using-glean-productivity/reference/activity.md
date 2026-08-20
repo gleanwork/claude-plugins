@@ -15,7 +15,7 @@ Retrospective questions: what the user did, what they shipped, what they touched
 
 1. **Pull the activity feed.** `user_activity(start_date=..., end_date=...)` for the requested window. Remember `end_date` is exclusive — to include all of "last Friday" set `end_date` to the day after.
 
-2. **Pull personalization context.** `read_memory(action="read", category="ActiveProjects")` (and optionally `RolesAndResponsibilities`) to learn what *themes* the user organizes their work around.
+2. **Pull personalization context.** `memory(action="read", category="ActiveProjects")` (and optionally `RolesAndResponsibilities`) to learn what *themes* the user organizes their work around.
 
 3. **Vet the activity items.** From the raw feed, filter aggressively:
    - **Include**: created docs, made decisions, completed tasks, shipped code, posted updates, ran reviews

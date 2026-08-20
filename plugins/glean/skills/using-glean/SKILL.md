@@ -13,7 +13,8 @@ The tools listed below come from the user's Glean MCP server connection. Refer t
 
 In the raw MCP tool list, Glean tools appear as `mcp__glean_[server-name]__[tool]` where `[server-name]` is the user's configured server identifier (e.g., `default`, `production`, `acme`). The tool suffix after the final `__` is always consistent across deployments. Use whatever Glean server is visible in your tool inventory.
 
-If no Glean tools are visible, the user hasn't configured a Glean MCP server for this host. Point them at the Glean MCP setup for their host.
+If no Glean tools are visible, ask the user to set up Glean by prompting the
+harness (for example, `Set up Glean for me`).
 
 ## Intent → tool decision tree
 
@@ -28,7 +29,7 @@ If no Glean tools are visible, the user hasn't configured a Glean MCP server for
 | Outlook messages, threads, attachments | `outlook_search` | [outlook-search.md](reference/outlook-search.md) |
 | Reading a specific URL / document | `read_document` | [read-document.md](reference/read-document.md) |
 | The user's own recent activity (standup, weekly summary) | `user_activity` | [user-activity.md](reference/user-activity.md) |
-| The user's stored memories / personalization | `read_memory` (+ `memory_schema`) | [memory.md](reference/memory.md) |
+| The user's stored memories / personalization | `memory` (+ `memory_schema`) | [memory.md](reference/memory.md) |
 | Structured entity / relationship queries | `knowledge_graph_query` (+ `knowledge_graph_schema`) | [knowledge-graph.md](reference/knowledge-graph.md) |
 
 The reference files are loaded only when needed. Open the relevant one before invoking a tool you haven't used recently — each file carries the exact param shape, the filter syntax, and the pitfalls that have bitten previous calls.

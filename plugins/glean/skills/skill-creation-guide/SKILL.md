@@ -43,8 +43,8 @@ time, sub-30-second manual tasks, or things the user will forget exist.
 
 When the user asks what they should automate, analyze their work patterns first.
 
-Requires the Glean MCP tools. If they aren't visible, the user hasn't connected
-a Glean MCP server for this host — point them at their host's Glean MCP setup.
+Requires the Glean MCP tools. If they aren't visible, ask the user to set up
+Glean by prompting the harness (for example, `Set up Glean for me`).
 
 1. Gather context with Glean: `memory` (roles, responsibilities, active
    projects), `user_activity` (past ~2 weeks), and `search` for process docs
