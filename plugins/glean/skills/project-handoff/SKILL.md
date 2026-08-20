@@ -22,8 +22,8 @@ This skill drives the standard Glean MCP tools. If the host exposes the
 a suitable research subagent when subagents are available, or gather the same
 material directly. For the param shape and pitfalls of `search`, `chat`,
 `meeting_lookup`, and `employee_search`, see the using-glean reference at
-`using-glean/reference/`. If no Glean tools are visible, point the user to the
-**connect-glean** skill.
+`using-glean/reference/`. If no Glean tools are visible, ask the user to set up
+Glean by prompting the harness (for example, `Set up Glean for me`).
 
 ## Core Principles
 

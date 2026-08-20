@@ -46,4 +46,4 @@ user_activity(start_date="2025-10-01", end_date="2025-11-01")  // October
 
 ## Typical follow-up
 
-For "what did I work on?" reports, combine `user_activity` (what they touched) with `read_memory` ([memory.md](memory.md), what their stated active projects are) for thematic grouping. For accomplishment summaries, vet results per [vetting.md](vetting.md) — exclude trivial views, surface decisions and shipped work.
+For "what did I work on?" reports, combine `user_activity` (what they touched) with `memory` ([memory.md](memory.md), what their stated active projects are) for thematic grouping. For accomplishment summaries, vet results per [vetting.md](vetting.md) — exclude trivial views, surface decisions and shipped work.

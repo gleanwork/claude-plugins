@@ -57,8 +57,8 @@ Restart Claude Code if prompted. `glean` carries everything the old plugins did.
 /plugin install glean-dev-docs@glean-plugins
 ```
 
-Then connect a Glean MCP server — ask Claude to "set up Glean" and the `glean`
-plugin's `connect-glean` skill walks you through it. Skills auto-trigger by task.
+Then set up Glean by prompting the harness, for example: `Set up Glean for me`.
+Complete the browser OAuth flow when prompted. Skills auto-trigger by task.
 
 ## Plugins
 
