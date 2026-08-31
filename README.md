@@ -73,6 +73,20 @@ Complete the browser OAuth flow when prompted. Skills auto-trigger by task.
 - A Glean account with MCP access
 - Your Glean MCP server URL (find it at [app.glean.com/admin/about-glean](https://app.glean.com/admin/about-glean)); format: `[server-url]/mcp/[server-name]`
 
+## Evals and production telemetry
+
+The `evals/enterprise-search/` directory contains a small human-review eval set
+for retrieval attribution, meeting catch-up, and expert-finding workflows. The
+cases are harness-neutral so plugin behavior can be checked before release in
+Claude Code or another agent workspace.
+
+If you publish these plugins through Telvine, keep runtime telemetry
+metadata-only: `skill.invocation.start`, `skill.invocation.end`, and
+`skill.invocation.error` for skill behavior, plus `plugin.component.invoked`
+and `plugin.component.error` for MCP, command, or agent components. Do not emit
+prompts, private document excerpts, search result payloads, connector payloads,
+tool arguments, credentials, or model outputs.
+
 ## Support
 
 - [Glean MCP Documentation](https://docs.glean.com/mcp)
