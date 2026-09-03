@@ -1,6 +1,6 @@
 {
   "name": "glean",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "type": "module",
   "private": true,
   "engines": {
