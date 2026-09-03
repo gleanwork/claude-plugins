@@ -1,5 +1,26 @@
 # Changelog
 
+## [3.4.1](https://github.com/gleanwork/agent-plugins/compare/v3.4.0...v3.4.1) (2026-09-02)
+
+### Documentation
+
+* broaden Claude plugin surface guidance ([11d566c](https://github.com/gleanwork/agent-plugins/commit/11d566cf05dba9051c4a7675fe1035ea8ba2cb9f))
+
+## [3.4.0](https://github.com/gleanwork/agent-plugins/compare/v3.3.0...v3.4.0) (2026-08-20)
+
+### Features
+
+* **cursor:** bundle the local Glean MCP server ([14f98d7](https://github.com/gleanwork/agent-plugins/commit/14f98d75e26fb9a15b188cbd43a0269067714e20))
+* **plugins:** remove connect skill from Cursor ([adca9a2](https://github.com/gleanwork/agent-plugins/commit/adca9a214116081d4e4d8f0f7722d839aff2bb70))
+* **plugins:** use harness setup for Claude and Codex ([bd655fa](https://github.com/gleanwork/agent-plugins/commit/bd655faf6c432e983ae03c50c2bd193ca03534cb))
+* **vnext:** notify on setup policy, and print one tool list in setup ([8bd9ace](https://github.com/gleanwork/agent-plugins/commit/8bd9acedbe379eac69e9b68696b8c3b2ca5fc686)), closes [gleanwork/glean-plugins-vnext#54](https://github.com/gleanwork/glean-plugins-vnext/issues/54) [#54](https://github.com/gleanwork/agent-plugins/issues/54) [#55](https://github.com/gleanwork/agent-plugins/issues/55)
+* **vnext:** port capability policy and Cursor HITL updates ([65b9c9a](https://github.com/gleanwork/agent-plugins/commit/65b9c9a4721d3eafee2568c440dc6df7280b3bd5))
+* **vnext:** port the configured-server inventory capture ([d285152](https://github.com/gleanwork/agent-plugins/commit/d28515273d0f0b68c17a6c07a031d168549679e9)), closes [gleanwork/glean-plugins-vnext#53](https://github.com/gleanwork/glean-plugins-vnext/issues/53) [#17](https://github.com/gleanwork/agent-plugins/issues/17) [#52](https://github.com/gleanwork/agent-plugins/issues/52)
+
+### Documentation
+
+* **codex:** clarify setup and developer docs ordering ([821a894](https://github.com/gleanwork/agent-plugins/commit/821a8943f2f630993e17f7b885177823f72cfb0b))
+
 ## [3.3.0](https://github.com/gleanwork/agent-plugins/compare/v3.2.0...v3.3.0) (2026-08-11)
 
 ### Features

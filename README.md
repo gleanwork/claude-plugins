@@ -1,15 +1,26 @@
-# Glean Plugins for Claude Code
+# Glean Plugins for Claude
 
 > **Generated repository.** Built from
 > [gleanwork/agent-plugins](https://github.com/gleanwork/agent-plugins) via
 > [pluginpack](https://github.com/gleanwork/pluginpack). Don't hand-edit managed
 > files here — changes are made in `agent-plugins` and synced down automatically.
 
-Official Glean plugins for [Claude Code](https://claude.com/claude-code) —
-enterprise knowledge, search, people, code, and meetings, right in your
-development workflow.
+Official Glean plugins for [Claude](https://claude.com) — enterprise knowledge,
+search, people, code, and meetings.
+
+> **Surface support:** The shared skills are designed to work across Claude Code,
+Claude Desktop chat, and Claude Cowork. Hooks and supporting agents require host
+support: Claude Code and Cowork support them, while Claude Desktop chat does not
+run them. The plugin provides a local Glean MCP server where the host supports
+bundled MCP; otherwise, configure the remote server in the host's MCP settings.
+The automated checks validate package structure, not full runtime parity in every
+host.
 
 ## ⚠️ v3.0.0 — plugins consolidated (one-time migration)
+
+The commands below are for Claude Code. In Claude Desktop or Cowork, use
+**Customize → Plugins** to remove the old marketplace and install the consolidated
+**Glean** plugin instead.
 
 The nine area-specific plugins (`glean-core`, `glean-search`, `glean-people`,
 `glean-meetings`, `glean-docs`, `glean-code`, `glean-skills`,
@@ -51,6 +62,8 @@ Restart Claude Code if prompted. `glean` carries everything the old plugins did.
 
 ## Quick start (new install)
 
+### Claude Code
+
 ```
 /plugin marketplace add gleanwork/claude-plugins
 /plugin install glean@glean-plugins
@@ -59,6 +72,14 @@ Restart Claude Code if prompted. `glean` carries everything the old plugins did.
 
 Then set up Glean by prompting the harness, for example: `Set up Glean for me`.
 Complete the browser OAuth flow when prompted. Skills auto-trigger by task.
+
+### Claude Desktop or Cowork
+
+Open **Customize → Plugins**, choose **Add marketplace**, and add
+`gleanwork/claude-plugins`. Install **Glean** and **Glean Developer Docs**.
+
+Then ask Claude to `Set up Glean for me` and complete the browser OAuth flow
+when prompted. Skills auto-trigger by task.
 
 ## Plugins
 
@@ -69,7 +90,7 @@ Complete the browser OAuth flow when prompted. Skills auto-trigger by task.
 
 ## Requirements
 
-- [Claude Code](https://claude.com/claude-code) (latest version)
+- A current Claude host that supports plugins: [Claude Code](https://claude.com/claude-code), [Claude Desktop](https://claude.com/download), or [Claude Cowork](https://claude.com/product/cowork)
 - A Glean account with MCP access
 - Your Glean MCP server URL (find it at [app.glean.com/admin/about-glean](https://app.glean.com/admin/about-glean)); format: `[server-url]/mcp/[server-name]`
 

@@ -1,19 +1,24 @@
-# Glean for Claude Code
+# Glean
 
-Official Glean plugin for [Claude Code](https://claude.com/claude-code) — enterprise search,
-code exploration, and people discovery directly in your development workflow.
+Official Glean plugin for supported AI hosts — enterprise search, code
+exploration, and people discovery in your development workflow.
 
 ## Setup
 
 ### 1. Install the plugin
 
-Install from the Claude Code plugin marketplace.
+Install from your host's plugin marketplace. This plugin's shared skills work
+across Claude Code, Claude Desktop chat, Claude Cowork, Cursor, and Codex; hooks
+and supporting agents depend on host support.
 
 ### 2. Set up Glean
 
-Start Claude Code and prompt the harness to set up Glean, for example: `Set up
-Glean for me`. Complete the browser OAuth flow when prompted, then return to
-Claude Code.
+Use the host's Glean setup flow. In Claude Code or Cowork, prompt the harness,
+for example: `Set up Glean for me`, then complete the browser OAuth flow when
+prompted. For hosts that do not start the bundled local server, register the
+Glean MCP endpoint in the host's MCP configuration and follow that host's
+authentication flow. Some hosts, such as Codex, require an explicit MCP login
+step.
 
 ## What's Included
 
@@ -28,14 +33,17 @@ by task — there's no per-skill install. They cover:
 - **Personal productivity** — summarize your own activity, prep status updates, and surface what needs your attention.
 - **Skill authoring** — discover automation opportunities and generate new skills.
 
-The plugin provides a local Glean MCP server. If no Glean tools are visible,
-ask the user to set up Glean by prompting the harness (for example, `Set up
-Glean for me`).
+The plugin provides a local Glean MCP server where the host supports bundled
+MCP. If no Glean tools are visible, use the host's Glean setup flow described
+above. Otherwise, Glean tools use whatever Glean MCP server is connected in the
+current host.
 
 ## Requirements
 
-- [Claude Code](https://claude.com/claude-code) (latest version)
+- A current supported AI host that supports plugins and MCP
 - A Glean account with MCP access
+- A Glean MCP endpoint if your host requires remote configuration (get it from
+  the [Glean admin settings](https://app.glean.com/admin/about-glean))
 
 ## Support
 

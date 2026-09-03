@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "glean-plugins",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "owner": {
     "name": "Glean",
     "email": "steve.calvert@glean.com"
@@ -18,5 +18,5 @@
       "description": "Search the public Glean developer documentation — APIs, SDKs, MCP, and integration guides for building with Glean."
     }
   ],
-  "description": "Official Glean plugins for Claude Code — enterprise knowledge, search, people, code, and meetings."
+  "description": "Official Glean plugins for Claude — enterprise knowledge, search, people, code, and meetings."
 }
