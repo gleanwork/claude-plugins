@@ -1,6 +1,6 @@
 {
   "name": "glean",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "Official Glean plugin — search documents, Slack, and email; explore code across repos; find experts and stakeholders; prep for meetings and onboarding.",
   "author": {
     "name": "Glean",
