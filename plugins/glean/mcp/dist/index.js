@@ -25134,7 +25134,7 @@ var StreamableHTTPClientTransport = class {
 };
 
 // shared/glean/mcp/src/version.ts
-var BUILD_VERSION = true ? "3.4.1" : void 0;
+var BUILD_VERSION = true ? "3.4.2" : void 0;
 function pluginVersion() {
   if (BUILD_VERSION) return { version: BUILD_VERSION, source: "build" };
   return { version: "0.0.0", source: "unknown" };

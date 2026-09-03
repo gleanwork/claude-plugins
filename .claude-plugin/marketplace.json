@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "glean-plugins",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "owner": {
     "name": "Glean",
     "email": "steve.calvert@glean.com"
@@ -10,7 +10,7 @@
     {
       "name": "glean",
       "source": "./plugins/glean",
-      "description": "Official Glean plugin — search documents, Slack, and email; explore code across repos; find experts and stakeholders; prep for meetings and onboarding."
+      "description": "Use Glean to search your company's knowledge, chat with Glean Assistant, and discover and use the skills and connected tools available to your organization."
     },
     {
       "name": "glean-dev-docs",
