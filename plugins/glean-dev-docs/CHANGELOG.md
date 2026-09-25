@@ -1,5 +1,35 @@
 # Changelog
 
+## [3.5.0](https://github.com/gleanwork/agent-plugins/compare/v3.4.2...v3.5.0) (2026-09-25)
+
+### Features
+
+* **glean:** persist always-allow tool approvals ([3f7df5a](https://github.com/gleanwork/agent-plugins/commit/3f7df5a1e82107f413e7f7e78e47c041967d62f2))
+* **mcp:** bridge remote elicitation to plugin hosts ([5a9148c](https://github.com/gleanwork/agent-plugins/commit/5a9148c0c547fd640066006a1a884c51e30b929b))
+* **glean:** fetch tool approval from remote before each tool call ([d883560](https://github.com/gleanwork/agent-plugins/commit/d8835607e3083ebb06d55ea2d60a90234a65af85))
+* **glean:** use a single approval form with clearer persistent choices and auto-decline timing ([07741e2](https://github.com/gleanwork/agent-plugins/commit/07741e23fa689a6e3d518b05a8c94339054d3aee))
+
+### Bug Fixes
+
+* **glean:** fix intermittent re-auth from cross-process refresh-token rotation ([10b5eaa](https://github.com/gleanwork/agent-plugins/commit/10b5eaa37e889982c53533369e43f7ab20e7b2dd))
+* **glean:** harden credential temp-file permissions ([b9ff0fa](https://github.com/gleanwork/agent-plugins/commit/b9ff0fa6235e7310d519e1e16d3597664e702765))
+* **glean:** use structured OAuth error codes for refresh retry ([f86bcf6](https://github.com/gleanwork/agent-plugins/commit/f86bcf60c25527c016ad988523b7810494bd72f3))
+* **glean:** handle auto-declined always-allow prompts and report timeouts ([2deb850](https://github.com/gleanwork/agent-plugins/commit/2deb8507dcf32122fc5b58063514bbdc4fa51f97))
+* **mcp:** resolve remote find_skills name via tools/list ([f2c1123](https://github.com/gleanwork/agent-plugins/commit/f2c1123e7b8a121d81131ca94dfabf843311b935))
+* preserve read-only fallback on approval lookup errors ([686f7dd](https://github.com/gleanwork/agent-plugins/commit/686f7ddb546ff8727d82c4232c7eaafabf4b29a1))
+* require approval when approval lookup fails ([df70673](https://github.com/gleanwork/agent-plugins/commit/df7067341a9e7e5afd03b0579ea2e6ac0e795e59))
+* skip approval lookups for read-only tools ([ed40a21](https://github.com/gleanwork/agent-plugins/commit/ed40a21aee5bd50a8554cf6a0a267939e95ec06b))
+
+## [3.4.2](https://github.com/gleanwork/agent-plugins/compare/v3.4.1...v3.4.2) (2026-09-03)
+
+### Bug Fixes
+
+* sync plugin changelogs after generation ([b7df133](https://github.com/gleanwork/agent-plugins/commit/b7df133796df5a8a25a0cde95d40a2197331f45a))
+
+### Documentation
+
+* **plugins:** update Glean plugin description ([f4a3e23](https://github.com/gleanwork/agent-plugins/commit/f4a3e23000efc50cfdea75dd3c11da06b26beb71))
+
 ## [3.4.1](https://github.com/gleanwork/agent-plugins/compare/v3.4.0...v3.4.1) (2026-09-02)
 
 ### Documentation
