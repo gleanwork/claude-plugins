@@ -41036,7 +41036,7 @@ var StreamableHTTPClientTransport = class {
 };
 
 // shared/glean/mcp/src/version.ts
-var BUILD_VERSION = true ? "3.5.0" : void 0;
+var BUILD_VERSION = true ? "3.5.1" : void 0;
 function pluginVersion() {
   if (BUILD_VERSION) return { version: BUILD_VERSION, source: "build" };
   return { version: "0.0.0", source: "unknown" };
@@ -42675,6 +42675,9 @@ async function currentPermissionMode() {
     return null;
   }
 }
+async function shouldAskForToolApproval() {
+  return process.env.ENABLE_HITL === "true" && await currentPermissionMode() !== "bypassPermissions";
+}
 function humanizeMs(ms) {
   const seconds = Math.round(ms / 1e3);
   if (seconds < 120) return `${seconds}s`;
@@ -42772,7 +42775,7 @@ async function handleRunTool(remoteClient, mcpServer2, skillsBaseDir, args, poli
     throw err;
   }
   const remoteArgs = buildRemoteArgs(serverId, toolName, resolvedArgs);
-  if (isKnownReadOnlyTool(toolMetadata, serverId, toolName)) {
+  if (!await shouldAskForToolApproval() || isKnownReadOnlyTool(toolMetadata, serverId, toolName)) {
     return callRemoteTool(remoteClient, "run_tool", remoteArgs);
   }
   let requiresApproval = true;
@@ -43195,8 +43198,8 @@ function getOAuthProvider() {
   }
   return oauthProvider;
 }
-function getRemoteClientOpts() {
-  const supportsElicitation = !!server.getClientCapabilities()?.elicitation;
+async function getRemoteClientOpts() {
+  const supportsElicitation = !!server.getClientCapabilities()?.elicitation && await shouldAskForToolApproval();
   return {
     authProvider: getOAuthProvider(),
     ...supportsElicitation ? {
@@ -43319,7 +43322,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   try {
     remoteClient = await createRemoteClient(
       serverUrl,
-      getRemoteClientOpts(),
+      await getRemoteClientOpts(),
       `tools-list-${process.pid}`
     );
   } catch (err) {
@@ -43377,7 +43380,7 @@ async function connectWithSignIn(serverUrl) {
     try {
       const client = await createRemoteClient(
         serverUrl,
-        getRemoteClientOpts(),
+        await getRemoteClientOpts(),
         `setup-${process.pid}`
       );
       return { ok: true, client };
@@ -43411,7 +43414,7 @@ async function connectWithSignIn(serverUrl) {
     try {
       const client = await createRemoteClient(
         serverUrl,
-        getRemoteClientOpts(),
+        await getRemoteClientOpts(),
         `setup-${process.pid}`
       );
       return { ok: true, client };
@@ -43445,7 +43448,7 @@ async function connectWithSignIn(serverUrl) {
     try {
       const client = await createRemoteClient(
         serverUrl,
-        getRemoteClientOpts(),
+        await getRemoteClientOpts(),
         `setup-${process.pid}`
       );
       return { ok: true, client };
@@ -43539,7 +43542,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
     const dispatchCtx = {
       serverUrl,
-      remoteClientOpts: getRemoteClientOpts(),
+      remoteClientOpts: await getRemoteClientOpts(),
       authRedirectText: AUTH_REDIRECT_TO_SETUP_TEXT,
       logLine: logLine2
     };
@@ -43565,7 +43568,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       try {
         remoteClient = await createRemoteClient(
           serverUrl,
-          getRemoteClientOpts(),
+          await getRemoteClientOpts(),
           sessionId
         );
       } catch (err) {
@@ -43622,7 +43625,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       try {
         remoteClient = await createRemoteClient(
           serverUrl,
-          getRemoteClientOpts(),
+          await getRemoteClientOpts(),
           sessionId
         );
       } catch (err) {
