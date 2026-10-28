@@ -41036,7 +41036,7 @@ var StreamableHTTPClientTransport = class {
 };
 
 // shared/glean/mcp/src/version.ts
-var BUILD_VERSION = true ? "3.6.0" : void 0;
+var BUILD_VERSION = true ? "3.6.1" : void 0;
 function pluginVersion() {
   if (BUILD_VERSION) return { version: BUILD_VERSION, source: "build" };
   return { version: "0.0.0", source: "unknown" };
@@ -42615,8 +42615,8 @@ var approvalAllow = "Allow";
 var approvalDeny = "Deny";
 var approvalCancel = "cancel";
 var approvalChoices = [
-  approvalAlwaysAllow,
   approvalAllow,
+  approvalAlwaysAllow,
   approvalDeny
 ];
 function runToolApprovalForm(toolName) {
@@ -42624,7 +42624,7 @@ function runToolApprovalForm(toolName) {
     mode: "form",
     message: `Allow running the write tool ${toolName}?
 
-Always Allow is selected by default. Accepting with this selection saves approval for future calls to this tool. To change it, select a different Approval option below.`,
+Allow is selected by default and approves this call only. Select Always Allow to save approval for future calls to this tool.`,
     requestedSchema: {
       type: "object",
       required: [approvalField],

@@ -1,16 +1,13 @@
 #!/usr/bin/env node
 // PreToolUse hook for Claude Code.
 //
-// When HITL is enabled, run_tool is gated by the plugin's own elicitation
-// prompt, so Claude Code's separate native "allow this tool?" prompt is
-// redundant (the double-prompt). With ENABLE_HITL=true we auto-approve the
-// run_tool call, leaving the HITL elicitation as the single gate.
+// Records Claude Code's live permission mode before each Glean run_tool call,
+// so the MCP server can skip its own elicitation gate when the user launched
+// with --dangerously-skip-permissions (permission_mode "bypassPermissions").
 //
-// Safety: run_tool is read-only ONLY while HITL gates it. This hook runs only
-// under Claude Code, which always advertises the elicitation capability, so
-// ENABLE_HITL=true means run_tool's HITL prompt is active — never an ungated
-// write. When ENABLE_HITL is not "true" the hook does nothing and the normal
-// permission flow runs.
+// This hook makes no permission decision and prints nothing. Claude Code's
+// normal permission flow always runs. The server's elicitation prompt still
+// gates writes, except for tools the user told it to stop asking about.
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -27,7 +24,7 @@ let input = {};
 try {
   input = JSON.parse(readStdin());
 } catch {
-  // Malformed/empty input: do nothing, let the normal permission flow run.
+  // Malformed/empty input: nothing to record.
 }
 
 const toolName = String(input.tool_name ?? "");
@@ -55,19 +52,17 @@ try {
     cfg?.mcpServers?.glean?.env ??
     {};
 } catch {
-  // No readable config: do nothing.
+  // No readable config: nothing to record.
 }
 
+// The server reads the marker only when its own elicitation gate is on.
 if (env.ENABLE_HITL === "true") {
-  // Record Claude Code's live permission mode so the MCP server can skip its
-  // own elicitation gate when the user launched with
-  // --dangerously-skip-permissions (permission_mode "bypassPermissions").
   // Written on every run_tool call and keyed by session id, so it is always
   // fresh for the call that immediately follows and never leaks across
   // sessions. The base dir and session-id sanitization MUST match
   // run-tool.ts (permissionModeMarkerPath) and start.sh's PLUGIN_DATA_DIR:
-  // CLAUDE_PLUGIN_DATA when set, else ~/.glean. Best-effort — marker I/O must
-  // never break the approval decision below.
+  // CLAUDE_PLUGIN_DATA when set, else ~/.glean. Best-effort — a failed write
+  // just means the server keeps prompting.
   try {
     const permissionMode = String(input.permission_mode ?? "");
     const sessionId = String(input.session_id ?? "")
@@ -84,18 +79,7 @@ if (env.ENABLE_HITL === "true") {
       );
     }
   } catch {
-    // Ignore: a failed marker write just means the server keeps prompting.
+    // Ignore: see above.
   }
-
-  process.stdout.write(
-    JSON.stringify({
-      hookSpecificOutput: {
-        hookEventName: "PreToolUse",
-        permissionDecision: "allow",
-        permissionDecisionReason:
-          "Glean run_tool is gated by its own HITL elicitation prompt; suppressing the redundant native prompt while ENABLE_HITL is on.",
-      },
-    }),
-  );
 }
 process.exit(0);

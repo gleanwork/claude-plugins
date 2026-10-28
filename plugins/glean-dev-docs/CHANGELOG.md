@@ -1,5 +1,31 @@
 # Changelog
 
+## [3.6.1](https://github.com/gleanwork/agent-plugins/compare/v3.6.0...v3.6.1) (2026-10-28)
+
+### Bug Fixes
+
+* default run_tool approval to Allow once, not Always Allow ([#34](https://github.com/gleanwork/agent-plugins/issues/34)) ([1cd92da](https://github.com/gleanwork/agent-plugins/commit/1cd92da75da742f918ad6088f7eede64dd754418))
+* include synced plugin changelogs in the release commit ([#43](https://github.com/gleanwork/agent-plugins/issues/43)) ([e25db42](https://github.com/gleanwork/agent-plugins/commit/e25db42c411207b6bbb5c36adb90dbcb161d2232))
+* stop the Claude Code hook from approving run_tool calls ([#45](https://github.com/gleanwork/agent-plugins/issues/45)) ([e35c63c](https://github.com/gleanwork/agent-plugins/commit/e35c63cd06fb7e66ec79fc8dc8dd72703e65b8e2))
+
+## [3.6.0](https://github.com/gleanwork/agent-plugins/compare/v3.5.1...v3.6.0) (2026-10-28)
+
+### Features
+
+* **mcp:** promote meeting_lookup to a first-class plugin tool ([bcad1ae](https://github.com/gleanwork/agent-plugins/commit/bcad1ae61254a434e0936374f91be3db0607244a))
+
+### Bug Fixes
+
+* **mcp:** promote enterprise_search under the search name ([1024d08](https://github.com/gleanwork/agent-plugins/commit/1024d08d4dfefd6d0ebf4ea073e14332fefbb95d))
+* stop sending Glean internal-service headers from the plugin ([b5fa4af](https://github.com/gleanwork/agent-plugins/commit/b5fa4af9f37590dd0111c2ae737be6c9fe1267eb))
+
+## [3.5.1](https://github.com/gleanwork/agent-plugins/compare/v3.5.0...v3.5.1) (2026-09-29)
+
+### Bug Fixes
+
+* honor HITL opt-outs without persisting approvals ([9543dfa](https://github.com/gleanwork/agent-plugins/commit/9543dfad4b89baff66579d6ebcae09ee7e07f75a))
+* narrow HITL change to the shared approval guard ([cdd86ff](https://github.com/gleanwork/agent-plugins/commit/cdd86fffcd574401af552df73b8f173f4ff59305))
+
 ## [3.5.0](https://github.com/gleanwork/agent-plugins/compare/v3.4.2...v3.5.0) (2026-09-25)
 
 ### Features

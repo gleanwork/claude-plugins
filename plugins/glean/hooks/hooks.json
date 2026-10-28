@@ -19,7 +19,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/auto-approve-run-tool.mjs\""
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/record-permission-mode.mjs\""
           }
         ]
       }
