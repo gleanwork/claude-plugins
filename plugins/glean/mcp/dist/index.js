@@ -41036,7 +41036,7 @@ var StreamableHTTPClientTransport = class {
 };
 
 // shared/glean/mcp/src/version.ts
-var BUILD_VERSION = true ? "3.5.1" : void 0;
+var BUILD_VERSION = true ? "3.6.0" : void 0;
 function pluginVersion() {
   if (BUILD_VERSION) return { version: BUILD_VERSION, source: "build" };
   return { version: "0.0.0", source: "unknown" };
@@ -41827,13 +41827,8 @@ function withConnectLock(fn) {
 function buildTransport(serverUrl, opts, chatSessionId) {
   const parsedUrl = new URL(serverUrl);
   const headers = {
-    "X-Glean-Internal-Service": "true",
     "X-Glean-Gateway-Request-Metadata": buildGatewayMetadataHeader(chatSessionId)
   };
-  const scParam = parsedUrl.searchParams.get("sc");
-  if (scParam) {
-    headers["X-Glean-Request-ScParams"] = scParam;
-  }
   const transportOpts = {
     requestInit: { headers },
     fetch: opts.fetch ?? loggingFetch
@@ -42981,7 +42976,11 @@ var REMOTE_TOOLS_ALLOWLIST = /* @__PURE__ */ new Set([
   "memory",
   "memory_schema",
   "user_activity",
-  "employee_search"
+  "employee_search",
+  "meeting_lookup"
+]);
+var REMOTE_TOOL_LOCAL_NAMES = /* @__PURE__ */ new Map([
+  ["enterprise_search", "search"]
 ]);
 function augmentSchemaForLocal(schema) {
   const base = schema && typeof schema === "object" && !Array.isArray(schema) ? structuredClone(schema) : {};
@@ -42996,6 +42995,7 @@ function augmentSchemaForLocal(schema) {
 }
 async function fetchAllowedRemoteTools(remoteClient, { hostReceivingList = false } = {}) {
   const collected = [];
+  const listed = /* @__PURE__ */ new Set();
   let cursor;
   do {
     const page = await remoteClient.listTools({
@@ -43004,9 +43004,12 @@ async function fetchAllowedRemoteTools(remoteClient, { hostReceivingList = false
     });
     recordPolicyFromResult(page, TOOLS_LIST_LABEL, { hostReceivingList });
     for (const tool of page.tools) {
-      if (!REMOTE_TOOLS_ALLOWLIST.has(tool.name)) continue;
+      const name = REMOTE_TOOL_LOCAL_NAMES.get(tool.name) ?? tool.name;
+      if (!REMOTE_TOOLS_ALLOWLIST.has(name) || listed.has(name)) continue;
+      listed.add(name);
       collected.push({
         ...tool,
+        name,
         inputSchema: augmentSchemaForLocal(tool.inputSchema)
       });
     }
