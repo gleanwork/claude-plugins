@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.6.2](https://github.com/gleanwork/agent-plugins/compare/v3.6.1...v3.6.2) (2026-11-19)
+
+### Bug Fixes
+
+* stop sending the gateway metadata request header ([#50](https://github.com/gleanwork/agent-plugins/issues/50)) ([4a4daa2](https://github.com/gleanwork/agent-plugins/commit/4a4daa265d61af96d68c9b0e5fa0a86acec31ae4))
+
 ## [3.6.1](https://github.com/gleanwork/agent-plugins/compare/v3.6.0...v3.6.1) (2026-10-28)
 
 ### Bug Fixes

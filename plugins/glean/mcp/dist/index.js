@@ -41036,7 +41036,7 @@ var StreamableHTTPClientTransport = class {
 };
 
 // shared/glean/mcp/src/version.ts
-var BUILD_VERSION = true ? "3.6.1" : void 0;
+var BUILD_VERSION = true ? "3.6.2" : void 0;
 function pluginVersion() {
   if (BUILD_VERSION) return { version: BUILD_VERSION, source: "build" };
   return { version: "0.0.0", source: "unknown" };
@@ -41746,44 +41746,12 @@ function policySummary() {
 }
 
 // shared/glean/mcp/src/remote-client.ts
-var GLEAN_PLUGIN = "GLEAN_PLUGIN";
 var DEFAULT_REMOTE_TOOL_TIMEOUT_MS = 3e5;
 function remoteToolTimeoutMs() {
   const raw = process.env.GLEAN_REMOTE_TOOL_TIMEOUT_MS;
   if (!raw) return DEFAULT_REMOTE_TOOL_TIMEOUT_MS;
   const parsed = Number.parseInt(raw, 10);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : DEFAULT_REMOTE_TOOL_TIMEOUT_MS;
-}
-function encodeVarint(value) {
-  const bytes = [];
-  while (value > 127) {
-    bytes.push(value & 127 | 128);
-    value >>>= 7;
-  }
-  bytes.push(value);
-  return bytes;
-}
-function encodeStringField(fieldNumber, value) {
-  if (!value) return [];
-  const encoded = new TextEncoder().encode(value);
-  const tag = fieldNumber << 3 | 2;
-  return [tag, ...encodeVarint(encoded.length), ...encoded];
-}
-function encodeMessageField(fieldNumber, inner) {
-  const tag = fieldNumber << 3 | 2;
-  return [tag, ...encodeVarint(inner.length), ...inner];
-}
-function buildGatewayMetadataHeader(chatSessionId) {
-  const sourceInfo = [
-    ...encodeStringField(2, GLEAN_PLUGIN),
-    ...encodeStringField(3, GLEAN_PLUGIN)
-  ];
-  const message = [
-    ...encodeStringField(1, GLEAN_PLUGIN),
-    ...chatSessionId ? encodeStringField(2, chatSessionId) : [],
-    ...encodeMessageField(4, sourceInfo)
-  ];
-  return Buffer.from(new Uint8Array(message)).toString("base64");
 }
 function loggingFetch(input, init) {
   const method = init?.method ?? "GET";
@@ -41824,13 +41792,9 @@ function withConnectLock(fn) {
   );
   return result;
 }
-function buildTransport(serverUrl, opts, chatSessionId) {
+function buildTransport(serverUrl, opts) {
   const parsedUrl = new URL(serverUrl);
-  const headers = {
-    "X-Glean-Gateway-Request-Metadata": buildGatewayMetadataHeader(chatSessionId)
-  };
   const transportOpts = {
-    requestInit: { headers },
     fetch: opts.fetch ?? loggingFetch
   };
   if (opts.authProvider) {
@@ -41838,10 +41802,10 @@ function buildTransport(serverUrl, opts, chatSessionId) {
   }
   return new StreamableHTTPClientTransport(parsedUrl, transportOpts);
 }
-async function createRemoteClient(serverUrl, opts, chatSessionId, authRetry = false) {
+async function createRemoteClient(serverUrl, opts, authRetry = false) {
   const authProvider = opts.authProvider;
   if (authProvider?.pendingAuthCode) {
-    const transportForAuth = pendingTransport ?? buildTransport(serverUrl, opts, chatSessionId);
+    const transportForAuth = pendingTransport ?? buildTransport(serverUrl, opts);
     console.error("[auth] Auth code received, exchanging for tokens...");
     try {
       await withConnectLock(
@@ -41850,14 +41814,14 @@ async function createRemoteClient(serverUrl, opts, chatSessionId, authRetry = fa
       authProvider.clearPendingAuth();
       pendingTransport = void 0;
       console.error("[auth] Token exchange complete, reconnecting...");
-      return createRemoteClient(serverUrl, opts, chatSessionId);
+      return createRemoteClient(serverUrl, opts);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       console.error(`[auth] Code exchange failed: ${msg} \u2014 discarding stale auth state`);
       authProvider.clearPendingAuth();
       pendingTransport = void 0;
       await authProvider.invalidateCredentials("all");
-      return createRemoteClient(serverUrl, opts, chatSessionId);
+      return createRemoteClient(serverUrl, opts);
     }
   }
   if (authProvider?.needsFreshClient()) {
@@ -41887,7 +41851,7 @@ async function createRemoteClient(serverUrl, opts, chatSessionId, authRetry = fa
     });
   }
   const accessTokenAtConnect = authProvider?.tokens()?.access_token;
-  const transport = buildTransport(serverUrl, opts, chatSessionId);
+  const transport = buildTransport(serverUrl, opts);
   try {
     await withConnectLock(() => client.connect(transport));
   } catch (error2) {
@@ -41900,7 +41864,7 @@ async function createRemoteClient(serverUrl, opts, chatSessionId, authRetry = fa
         console.error(
           "[auth] Auth failed but a newer token is on disk (sibling refresh) \u2014 retrying once"
         );
-        return createRemoteClient(serverUrl, opts, chatSessionId, true);
+        return createRemoteClient(serverUrl, opts, true);
       }
       if (authProvider.authorizationUrl) {
         pendingTransport = transport;
@@ -41911,7 +41875,7 @@ async function createRemoteClient(serverUrl, opts, chatSessionId, authRetry = fa
       console.error(
         "[auth] Refresh failed but a sibling refreshed \u2014 retrying with its token"
       );
-      return createRemoteClient(serverUrl, opts, chatSessionId, true);
+      return createRemoteClient(serverUrl, opts, true);
     }
     throw error2;
   }
@@ -43325,8 +43289,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   try {
     remoteClient = await createRemoteClient(
       serverUrl,
-      await getRemoteClientOpts(),
-      `tools-list-${process.pid}`
+      await getRemoteClientOpts()
     );
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
@@ -43383,8 +43346,7 @@ async function connectWithSignIn(serverUrl) {
     try {
       const client = await createRemoteClient(
         serverUrl,
-        await getRemoteClientOpts(),
-        `setup-${process.pid}`
+        await getRemoteClientOpts()
       );
       return { ok: true, client };
     } catch (err) {
@@ -43417,8 +43379,7 @@ async function connectWithSignIn(serverUrl) {
     try {
       const client = await createRemoteClient(
         serverUrl,
-        await getRemoteClientOpts(),
-        `setup-${process.pid}`
+        await getRemoteClientOpts()
       );
       return { ok: true, client };
     } catch (err) {
@@ -43451,8 +43412,7 @@ async function connectWithSignIn(serverUrl) {
     try {
       const client = await createRemoteClient(
         serverUrl,
-        await getRemoteClientOpts(),
-        `setup-${process.pid}`
+        await getRemoteClientOpts()
       );
       return { ok: true, client };
     } catch (err) {
@@ -43565,14 +43525,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [{ type: "text", text: AUTH_REDIRECT_TO_SETUP_TEXT }]
         };
       }
-      const sessionId = resolveSessionId();
       const skillsBaseDir = resolveSkillsBaseDir();
       let remoteClient;
       try {
         remoteClient = await createRemoteClient(
           serverUrl,
-          await getRemoteClientOpts(),
-          sessionId
+          await getRemoteClientOpts()
         );
       } catch (err) {
         if (err instanceof AuthRequiredError) {
@@ -43623,13 +43581,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [{ type: "text", text: AUTH_REDIRECT_TO_SETUP_TEXT }]
         };
       }
-      const sessionId = resolveSessionId();
       let remoteClient;
       try {
         remoteClient = await createRemoteClient(
           serverUrl,
-          await getRemoteClientOpts(),
-          sessionId
+          await getRemoteClientOpts()
         );
       } catch (err) {
         if (err instanceof AuthRequiredError) {
